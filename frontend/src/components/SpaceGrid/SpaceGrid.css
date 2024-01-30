@@ -1,0 +1,55 @@
+.spacegrid-container{
+    display: flex;
+}
+
+.total-box{
+    background-color: #9E9E9E;
+    height: 250px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.total-spaces-number{
+    font-size: 6rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.refris-container{
+    margin-left: 1rem;
+    height: 250px;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-columns: minmax(100px, auto);
+    align-content: space-between;
+    gap: 10px;
+
+}
+
+.refri-box{
+    background-color: #9E9E9E;
+    color: #fff;
+    height: 120px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.refri-spaces-number{
+    font-size: 2rem;
+    margin: 1.5rem auto 0;
+    font-weight: bold;
+}
+
+.refri-spaces-tag{
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.slash-total{
+    font-size: 0.9rem;
+    font-weight:normal;
+}

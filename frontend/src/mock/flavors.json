@@ -1,0 +1,65 @@
+[
+    {
+        "_id": 1,
+        "name": "chocolate",
+        "description": "¿Qué podemos decir que no se haya dicho del chocolate?",
+        "category_id": 1,
+        "status": "active"
+    },
+    {
+        "_id": 2,
+        "name": "chocolate profundo",
+        "description": "Mousse de chocolate amargo, intenso, fuerte. Para fanáticos.",
+        "category_id": 1,
+        "status": "active"
+    },
+    {
+        "_id": 3,
+        "name": "chocolate blanco con frambuesas",
+        "description": "Un helado hecho a pedido del público. Con pedacitos de chocolate blanco y dulces frambuesas.",
+        "category_id": 1,
+        "status": "active"
+    },
+    {
+        "_id": 4,
+        "name": "chocolate con naranjitas",
+        "description": "Chocolate amargo con naranjitas caramelizadas.",
+        "category_id": 1,
+        "status": "active"
+    },
+    {
+        "_id": 5,
+        "name": "dulce de leche",
+        "description": "Un clásico sobre el que no hace falta añadir más nada.",
+        "category_id": 2,
+        "status": "active"
+    },
+    {
+        "_id": 6,
+        "name": "Mousse del Piltri",
+        "description": "Mousse de dulce de leche con almendras caramelizadas. Un homenaje al cerro Piltriquitrón...",
+        "category_id": 2,
+        "status": "active"
+    },
+    {
+        "_id": 7,
+        "name": "dulce de leche con frambuesas",
+        "description": "Dulce de leche con Frambuesas de la Comarca",
+        "category_id": 2,
+        "status": "active"
+    },
+    {
+        "_id": 8,
+        "name": "arándano",
+        "description": "Se cultiva en la Patagonia y en la provincia de Buenos Aires, Santa Fé y Entre Ríos. El helado lo hacemos con la fruta local.",
+        "category_id": 3,
+        "status": "active"
+    },
+    {
+        "_id": 9,
+        "name": "limonada de frambuesa",
+        "description": "Refrescante limonada con un poco de frambuesa",
+        "category_id": 3,
+        "status": "active"
+    }
+]

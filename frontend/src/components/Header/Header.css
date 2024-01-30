@@ -1,0 +1,28 @@
+.header-container{
+    display: flex;
+    padding: 1rem;
+    height: 2.5rem;
+}
+
+.logo-jauja{
+    height: 2.5rem;
+    margin-right: 3rem;
+}
+
+.btn-container{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.header__li{
+    list-style: none;
+}
+
+.header__btn{
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
