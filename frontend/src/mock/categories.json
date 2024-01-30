@@ -1,42 +1,22 @@
 [
     {
         "_id": 1,
-        "category": "chocolate",
-        "color":  "#4A2400bb"
+        "category": "Chocolates",
+        "color":  "#5b3511bb"
     },
     {
         "_id": 2,
-        "category": "dulce de leche",
+        "category": "Dulces de Leche",
         "color":  "#D56600bb"
     },
     {
         "_id": 3,
-        "category": "fruta al natural",
+        "category": "Frutas al natural",
         "color":  "#FF6666bb"
     },
     {
         "_id": 4,
-        "category": "fruta con crema",
+        "category": "Frutas con crema",
         "color":  "#9766FFbb"
-    },
-    {
-        "_id": 5,
-        "category": "con invitados especiales",
-        "color":  "#4A2400bb"
-    },
-    {
-        "_id": 6,
-        "category": "de estación o de capricho",
-        "color":  "#4A2400bb"
-    },
-    {
-        "_id": 7,
-        "category": "crema",
-        "color":  "#4A2400bb"
-    },
-    {
-        "_id": 5,
-        "category": "sin azúcar",
-        "color":  "#4A2400bb"
     }
 ]

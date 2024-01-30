@@ -16,11 +16,5 @@
         "total_capacity": 16,
         "refri_name": "Heladera 3",
         "status": "active"
-    },
-    {
-        "_id": 4,
-        "total_capacity": 20,
-        "refri_name": "Heladera Stock",
-        "status": "active"
     }
 ]

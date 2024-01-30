@@ -7,9 +7,6 @@ import BucketModal from '../BucketModal/BucketModal'
 import { TbArrowBadgeUpFilled } from "react-icons/tb";
 import { TbArrowBadgeDownFilled } from "react-icons/tb";
 
-
-
-
 const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
   const [side, setSide] = useState(0)
   const [openModal, setOpenModal] = useState(false) 
@@ -37,7 +34,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
 
   const calculateColor = bucket => {
     const flavor = flavors.find( flavor => flavor._id === bucket.flavor_id)
-    if(!flavor) return '#aaa'
+    if(!flavor) return '#777'
     const category = categories.find( category => category._id === flavor.category_id)
     return category.color
   }
@@ -58,13 +55,13 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
   })
 
   return (
-    <div className='refri-container' id={_id}>
+    <div className='refri-container' id={`refri-${_id}`}>
       {
         openModal &&
         <BucketModal openModal={openModal} setOpenModal={setOpenModal} selectedBucket={selectedBucket} />
       }
       <p className="refri-name">{refri_name} - {side === 0 ? 'arriba' : 'abajo'}</p>
-      <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#aaa'}}>
+      <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#aaa', boxShadow: side === 0 ? "0 1px 8px #999" : "inset 0 1px 8px #777"}}>
         <div className="side-selector-container">
           <button className="side-up" onClick={()=>setSide(0)}>
             <div className="arrow-container arrow-up" style={{color: side===0 ? '#666' : '#222'}}>
@@ -81,7 +78,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
           {bucketMap}
         </div>
       </div>
-      <p className="refri-count">{total_capacity - refriBuckets.length} lugares libres</p>
+      <p className="refri-count">{total_capacity - refriBuckets.filter(bucket => bucket.flavor_id !== null).length} lugares libres</p>
     </div>
   )
 }

@@ -36,6 +36,7 @@
     width: 120px;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
 }
 
 .refri-spaces-number{

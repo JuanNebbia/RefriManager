@@ -2,42 +2,42 @@
     {
         "id": 1,
         "refrigerator_id": 1,
-        "flavor_id": 5,
+        "flavor_id": 45,
         "position": 1,
         "side": 0
     },
     {
         "id": 2,
         "refrigerator_id": 1,
-        "flavor_id": null,
+        "flavor_id": 7,
         "position": 2,
         "side": 0
     },
     {
         "id": 3,
         "refrigerator_id": 1,
-        "flavor_id": 2,
+        "flavor_id": 45,
         "position": 3,
         "side": 0
     },
     {
         "id": 4,
         "refrigerator_id": 1,
-        "flavor_id": 3,
+        "flavor_id": 33,
         "position": 4,
         "side": 0
     },
     {
         "id": 5,
         "refrigerator_id": 1,
-        "flavor_id": 8,
+        "flavor_id": 28,
         "position": 5,
         "side": 0
     },
     {
         "id": 6,
         "refrigerator_id": 1,
-        "flavor_id": 9,
+        "flavor_id": 43,
         "position": 6,
         "side": 0
     },
@@ -51,113 +51,400 @@
     {
         "id": 8,
         "refrigerator_id": 1,
-        "flavor_id": 5,
+        "flavor_id": 35,
         "position": 8,
         "side": 0
     },
     {
         "id": 9,
         "refrigerator_id": 1,
-        "flavor_id": 6,
-        "position": 1,
-        "side": 1
+        "flavor_id": 28,
+        "position": 9,
+        "side": 0
     },
     {
         "id": 10,
         "refrigerator_id": 1,
-        "flavor_id": 7,
-        "position": 2,
-        "side": 1
+        "flavor_id": 11,
+        "position": 10,
+        "side": 0
     },
     {
         "id": 11,
         "refrigerator_id": 1,
-        "flavor_id": 3,
-        "position": 3,
-        "side": 1
+        "flavor_id": 41,
+        "position": 11,
+        "side": 0
     },
     {
         "id": 12,
         "refrigerator_id": 1,
-        "flavor_id": 2,
-        "position": 4,
-        "side": 1
+        "flavor_id": 37,
+        "position": 12,
+        "side": 0
     },
     {
         "id": 13,
-        "refrigerator_id": 2,
-        "flavor_id": 1,
-        "position": 5,
+        "refrigerator_id": 1,
+        "flavor_id": 26,
+        "position": 1,
         "side": 1
     },
     {
         "id": 14,
-        "refrigerator_id": 2,
-        "flavor_id": 5,
-        "position": 6,
+        "refrigerator_id": 1,
+        "flavor_id": 24,
+        "position": 2,
         "side": 1
     },
     {
         "id": 15,
+        "refrigerator_id": 1,
+        "flavor_id": 49,
+        "position": 3,
+        "side": 1
+    },
+    {
+        "id": 16,
+        "refrigerator_id": 1,
+        "flavor_id": 13,
+        "position": 4,
+        "side": 1
+    },
+    {
+        "id": 17,
+        "refrigerator_id": 1,
+        "flavor_id": 9,
+        "position": 5,
+        "side": 1
+    },
+    {
+        "id": 18,
+        "refrigerator_id": 1,
+        "flavor_id": 27,
+        "position": 6,
+        "side": 1
+    },
+    {
+        "id": 19,
+        "refrigerator_id": 1,
+        "flavor_id": null,
+        "position": 7,
+        "side": 1
+    },
+    {
+        "id": 20,
+        "refrigerator_id": 1,
+        "flavor_id": 5,
+        "position": 8,
+        "side": 1
+    },
+    {
+        "id": 21,
+        "refrigerator_id": 1,
+        "flavor_id": null,
+        "position": 9,
+        "side": 1
+    },
+    {
+        "id": 22,
+        "refrigerator_id": 1,
+        "flavor_id": 18,
+        "position": 10,
+        "side": 1
+    },
+    {
+        "id": 23,
+        "refrigerator_id": 1,
+        "flavor_id": 44,
+        "position": 11,
+        "side": 1
+    },
+    {
+        "id": 24,
+        "refrigerator_id": 1,
+        "flavor_id": null,
+        "position": 12,
+        "side": 1
+    },
+    {
+        "id": 25,
         "refrigerator_id": 2,
-        "flavor_id": 4,
+        "flavor_id": 35,
         "position": 1,
         "side": 0
     },
     {
-        "id": 16,
+        "id": 26,
         "refrigerator_id": 2,
-        "flavor_id": 6,
-        "position": 3,
-        "side": 0
-    },
-    {
-        "id": 17,
-        "refrigerator_id": 2,
-        "flavor_id": 7,
+        "flavor_id": 47,
         "position": 2,
         "side": 0
     },
     {
-        "id": 18,
+        "id": 27,
         "refrigerator_id": 2,
+        "flavor_id": 49,
+        "position": 3,
+        "side": 0
+    },
+    {
+        "id": 28,
+        "refrigerator_id": 2,
+        "flavor_id": 43,
+        "position": 4,
+        "side": 0
+    },
+    {
+        "id": 29,
+        "refrigerator_id": 2,
+        "flavor_id": 8,
+        "position": 5,
+        "side": 0
+    },
+    {
+        "id": 30,
+        "refrigerator_id": 2,
+        "flavor_id": 19,
+        "position": 6,
+        "side": 0
+    },
+    {
+        "id": 31,
+        "refrigerator_id": 2,
+        "flavor_id": 1,
+        "position": 7,
+        "side": 0
+    },
+    {
+        "id": 32,
+        "refrigerator_id": 2,
+        "flavor_id": 45,
+        "position": 8,
+        "side": 0
+    },
+    {
+        "id": 33,
+        "refrigerator_id": 2,
+        "flavor_id": 8,
+        "position": 9,
+        "side": 0
+    },
+    {
+        "id": 34,
+        "refrigerator_id": 2,
+        "flavor_id": 1,
+        "position": 10,
+        "side": 0
+    },
+    {
+        "id": 35,
+        "refrigerator_id": 2,
+        "flavor_id": 2,
+        "position": 11,
+        "side": 0
+    },
+    {
+        "id": 36,
+        "refrigerator_id": 2,
+        "flavor_id": 18,
+        "position": 12,
+        "side": 0
+    },
+    {
+        "id": 37,
+        "refrigerator_id": 2,
+        "flavor_id": 10,
+        "position": 1,
+        "side": 1
+    },
+    {
+        "id": 38,
+        "refrigerator_id": 2,
+        "flavor_id": 20,
+        "position": 2,
+        "side": 1
+    },
+    {
+        "id": 39,
+        "refrigerator_id": 2,
+        "flavor_id": 25,
+        "position": 3,
+        "side": 1
+    },
+    {
+        "id": 40,
+        "refrigerator_id": 2,
+        "flavor_id": 27,
+        "position": 4,
+        "side": 1
+    },
+    {
+        "id": 41,
+        "refrigerator_id": 2,
+        "flavor_id": 28,
+        "position": 5,
+        "side": 1
+    },
+    {
+        "id": 42,
+        "refrigerator_id": 2,
+        "flavor_id": 8,
+        "position": 6,
+        "side": 1
+    },
+    {
+        "id": 43,
+        "refrigerator_id": 2,
+        "flavor_id": null,
+        "position": 7,
+        "side": 1
+    },
+    {
+        "id": 44,
+        "refrigerator_id": 2,
+        "flavor_id": 9,
+        "position": 8,
+        "side": 1
+    },
+    {
+        "id": 45,
+        "refrigerator_id": 2,
+        "flavor_id": null,
+        "position": 9,
+        "side": 1
+    },
+    {
+        "id": 46,
+        "refrigerator_id": 2,
+        "flavor_id": 19,
+        "position": 10,
+        "side": 1
+    },
+    {
+        "id": 47,
+        "refrigerator_id": 2,
+        "flavor_id": 26,
+        "position": 11,
+        "side": 1
+    },
+    {
+        "id": 48,
+        "refrigerator_id": 2,
+        "flavor_id": null,
+        "position": 12,
+        "side": 1
+    },
+    {
+        "id": 49,
+        "refrigerator_id": 3,
+        "flavor_id":33,
+        "position": 1,
+        "side": 0
+    },
+    {
+        "id": 50,
+        "refrigerator_id": 3,
+        "flavor_id": 10,
+        "position": 2,
+        "side": 0
+    },
+    {
+        "id": 51,
+        "refrigerator_id": 3,
+        "flavor_id": 8,
+        "position": 3,
+        "side": 0
+    },
+    {
+        "id": 52,
+        "refrigerator_id": 3,
         "flavor_id": 3,
         "position": 4,
         "side": 0
     },
     {
-        "id": 19,
+        "id": 53,
         "refrigerator_id": 3,
-        "flavor_id": 2,
-        "position": 8,
-        "side": 1
+        "flavor_id": 5,
+        "position": 5,
+        "side": 0
     },
     {
-        "id": 20,
+        "id": 54,
         "refrigerator_id": 3,
-        "flavor_id": 1,
+        "flavor_id": 28,
+        "position": 6,
+        "side": 0
+    },
+    {
+        "id": 55,
+        "refrigerator_id": 3,
+        "flavor_id": 21,
+        "position": 7,
+        "side": 0
+    },
+    {
+        "id": 56,
+        "refrigerator_id": 3,
+        "flavor_id": 17,
         "position": 8,
         "side": 0
     },
     {
-        "id": 22,
+        "id": 61,
         "refrigerator_id": 3,
-        "flavor_id": 6,
-        "position": 3,
+        "flavor_id": 39,
+        "position": 1,
         "side": 1
     },
     {
-        "id": 23,
+        "id": 62,
         "refrigerator_id": 3,
-        "flavor_id": 7,
+        "flavor_id": 37,
         "position": 2,
         "side": 1
     },
     {
-        "id": 24,
+        "id": 63,
         "refrigerator_id": 3,
-        "flavor_id": 4,
-        "position": 1,
-        "side": 0
+        "flavor_id": 23,
+        "position": 3,
+        "side": 1
+    },
+    {
+        "id": 64,
+        "refrigerator_id": 3,
+        "flavor_id": 12,
+        "position": 4,
+        "side": 1
+    },
+    {
+        "id": 65,
+        "refrigerator_id": 3,
+        "flavor_id": 24,
+        "position": 5,
+        "side": 1
+    },
+    {
+        "id": 66,
+        "refrigerator_id": 3,
+        "flavor_id": 32,
+        "position": 6,
+        "side": 1
+    },
+    {
+        "id": 67,
+        "refrigerator_id": 3,
+        "flavor_id": null,
+        "position": 7,
+        "side": 1
+    },
+    {
+        "id": 68,
+        "refrigerator_id": 3,
+        "flavor_id": null,
+        "position": 7,
+        "side": 1
     }
 ]
