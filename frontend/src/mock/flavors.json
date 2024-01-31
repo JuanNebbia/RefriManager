@@ -398,5 +398,45 @@
         "description": "Helado a la crema elaborado con una salsa de guindas casera (tipo amarena) y frutas enteras. Generalmente lo hacemos en otoño.",
         "category_id": 4,
         "status": "active"
+    },
+    {
+        "_id": 50,
+        "code": 7142,
+        "name": "Anarangibre",
+        "description": "Una ligera mousse de ananá y naranja... y pedacitos de jengibre caramelizado.",
+        "category_id": 5,
+        "status": "active"
+    },
+    {
+        "_id": 51,
+        "code": 4914,
+        "name": "Banana split",
+        "description": "Helado de banana con granizado de chocolate y dulce de leche repostero.",
+        "category_id": 5,
+        "status": "active"
+    },
+    {
+        "_id": 52,
+        "code": 7143,
+        "name": "Pepilla",
+        "description": "Helado de -sobre todo- frutilla con un toque de -sí- Pepino. Refrescante y riquísimo.",
+        "category_id": 5,
+        "status": "active"
+    },
+    {
+        "_id": 53,
+        "code": 7144,
+        "name": "Sauco de la pasión",
+        "description": "Crema de maracuyá sembrada con salsa de sauco... el trópico y la patagonia en un solo helado.",
+        "category_id": 5,
+        "status": "active"
+    },
+    {
+        "_id": 54,
+        "code": 7145,
+        "name": "Yoghurt de frutilla",
+        "description": "Hecho helado, claro.",
+        "category_id": 5,
+        "status": "active"
     }
 ]

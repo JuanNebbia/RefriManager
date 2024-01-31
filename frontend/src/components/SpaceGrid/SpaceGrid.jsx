@@ -1,16 +1,14 @@
 import React from 'react'
 import './SpaceGrid.css'
-import refrigerators from '../../mock/refrigerators.json'
-import buckets from '../../mock/buckets.json'
+import { useData } from '../../context/DataContext';
 
 const SpaceGrid = () => {
-    
+    const { refrigerators, buckets } = useData();
 
     const calculateRefriEmptySpaces = (refri) => {
         const bucketsOnRefri = buckets.filter(bucket => bucket.refrigerator_id === refri._id)
         return refri.total_capacity - bucketsOnRefri.filter(bucket => bucket.flavor_id !== null).length   
     }
-
 
     const calculateTotalEmptySpaces = () => {
         const totalCapacity = refrigerators.reduce((acumulador, refrigerator) => {
@@ -27,7 +25,6 @@ const SpaceGrid = () => {
             </a>
         )
     })
-
 
     return (
     <div className='spacegrid-container'>

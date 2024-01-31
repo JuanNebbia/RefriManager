@@ -102,11 +102,25 @@
 .modal-btn-container button{
     border: none;
     padding: 0.6rem;
-    background-color: #aaa;
     font-weight: 600;
     font-size: 1.2rem;
     border-radius: 0.5rem;
     cursor: pointer;
     width: 70%;
     color: #111;
+}
+
+.empty-bucket{
+    background-color: #e88;
+}
+
+.save-bucket{
+    background-color: #aaa;
+
+}
+
+.save-bucket:disabled{
+    background-color: #ccc;
+    color: #888;
+    cursor:auto;
 }

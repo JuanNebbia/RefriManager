@@ -2,21 +2,26 @@
     {
         "_id": 1,
         "category": "Chocolates",
-        "color":  "#5b3511bb"
+        "color":  "#5b351199"
     },
     {
         "_id": 2,
         "category": "Dulces de Leche",
-        "color":  "#D56600bb"
+        "color":  "#D5660099"
     },
     {
         "_id": 3,
         "category": "Frutas al natural",
-        "color":  "#FF6666bb"
+        "color":  "#FF666699"
     },
     {
         "_id": 4,
         "category": "Frutas con crema",
-        "color":  "#9766FFbb"
+        "color":  "#9766FF99"
+    },
+    {
+        "_id": 5,
+        "category": "Frutas con invitados especiales",
+        "color":  "#4ffe7e99"
     }
 ]

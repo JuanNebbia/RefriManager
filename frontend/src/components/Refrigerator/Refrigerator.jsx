@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import './Refrigerator.css'
-import buckets from '../../mock/buckets.json'
-import flavors from '../../mock/flavors.json'
-import categories from '../../mock/categories.json'
 import BucketModal from '../BucketModal/BucketModal'
 import { TbArrowBadgeUpFilled } from "react-icons/tb";
 import { TbArrowBadgeDownFilled } from "react-icons/tb";
+import { useData } from '../../context/DataContext';
 
 const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
   const [side, setSide] = useState(0)
   const [openModal, setOpenModal] = useState(false) 
   const [selectedBucket, setSelectedBucket] = useState({})
+
+  const { flavors, categories, buckets } = useData();
 
   const refriBuckets = buckets.filter(bucket => {
     return bucket.refrigerator_id === _id
@@ -46,7 +46,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
 
   const bucketMap = orderedBuckets.map( (bucket, idx) => {
     return (
-      <div onClick={() => openBucket(bucket)} className="bucket" key={idx} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: calculateColor(bucket)}}>
+      <div onClick={() => openBucket(bucket)} className="bucket" key={bucket.id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: calculateColor(bucket)}}>
         <p className="bucket-flavor">
           { findFlavor(bucket) }
         </p>
@@ -61,15 +61,15 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
         <BucketModal openModal={openModal} setOpenModal={setOpenModal} selectedBucket={selectedBucket} />
       }
       <p className="refri-name">{refri_name} - {side === 0 ? 'arriba' : 'abajo'}</p>
-      <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#aaa', boxShadow: side === 0 ? "0 1px 8px #999" : "inset 0 1px 8px #777"}}>
+      <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#aaa', boxShadow: side === 0 ? "0 1px 4px #0005" : "inset 0 0 4px #0006"}}>
         <div className="side-selector-container">
           <button className="side-up" onClick={()=>setSide(0)}>
-            <div className="arrow-container arrow-up" style={{color: side===0 ? '#666' : '#222'}}>
+            <div className="arrow-container arrow-up" style={{color: side===0 ? '#bbb' : '#222'}}>
               <TbArrowBadgeUpFilled />
             </div>
           </button>
           <button className="side-down" onClick={()=>setSide(1)}>
-            <div className="arrow-container" style={{color: side===1 ? '#666' : '#222'}}> 
+            <div className="arrow-container" style={{color: side===1 ? '#888' : '#222'}}> 
               <TbArrowBadgeDownFilled />
             </div>
           </button>
