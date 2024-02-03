@@ -10,6 +10,7 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [refrigerators, setRefrigerators] = useState(refrigeratorsJson);
+  const [refriAmount, setRefriAmount] = useState(refrigerators.length);
   const [buckets, setBuckets] = useState(bucketsJson);
   const [categories, setCategories] = useState(categoriesJson);
   const [flavors, setFlavors] = useState(flavorsJson);
@@ -23,6 +24,8 @@ export const DataProvider = ({ children }) => {
         setCategories,
         refrigerators,
         setRefrigerators,
+        refriAmount,
+        setRefriAmount,
         buckets,
         setBuckets,
       }}

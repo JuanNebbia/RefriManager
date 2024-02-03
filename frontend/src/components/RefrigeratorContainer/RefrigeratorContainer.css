@@ -1,0 +1,14 @@
+.add-refri__btn{
+    background-color: #ba0016;
+    padding: 1rem 3rem;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.add-refri__btn:hover{
+    transform: scale(1.03);
+}

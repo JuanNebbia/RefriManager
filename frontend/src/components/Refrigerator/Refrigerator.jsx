@@ -4,6 +4,7 @@ import BucketModal from '../BucketModal/BucketModal'
 import { TbArrowBadgeUpFilled } from "react-icons/tb";
 import { TbArrowBadgeDownFilled } from "react-icons/tb";
 import { useData } from '../../context/DataContext';
+import Modal from '../Modal/Modal';
 
 const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
   const [side, setSide] = useState(0)
@@ -95,10 +96,10 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
     <div className='refri-container' id={`refri-${_id}`}>
       {
         openModal &&
-        <BucketModal openModal={openModal} setOpenModal={setOpenModal} selectedBucket={selectedBucket} />
+        <Modal openModal={openModal} setOpenModal={setOpenModal}  content={<BucketModal selectedBucket={selectedBucket} setOpenModal={setOpenModal}/>} />
       }
       <div className="refri-name-container">
-        <p className="refri-name">{refri_name} - {side === 0 ? 'arriba' : 'abajo'}</p>
+        <p className="refri-name">{refri_name} - <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}}>{side === 0 ? 'arriba' : 'abajo'}</span></p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
       </div>
       <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#ccc', boxShadow: side === 0 ? "0 1px 4px #0005" : "inset 0 0 4px #0006"}}>

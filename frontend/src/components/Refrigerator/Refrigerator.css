@@ -14,6 +14,10 @@
     font-weight: bold;
 }
 
+.side-title{
+    padding: 0.5rem;
+}
+
 .view-mode-selector{
     cursor: pointer;
     right: 0;
@@ -30,7 +34,7 @@
 
 .refri{
     background-color: #ffffff;
-    min-height: 4rem;
+    min-height: 23rem;
     border-radius: 0.3rem;
     display: flex;
 }

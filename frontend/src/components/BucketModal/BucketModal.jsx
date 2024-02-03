@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './BucketModal.css'
-import { IoCloseSharp } from "react-icons/io5";
 import { useData } from '../../context/DataContext';
 
 
@@ -22,15 +21,10 @@ const BucketModal = ({ setOpenModal, selectedBucket }) => {
         }
     },[buckets, flavors])
 
-    const closeModal = (event) => {
-        if(event.target.classList.contains('close')){
-            setOpenModal(false)
-        }
-    }
-
     const changeCategory = (event) => {
         const selectedFlavors = flavors.filter(flavor => flavor.category_id === +event.target.value)
         setCategoryFlavors(selectedFlavors)
+        setSelectedFlavor(selectedFlavors[0])
         setSelectedCategory(event.target.value)
         setEnableSave(false)
     }
@@ -61,16 +55,12 @@ const BucketModal = ({ setOpenModal, selectedBucket }) => {
     }
 
     return (
-    <div onClick={closeModal} className='bucketmodal-container close'>
-        <div className="bucketmodal-inner">
-            <button className="close-modal-btn close">
-                <IoCloseSharp className='close' />
-            </button>
+    <div className='bucketmodal-container'>
             <h3 className='modal-title'>heladera {selectedBucket.refrigerator_id} - espacio {selectedBucket.position} - {selectedBucket.side === 0 ? 'arriba' : 'abajo'}</h3>
             <form action="" className='modal-form'>
                 <label htmlFor="category-select" className='select-label'>Categoria</label>
                 <select name="category" id="category-select" onChange={changeCategory} value={selectedCategory}>
-                    <option value="">Selecciona una categoría</option>
+                    <option value="">Todos</option>
                     { categories.map((category, idx) => {
                         return <option value={category._id} key={idx} style={{backgroundColor: category.color}}>{category.category}</option>
                     })}
@@ -105,7 +95,6 @@ const BucketModal = ({ setOpenModal, selectedBucket }) => {
                 <button className="save-bucket" disabled={enableSave} onClick={saveChanges}>Guardar</button>
             </div>
         </div>
-    </div>
     )
 }
 
