@@ -9,7 +9,7 @@ const BucketModal = ({ setOpenModal, selectedBucket }) => {
     const [categoryFlavors, setCategoryFlavors] = useState([])
     const [availability, setAvailability] = useState()
     const [enableSave, setEnableSave] = useState(true)
-    const { flavors, categories, buckets, setBuckets } = useData();
+    const { flavors, categories, buckets, setBuckets, refrigerators } = useData();
 
     useEffect(() => {
         if(selectedBucket.flavor_id){
@@ -56,7 +56,7 @@ const BucketModal = ({ setOpenModal, selectedBucket }) => {
 
     return (
     <div className='bucketmodal-container'>
-            <h3 className='modal-title'>heladera {selectedBucket.refrigerator_id} - espacio {selectedBucket.position} - {selectedBucket.side === 0 ? 'arriba' : 'abajo'}</h3>
+            <h3 className='modal-title'>{refrigerators.find(refri => refri._id === selectedBucket.refrigerator_id).refri_name} - espacio {selectedBucket.position} - {selectedBucket.side === 0 ? 'arriba' : 'abajo'}</h3>
             <form action="" className='modal-form'>
                 <label htmlFor="category-select" className='select-label'>Categoria</label>
                 <select name="category" id="category-select" onChange={changeCategory} value={selectedCategory}>

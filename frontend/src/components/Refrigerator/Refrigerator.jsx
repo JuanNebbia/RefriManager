@@ -6,13 +6,13 @@ import { TbArrowBadgeDownFilled } from "react-icons/tb";
 import { useData } from '../../context/DataContext';
 import Modal from '../Modal/Modal';
 
-const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
+const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, setRefrigerators, refriAmount, setRefriAmount }) => {
   const [side, setSide] = useState(0)
   const [viewMode, setViewMode] = useState(true)
   const [openModal, setOpenModal] = useState(false) 
   const [selectedBucket, setSelectedBucket] = useState({})
 
-  const { flavors, categories, buckets } = useData();
+  const { flavors, categories, buckets, setBuckets } = useData();
 
   const refriBuckets = buckets.filter(bucket => {
     return bucket.refrigerator_id === _id
@@ -69,7 +69,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
     })
     const filteredFlavors = flavorsArray.filter(flavor => flavor.flavorObject !== undefined)
     const orderedBuckets = filteredFlavors.sort((a, b) => {
-      return (a.flavorObject.category_id - b.flavorObject.category_id)
+      return (b.amount - a.amount)
     })
     return orderedBuckets
   }
@@ -89,6 +89,19 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
       </div>
       )
   })
+
+  const deleteRefri = (event) => {
+    if(window.confirm('Estás por eliminar una heladera. Continuar?')){
+    const refriId = event.target.parentNode.parentNode.id.substring('refri-'.length)
+    const refrigeratorsCopy = refrigerators
+    const refriIdx = refrigeratorsCopy.findIndex(refri => +refriId === refri._id)
+    refrigeratorsCopy.splice(refriIdx, 1)
+    setRefrigerators(refrigeratorsCopy)
+    setRefriAmount(refriAmount - 1)
+    const bucketsCopy = buckets
+    const bucketsToKeep= bucketsCopy.filter(bucket => bucket.refrigerator_id !== +refriId)
+    setBuckets(bucketsToKeep)}
+  }
   
 
 
@@ -102,7 +115,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
         <p className="refri-name">{refri_name} - <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}}>{side === 0 ? 'arriba' : 'abajo'}</span></p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
       </div>
-      <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#ccc', boxShadow: side === 0 ? "0 1px 4px #0005" : "inset 0 0 4px #0006"}}>
+      <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#ccc'}}>
        { viewMode && <div className="side-selector-container">
           <button className="side-up" onClick={()=>setSide(0)}>
             <div className="arrow-container arrow-up" style={{color: side===0 ? '#ccc' : '#ba0016'}}>
@@ -116,10 +129,13 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status }) => {
           </button>
         </div>}
         <div className="buckets-container">
-          {viewMode === true ? bucketMap : bucketAmountMap }
+          { viewMode === true ? bucketMap : (bucketAmountMap) }
         </div>
       </div>
-      <p className="refri-count">{total_capacity - refriBuckets.filter(bucket => bucket.flavor_id !== null).length} lugares libres</p>
+      <div className="under-container">
+        <button className="delete-refri" onClick={deleteRefri}>-</button>
+        <p className="refri-count">{total_capacity - refriBuckets.filter(bucket => bucket.flavor_id !== null).length} lugares libres</p>
+      </div>
     </div>
   )
 }

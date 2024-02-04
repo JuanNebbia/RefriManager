@@ -1,7 +1,7 @@
 .add-refri__btn{
     background-color: #ba0016;
-    padding: 1rem 3rem;
-    font-size: 3rem;
+    padding: 0.4rem 2rem;
+    font-size: 2.7rem;
     font-weight: 700;
     color: #fff;
     border: none;
@@ -10,5 +10,6 @@
 }
 
 .add-refri__btn:hover{
-    transform: scale(1.03);
+    transform: scale(1.05);
+    font-size: 2.8rem;
 }
