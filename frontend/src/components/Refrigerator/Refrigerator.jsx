@@ -3,6 +3,7 @@ import './Refrigerator.css'
 import BucketModal from '../BucketModal/BucketModal'
 import { TbArrowBadgeUpFilled } from "react-icons/tb";
 import { TbArrowBadgeDownFilled } from "react-icons/tb";
+import { BsFillTrashFill } from "react-icons/bs";
 import { useData } from '../../context/DataContext';
 import Modal from '../Modal/Modal';
 
@@ -36,7 +37,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
 
   const calculateColor = bucket => {
     const flavor = flavors.find( flavor => flavor._id === bucket.flavor_id)
-    if(!flavor) return '#777'
+    if(!flavor) return '#f9f9f9'
     const category = categories.find( category => category._id === flavor.category_id)
     return category.color
   }
@@ -48,7 +49,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
 
   const bucketMap = orderedBuckets.map((bucket, idx) => {
     return (
-      <div onClick={() => openBucket(bucket)} className="bucket" key={bucket.id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: calculateColor(bucket)}}>
+      <div onClick={() => openBucket(bucket)} className="bucket" key={bucket.id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: calculateColor(bucket) + 'aa', border: bucket.flavor_id === null ? '4px outset #888': `4px outset ${calculateColor(bucket)}`}}>
         <p className="bucket-flavor">
           { findFlavor(bucket) }
         </p>
@@ -91,16 +92,17 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
   })
 
   const deleteRefri = (event) => {
-    if(window.confirm('Estás por eliminar una heladera. Continuar?')){
-    const refriId = event.target.parentNode.parentNode.id.substring('refri-'.length)
-    const refrigeratorsCopy = refrigerators
-    const refriIdx = refrigeratorsCopy.findIndex(refri => +refriId === refri._id)
-    refrigeratorsCopy.splice(refriIdx, 1)
-    setRefrigerators(refrigeratorsCopy)
-    setRefriAmount(refriAmount - 1)
-    const bucketsCopy = buckets
-    const bucketsToKeep= bucketsCopy.filter(bucket => bucket.refrigerator_id !== +refriId)
-    setBuckets(bucketsToKeep)}
+    if(window.confirm('Esta acción eliminará una heladera y sus respectivos baldes de forma permanente. ¿Desea continuar?')){
+      const refriId = event.target.parentNode.parentNode.id.substring('refri-'.length)
+      const refrigeratorsCopy = refrigerators
+      const refriIdx = refrigeratorsCopy.findIndex(refri => +refriId === refri._id)
+      refrigeratorsCopy.splice(refriIdx, 1)
+      setRefrigerators(refrigeratorsCopy)
+      setRefriAmount(refriAmount - 1)
+      const bucketsCopy = buckets
+      const bucketsToKeep= bucketsCopy.filter(bucket => bucket.refrigerator_id !== +refriId)
+      setBuckets(bucketsToKeep)
+    }
   }
   
 
@@ -114,6 +116,9 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
       <div className="refri-name-container">
         <p className="refri-name">{refri_name} - <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}}>{side === 0 ? 'arriba' : 'abajo'}</span></p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
+        <button className="delete-refri" onClick={deleteRefri}>
+          <BsFillTrashFill />
+        </button>
       </div>
       <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#ccc'}}>
        { viewMode && <div className="side-selector-container">
@@ -133,7 +138,6 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
         </div>
       </div>
       <div className="under-container">
-        <button className="delete-refri" onClick={deleteRefri}>-</button>
         <p className="refri-count">{total_capacity - refriBuckets.filter(bucket => bucket.flavor_id !== null).length} lugares libres</p>
       </div>
     </div>

@@ -1,5 +1,5 @@
 .refri-container{
-    margin: 4rem 0;
+    margin: 6rem 0;
     display: flex;
     flex-direction: column;
 }
@@ -16,6 +16,9 @@
 
 .side-title{
     padding: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 5px;
 }
 
 .view-mode-selector{
@@ -24,13 +27,14 @@
     width: fit-content;
     margin-left: auto;
     margin-bottom: 0.5rem;
+    margin-right: 1rem;
     padding: 0.8rem;
     border: none;
     background-color: #ba0016;
     color: #f3f3f3;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 0.8rem;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
 }
 
 .refri{
@@ -38,6 +42,7 @@
     min-height: 15rem;
     border-radius: 0.3rem;
     display: flex;
+    border: 1px solid #aaa;
 }
 
 
@@ -86,7 +91,7 @@
     align-items: center;
     justify-content: center;
     padding: 0.8rem;
-    font-weight: 600;
+    font-weight: 400;
     cursor: pointer;
 }
 
@@ -116,24 +121,22 @@
     display: flex;
     width: 100%;
     align-items: center;
+    padding-top: 0.5rem;
 }
 
 .delete-refri{
     cursor: pointer;
     width: fit-content;
     height: fit-content;
-    padding: 0.3rem 1.5rem;
-    background-color: #ba0016;
+    padding: 0.5rem 0.7rem;
+    background-color: #fff;
     font-weight: 1000;
     font-size: 1rem;
-    color: #fff;
+    color: #ba0016;
     border-radius: 0.4rem;
     border: none;
 }
 
 .refri-count{
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: 0.5rem;
-    padding: 0.5rem 0;
+    margin: 0.3rem 0.3rem auto auto;
 }

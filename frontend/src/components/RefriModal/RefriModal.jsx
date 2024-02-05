@@ -19,7 +19,7 @@ const RefriModal = ({refriAmount, setRefriAmount, setOpenModal}) => {
     const addRefri = () => {
         const refrigeratorsCopy = refrigerators
         const newRefrigerator = {
-          _id: refriAmount + 1,
+          _id: ('new-refri' + refriAmount + 1),
           total_capacity: selectedAmount,
           refri_name: refriName || `Heladera ${refriAmount + 1}`,
           status: "active"
