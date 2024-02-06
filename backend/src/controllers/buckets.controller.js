@@ -1,4 +1,5 @@
 import BucketsService from "../services/buckets.service.js";
+import { HTTP_CREATED, HTTP_SUCCESS } from "../utils/constants.util.js";
 
 const bucketsService = new BucketsService();
 
@@ -6,7 +7,7 @@ class BucketsController {
   static getAllBuckets = async (req, res, next) => {
     try {
       const buckets = await bucketsService.getAll();
-      res.status(200).send(buckets);
+      res.status(HTTP_SUCCESS).send(buckets);
     } catch (error) {
       next(error);
     }
@@ -16,7 +17,7 @@ class BucketsController {
     const { bid } = req.params;
     try {
       const bucket = await bucketsService.getById(bid);
-      res.status(200).send(bucket);
+      res.status(HTTP_SUCCESS).send(bucket);
     } catch (error) {
       next(error);
     }
@@ -26,7 +27,7 @@ class BucketsController {
     const payload = req.body;
     try {
       const buckets = await bucketsService.addOne(payload);
-      res.status(201).send(buckets);
+      res.status(HTTP_CREATED).send(buckets);
     } catch (error) {
       next(error);
     }
@@ -37,7 +38,7 @@ class BucketsController {
     const { bid } = req.params;
     try {
       const buckets = await bucketsService.updateOne(bid, payload);
-      res.status(200).send(buckets);
+      res.status(HTTP_SUCCESS).send(buckets);
     } catch (error) {
       next(error);
     }
@@ -47,7 +48,7 @@ class BucketsController {
     const { bid } = req.params;
     try {
       const buckets = await bucketsService.deleteOne(bid);
-      res.status(200).send(buckets);
+      res.status(HTTP_SUCCESS).send(buckets);
     } catch (error) {
       next(error);
     }

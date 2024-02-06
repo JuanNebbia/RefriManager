@@ -7,9 +7,9 @@ import errorMiddleware from "../middlewares/error.middleware.js";
 
 const router = Router();
 
-router.use("/flavors", flavorsRoutes);
-router.use("/categories", categoriesRoutes);
 router.use("/buckets", bucketsRoutes);
+router.use("/categories", categoriesRoutes);
+router.use("/flavors", flavorsRoutes);
 router.use("/refrigerators", refrigeratorssRoutes);
 
 router.use(errorMiddleware);
