@@ -4,24 +4,43 @@
     padding: 2rem;
 }
 
-.flavoroftheday-container p{
+.flavoroftheday-title{
+    font-weight: 600;
+    font-size: 0.9rem;
     margin: 0;
     color: #ba0016;
-    font-size: 1rem;
 }
 
-.flavoroftheday-container span{
-    font-weight: 600;
+.flavoroftheday{
+    margin: 0;
+    color: #000;
     font-size: 1.3rem;
+    font-weight: 600;
     font-style: italic;
 }
+
 
 .flavoroftheday-container hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ba0016;
+    border-top: 1px solid #ba0016aa;
     margin: 1rem auto;
     padding: 0;
     width: 40rem;
-  }
+}
+
+.flavoroftheday-container hr:nth-child(3), .flavoroftheday-container hr:nth-child(7) {
+    width: 30rem;
+    border-top-color: #ba001688;
+}
+
+.flavoroftheday-container hr:nth-child(2), .flavoroftheday-container hr:nth-child(8) {
+    width: 20rem;
+    border-top-color: #ba001655;
+}
+
+.flavoroftheday-container hr:nth-child(2) {
+    width: 20rem;
+    margin-top: 0.5rem;
+}

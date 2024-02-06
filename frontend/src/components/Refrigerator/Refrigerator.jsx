@@ -15,14 +15,15 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
 
   const { flavors, categories, buckets, setBuckets } = useData();
 
+  
   const refriBuckets = buckets.filter(bucket => {
     return bucket.refrigerator_id === _id
   })
-
+  
   const sideBuckets = refriBuckets.filter(bucket => {
     return bucket.side === side
   })
-
+  
   const orderedBuckets = sideBuckets.sort((a, b) => {
     return (a.position - b.position)
   })
@@ -34,6 +35,8 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
     }
     return 'vacío'
   }
+  
+  const freeSpaces = ( total_capacity - refriBuckets.filter(bucket => bucket.flavor_id !== null).length )
 
   const calculateColor = bucket => {
     const flavor = flavors.find( flavor => flavor._id === bucket.flavor_id)
@@ -114,7 +117,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
         <Modal openModal={openModal} setOpenModal={setOpenModal}  content={<BucketModal selectedBucket={selectedBucket} setOpenModal={setOpenModal}/>} />
       }
       <div className="refri-name-container">
-        <p className="refri-name">{refri_name} - <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}}>{side === 0 ? 'arriba' : 'abajo'}</span></p>
+        <p className="refri-name">{refri_name} - <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}} onClick={()=>setSide(side === 0 ? 1 : 0 )}>{side === 0 ? 'arriba' : 'abajo'}</span></p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
         <button className="delete-refri" onClick={deleteRefri}>
           <BsFillTrashFill />
@@ -138,7 +141,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
         </div>
       </div>
       <div className="under-container">
-        <p className="refri-count">{total_capacity - refriBuckets.filter(bucket => bucket.flavor_id !== null).length} lugares libres</p>
+        <p className="refri-count">{freeSpaces > 0 ? (freeSpaces + (freeSpaces > 1 ? ' lugares libres': ' lugar libre')) : 'Heladera llena'}</p>
       </div>
     </div>
   )
