@@ -7,9 +7,10 @@
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+    transition: all 0.08s;
 }
 
 .add-refri__btn:hover{
-    transform: scale(1.05);
+    transform: scale(1.03);
     font-size: 2.8rem;
 }

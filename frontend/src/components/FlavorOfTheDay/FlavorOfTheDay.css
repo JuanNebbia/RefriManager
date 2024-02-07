@@ -5,8 +5,9 @@
 }
 
 .flavoroftheday-title{
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: 400;
+    font-size: 1.1rem;
+    font-family: 'Lobster';
     margin: 0;
     color: #ba0016;
 }
@@ -28,19 +29,21 @@
     margin: 1rem auto;
     padding: 0;
     width: 40rem;
+    box-shadow: 0 0 10px #ba0016ff;
 }
 
 .flavoroftheday-container hr:nth-child(3), .flavoroftheday-container hr:nth-child(7) {
     width: 30rem;
-    border-top-color: #ba001688;
+    border-top-color: #ba001666;
+    box-shadow: 0 0 10px #ba001699;
 }
 
 .flavoroftheday-container hr:nth-child(2), .flavoroftheday-container hr:nth-child(8) {
     width: 20rem;
-    border-top-color: #ba001655;
+    border-top-color: #ba001644;
+    box-shadow: 0 0 10px #ba001677;
 }
 
 .flavoroftheday-container hr:nth-child(2) {
-    width: 20rem;
     margin-top: 0.5rem;
 }
