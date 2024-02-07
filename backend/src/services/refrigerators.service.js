@@ -7,7 +7,61 @@ import {
 
 class RefrigeratorsService {
   async getAll() {
-    const allRefrigerators = await refrigerators.find({});
+    const allRefrigerators = await refrigerators
+      .aggregate([
+        {
+          $lookup: {
+            from: "buckets",
+            localField: "_id",
+            foreignField: "refrigerator_id",
+            as: "buckets",
+          },
+        },
+        {
+          $unwind: "$buckets",
+        },
+        {
+          $lookup: {
+            from: "flavors",
+            localField: "buckets.flavor_id",
+            foreignField: "_id",
+            as: "buckets.flavor",
+          },
+        },
+        {
+          $unwind: {
+            path: "$buckets.flavor",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "categories",
+            localField: "buckets.flavor.category_id",
+            foreignField: "_id",
+            as: "buckets.flavor.category",
+          },
+        },
+        {
+          $group: {
+            _id: "$_id",
+            refri_name: { $first: "$refri_name" },
+            total_capacity: { $first: "$total_capacity" },
+            status: { $first: "$status" },
+            buckets: { $push: "$buckets" },
+          },
+        },
+        {
+          $project: {
+            _id: 1,
+            refri_name: 1,
+            total_capacity: 1,
+            status: 1,
+            buckets: "$buckets",
+          },
+        },
+      ])
+      .exec();
     return allRefrigerators;
   }
 
