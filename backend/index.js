@@ -1,6 +1,8 @@
 import express, { urlencoded } from "express";
-import apiRouter from "./routes/app.router.js";
-import { connect } from "./configurations/db.config.js";
+import apiRouter from "./src/routes/app.router.js";
+import { connect } from "./src/configurations/db.config.js";
+import cors from "cors";
+import corsOptions from "./src/configurations/cors.config.js";
 
 const app = express();
 const PORT = 8080;
@@ -9,6 +11,7 @@ const PORT = 8080;
 
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 
 app.use("/api", apiRouter);
 
