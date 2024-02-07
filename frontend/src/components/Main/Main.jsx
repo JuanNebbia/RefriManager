@@ -12,9 +12,16 @@ const Main = () => {
   const { refrigerators, buckets } = useData()
 
   return (
+    
     <div className='main-container'>
-        <SpaceGrid />
+    { refrigerators.length > 1 ?
+      <div className="main-inner-container">
+        {/* <SpaceGrid /> */}
         <RefrigeratorContainer refrigerators={refrigerators} buckets={buckets} /> 
+      </div>
+      :
+      <p>Loading...</p>
+    }
     </div>
   )
 }

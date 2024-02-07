@@ -1,35 +1,69 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-//Mocks
-import categoriesJson from "../mock/categories.json";
-import flavorsJson from "../mock/flavors.json";
-import bucketsJson from "../mock/buckets.json";
-import refrigeratorsJson from "../mock/refrigerators.json";
-
 const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const [refrigerators, setRefrigerators] = useState(refrigeratorsJson);
-  const [refriAmount, setRefriAmount] = useState(refrigerators.length);
-  const [buckets, setBuckets] = useState(bucketsJson);
-  const [categories, setCategories] = useState(categoriesJson);
-  const [flavors, setFlavors] = useState(flavorsJson);
+  const [buckets, setBuckets] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [flavors, setFlavors] = useState([]);
+  const [refrigerators, setRefrigerators] = useState([]);
+  const [refriAmount, setRefriAmount] = useState(0);
 
-  const [refrigeratorsData, setRefrigeratorsData] = useState([]);
-
-  const fetchRefrigeratorData = async () => {
+  const fetchBuckets = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/refrigerators");
-      setRefrigeratorsData(response.data);
+      const response = await axios.get(
+        "https://refri-manager-backend.vercel.app/api/buckets"
+      );
+      setBuckets(response.data);
       console.log(response.data);
     } catch (error) {
-      console.error("Error fetching refrigerator data:", error);
+      console.error("Error fetching buckets data:", error);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(
+        "https://refri-manager-backend.vercel.app/api/categories"
+      );
+      setCategories(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching categories data:", error);
+    }
+  };
+
+  const fetchFlavors = async () => {
+    try {
+      const response = await axios.get(
+        "https://refri-manager-backend.vercel.app/api/flavors"
+      );
+      setFlavors(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching flavors data:", error);
+    }
+  };
+
+  const fetchRefrigerators = async () => {
+    try {
+      const response = await axios.get(
+        "https://refri-manager-backend.vercel.app/api/refrigerators"
+      );
+      setRefrigerators(response.data);
+      setRefriAmount(response.data.length);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching refrigerators data:", error);
     }
   };
 
   useEffect(() => {
-    fetchRefrigeratorData();
+    fetchRefrigerators();
+    fetchBuckets();
+    fetchCategories();
+    fetchFlavors();
   }, []);
 
   return (
@@ -39,7 +73,7 @@ export const DataProvider = ({ children }) => {
         setFlavors,
         categories,
         setCategories,
-        refrigerators: refrigeratorsData,
+        refrigerators,
         setRefrigerators,
         refriAmount,
         setRefriAmount,
