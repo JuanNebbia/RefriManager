@@ -16,7 +16,6 @@ export const DataProvider = ({ children }) => {
         "https://refri-manager-backend.vercel.app/api/buckets"
       );
       setBuckets(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching buckets data:", error);
     }
@@ -28,7 +27,6 @@ export const DataProvider = ({ children }) => {
         "https://refri-manager-backend.vercel.app/api/categories"
       );
       setCategories(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching categories data:", error);
     }
@@ -40,7 +38,6 @@ export const DataProvider = ({ children }) => {
         "https://refri-manager-backend.vercel.app/api/flavors"
       );
       setFlavors(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching flavors data:", error);
     }
@@ -53,7 +50,6 @@ export const DataProvider = ({ children }) => {
       );
       setRefrigerators(response.data);
       setRefriAmount(response.data.length);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching refrigerators data:", error);
     }

@@ -7,106 +7,119 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { useData } from '../../context/DataContext';
 import Modal from '../Modal/Modal';
 
-const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, setRefrigerators, refriAmount, setRefriAmount }) => {
+const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrigerators, setRefrigerators, refriAmount, setRefriAmount }) => {
   const [side, setSide] = useState(0)
   const [viewMode, setViewMode] = useState(true)
   const [openModal, setOpenModal] = useState(false) 
   const [selectedBucket, setSelectedBucket] = useState({})
 
-  const { flavors, categories, buckets, setBuckets } = useData();
+  // const { flavors, categories, buckets, setBuckets } = useData();
 
   
-  const refriBuckets = buckets.filter(bucket => {
-    return bucket.refrigerator_id === _id
-  })
+  // const refriBuckets = buckets.filter(bucket => {
+  //   return bucket.refrigerator_id === _id
+  // })
   
-  const sideBuckets = refriBuckets.filter(bucket => {
-    return bucket.side === side
-  })
+  // const sideBuckets = refriBuckets.filter(bucket => {
+  //   return bucket.side === side
+  // })
   
-  const orderedBuckets = sideBuckets.sort((a, b) => {
-    return (a.position - b.position)
-  })
+  // const orderedBuckets = sideBuckets.sort((a, b) => {
+  //   return (a.position - b.position)
+  // })
 
-  const findFlavor = bucket => {
-    const flavor = flavors.find( flavor => flavor._id === bucket.flavor_id)
-    if(flavor){
-      return flavor.name
-    }
-    return 'vacío'
-  }
+  // const findFlavor = bucket => {
+  //   const flavor = flavors.find( flavor => flavor._id === bucket.flavor_id)
+  //   if(flavor){
+  //     return flavor.name
+  //   }
+  //   return 'vacío'
+  // }
   
-  const freeSpaces = ( total_capacity - refriBuckets.filter(bucket => bucket.flavor_id !== null).length )
+  // const freeSpaces = ( total_capacity - refriBuckets.filter(bucket => bucket.flavor_id !== null).length )
 
-  const calculateColor = bucket => {
-    const flavor = flavors.find( flavor => flavor._id === bucket.flavor_id)
-    if(!flavor) return '#f9f9f9'
-    const category = categories.find( category => category._id === flavor.category_id)
-    return category.color
-  }
+  const freeSpaces = ( total_capacity - buckets.filter(bucket => bucket.flavor_id !== null).length )
+
+  // const calculateColor = bucket => {
+  //   const flavor = bucket.flavor
+  //   if(!flavor) return '#f9f9f9'
+  //   const category = bucket.flavor.category
+  //   return category.color
+  // }
 
   const openBucket = (bucket) => {
     setSelectedBucket(bucket)
     setOpenModal(true)
   }
 
-  const bucketMap = orderedBuckets.map((bucket, idx) => {
+  // const bucketMap = orderedBuckets.map((bucket, idx) => {
+  //   return (
+  //     <div onClick={() => openBucket(bucket)} className="bucket" key={bucket.id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: calculateColor(bucket) + 'aa', border: bucket.flavor_id === null ? '4px outset #888': `4px outset ${calculateColor(bucket)}`}}>
+  //       <p className="bucket-flavor">
+  //         { findFlavor(bucket) }
+  //       </p>
+  //     </div>
+  //     )
+  // })
+
+  const bucketMap2 = buckets.filter(buck => buck.side === side).map((bucket, idx) => {
+    let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#dddddd'
     return (
-      <div onClick={() => openBucket(bucket)} className="bucket" key={bucket.id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: calculateColor(bucket) + 'aa', border: bucket.flavor_id === null ? '4px outset #888': `4px outset ${calculateColor(bucket)}`}}>
+      <div onClick={() => openBucket(bucket)} className="bucket" key={bucket.id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + 'aa', border: `4px outset ${color}`}}>
         <p className="bucket-flavor">
-          { findFlavor(bucket) }
+          { bucket.flavor.name || 'vacío'}
         </p>
       </div>
       )
   })
 
-  const bucketAmounts = () => {
-    const flavorsArray = []
-    refriBuckets.forEach((bucket) => {
-      const flavorIdx = flavorsArray.findIndex(flavor => +flavor.flavorObject?._id === +bucket.flavor_id)
-      const flavorObject = flavors.find(flavor => +flavor._id === +bucket.flavor_id)
-      if(flavorIdx === -1){
-        flavorsArray.push({flavorObject, amount: 1})
-      }else{
-        flavorsArray[flavorIdx].amount++
-      }
-    })
-    const filteredFlavors = flavorsArray.filter(flavor => flavor.flavorObject !== undefined)
-    const orderedBuckets = filteredFlavors.sort((a, b) => {
-      return (b.amount - a.amount)
-    })
-    return orderedBuckets
-  }
+  // const bucketAmounts = () => {
+  //   const flavorsArray = []
+  //   refriBuckets.forEach((bucket) => {
+  //     const flavorIdx = flavorsArray.findIndex(flavor => +flavor.flavorObject?._id === +bucket.flavor_id)
+  //     const flavorObject = flavors.find(flavor => +flavor._id === +bucket.flavor_id)
+  //     if(flavorIdx === -1){
+  //       flavorsArray.push({flavorObject, amount: 1})
+  //     }else{
+  //       flavorsArray[flavorIdx].amount++
+  //     }
+  //   })
+  //   const filteredFlavors = flavorsArray.filter(flavor => flavor.flavorObject !== undefined)
+  //   const orderedBuckets = filteredFlavors.sort((a, b) => {
+  //     return (b.amount - a.amount)
+  //   })
+  //   return orderedBuckets
+  // }
 
-  const bucketAmountMap = bucketAmounts().map((bucket, idx) => {
-    const falseBucket = {
-      flavor_id: +bucket.flavorObject._id
-    }
-    return (
-      <div className="bucket-amount" key={idx} style={{gridRow: Math.ceil(idx % 3) + 1, gridColumn: Math.ceil((idx ) / 3), backgroundColor: calculateColor(falseBucket)}}>
-        <p className="bucket-flavor-name">
-          { findFlavor(falseBucket) }
-        </p>
-        <p className="bucket-flavor-amount">
-        {bucket.amount}
-        </p>
-      </div>
-      )
-  })
+  // const bucketAmountMap = bucketAmounts().map((bucket, idx) => {
+  //   const falseBucket = {
+  //     flavor_id: +bucket.flavorObject._id
+  //   }
+  //   return (
+  //     <div className="bucket-amount" key={idx} style={{gridRow: Math.ceil(idx % 3) + 1, gridColumn: Math.ceil((idx ) / 3), backgroundColor: calculateColor(falseBucket)}}>
+  //       <p className="bucket-flavor-name">
+  //         { findFlavor(falseBucket) }
+  //       </p>
+  //       <p className="bucket-flavor-amount">
+  //       {bucket.amount}
+  //       </p>
+  //     </div>
+  //     )
+  // })
 
-  const deleteRefri = (event) => {
-    if(window.confirm('Esta acción eliminará una heladera y sus respectivos baldes de forma permanente. ¿Desea continuar?')){
-      const refriId = event.target.parentNode.parentNode.id.substring('refri-'.length)
-      const refrigeratorsCopy = refrigerators
-      const refriIdx = refrigeratorsCopy.findIndex(refri => +refriId === refri._id)
-      refrigeratorsCopy.splice(refriIdx, 1)
-      setRefrigerators(refrigeratorsCopy)
-      setRefriAmount(refriAmount - 1)
-      const bucketsCopy = buckets
-      const bucketsToKeep= bucketsCopy.filter(bucket => bucket.refrigerator_id !== +refriId)
-      setBuckets(bucketsToKeep)
-    }
-  }
+  // const deleteRefri = (event) => {
+  //   if(window.confirm('Esta acción eliminará una heladera y sus respectivos baldes de forma permanente. ¿Desea continuar?')){
+  //     const refriId = event.target.parentNode.parentNode.id.substring('refri-'.length)
+  //     const refrigeratorsCopy = refrigerators
+  //     const refriIdx = refrigeratorsCopy.findIndex(refri => +refriId === refri._id)
+  //     refrigeratorsCopy.splice(refriIdx, 1)
+  //     setRefrigerators(refrigeratorsCopy)
+  //     setRefriAmount(refriAmount - 1)
+  //     const bucketsCopy = buckets
+  //     const bucketsToKeep= bucketsCopy.filter(bucket => bucket.refrigerator_id !== +refriId)
+  //     setBuckets(bucketsToKeep)
+  //   }
+  // }
   
 
 
@@ -119,9 +132,9 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
       <div className="refri-name-container">
         <p className="refri-name">{refri_name} - <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}} onClick={()=>setSide(side === 0 ? 1 : 0 )}>{side === 0 ? 'arriba' : 'abajo'}</span></p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
-        <button className="delete-refri" onClick={deleteRefri}>
+        {/* <button className="delete-refri" onClick={deleteRefri}>
           <BsFillTrashFill />
-        </button>
+        </button> */}
       </div>
       <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#ccc'}}>
        { viewMode && <div className="side-selector-container">
@@ -137,7 +150,8 @@ const Refrigerator = ({ _id, total_capacity, refri_name, status, refrigerators, 
           </button>
         </div>}
         <div className="buckets-container">
-          { viewMode === true ? bucketMap : (bucketAmountMap) }
+          {bucketMap2}
+          {/* { viewMode === true ? bucketMap2 : (bucketAmountMap) } */}
         </div>
       </div>
       <div className="under-container">
