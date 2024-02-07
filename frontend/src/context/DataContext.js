@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 //Mocks
 import categoriesJson from "../mock/categories.json";
@@ -15,6 +16,22 @@ export const DataProvider = ({ children }) => {
   const [categories, setCategories] = useState(categoriesJson);
   const [flavors, setFlavors] = useState(flavorsJson);
 
+  const [refrigeratorsData, setRefrigeratorsData] = useState([]);
+
+  const fetchRefrigeratorData = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/refrigerators");
+      setRefrigeratorsData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching refrigerator data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRefrigeratorData();
+  }, []);
+
   return (
     <DataContext.Provider
       value={{
@@ -22,7 +39,7 @@ export const DataProvider = ({ children }) => {
         setFlavors,
         categories,
         setCategories,
-        refrigerators,
+        refrigerators: refrigeratorsData,
         setRefrigerators,
         refriAmount,
         setRefriAmount,
