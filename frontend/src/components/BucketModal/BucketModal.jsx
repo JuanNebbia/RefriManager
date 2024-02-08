@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './BucketModal.css'
 import { useData } from '../../context/DataContext';
+import axios from 'axios';
 
 
-const BucketModal = ({ setOpenModal, selectedBucket }) => {
+const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
     const [selectedFlavor, setSelectedFlavor] = useState({})
     const [selectedCategory, setSelectedCategory] = useState({})
     const [categoryFlavors, setCategoryFlavors] = useState([])
     const [availability, setAvailability] = useState()
     const [enableSave, setEnableSave] = useState(true)
-    const { flavors, categories, buckets, setBuckets, refrigerators } = useData();
+    const { flavors, categories, buckets, refrigerators, setRefrigerators } = useData();
 
     useEffect(() => {
         if(selectedBucket.flavor_id){
@@ -22,7 +23,7 @@ const BucketModal = ({ setOpenModal, selectedBucket }) => {
 
     const changeCategory = (event) => {
         const selectedFlavors = flavors.filter(flavor => flavor.category_id === event.target.value)
-        setCategoryFlavors(selectedFlavor)
+        setCategoryFlavors(selectedFlavors)
         setSelectedFlavor(selectedFlavors[0])
         setSelectedCategory(event.target.value)
         setEnableSave(false)
@@ -35,24 +36,31 @@ const BucketModal = ({ setOpenModal, selectedBucket }) => {
         setEnableSave(false)
     }
 
-    const emptyBucket = () => {
-        setSelectedFlavor({})
+    const emptyBucket = async () => {
+        setSelectedFlavor({_id: null})
         setSelectedCategory({})
         setCategoryFlavors([])
         setEnableSave(false)
     }
 
-    const saveChanges = () => {
+    const saveChanges = async () => {
+        const url = process.env.REACT_APP_BACKEND_URL
+        const currentBucket = buckets.find(bucket => bucket._id === selectedBucket._id)
+        const newBucket = {
+            ...currentBucket,
+            flavor_id: selectedFlavor._id
+        }
+        const response = await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
         const bucketsCopy = buckets.map(bucket => {
             if(bucket._id === selectedBucket._id){
-                console.log('si');
                 bucket.flavor_id = selectedFlavor._id || null
             }
             return bucket
         })
-        console.log(selectedFlavor);
-        console.log(buckets[0]);
-        console.log(bucketsCopy[0]);
+
+        const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
+
+        setRefrigerators(refrigeratorsFetch.data)
         setBuckets(bucketsCopy)
         setOpenModal(false)
     }

@@ -12,8 +12,6 @@ const RefrigeratorContainer = ({refrigerators}) => {
     useEffect(() => {
     },[refriAmount])
 
-    
-
   return (
     <div>
         {

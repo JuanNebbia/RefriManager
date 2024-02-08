@@ -20,7 +20,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
     setOpenModal(true)
   }
   
-  // const { flavors, categories, buckets, setBuckets } = useData();
+  const { flavors, categories, setBuckets } = useData();
   
   // const refriBuckets = buckets.filter(bucket => {
   //   return bucket.refrigerator_id === _id
@@ -127,14 +127,14 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
     <div className='refri-container' id={`refri-${_id}`}>
       {
         openModal &&
-        <Modal openModal={openModal} setOpenModal={setOpenModal}  content={<BucketModal selectedBucket={selectedBucket} setOpenModal={setOpenModal}/>} />
+        <Modal openModal={openModal} setOpenModal={setOpenModal}  content={<BucketModal selectedBucket={selectedBucket} setOpenModal={setOpenModal} setBuckets={setBuckets}/>} />
       }
       <div className="refri-name-container">
         <p className="refri-name">{refri_name} - <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}} onClick={()=>setSide(side === 0 ? 1 : 0 )}>{side === 0 ? 'arriba' : 'abajo'}</span></p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
-        {/* <button className="delete-refri" onClick={deleteRefri}>
+        <button className="delete-refri" onClick={() => console.log(buckets)}>
           <BsFillTrashFill />
-        </button> */}
+        </button>
       </div>
       <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#ccc'}}>
        { viewMode && <div className="side-selector-container">
@@ -150,8 +150,6 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
           </button>
         </div>}
         <div className="buckets-container">
-          {/* {bucketMap2} */}
-          {/* { viewMode === true ? bucketMap2 : (bucketAmountMap) } */}
           {
             buckets.filter(buck => buck.side === side).map((bucket, idx) => {
               let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#e5e5e5'
