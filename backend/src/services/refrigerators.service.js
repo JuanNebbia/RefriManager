@@ -45,6 +45,8 @@ class RefrigeratorsService {
         {
           $group: {
             _id: "$_id",
+            updatedAt: { $first: "$updatedAt" },
+            createdAt: { $first: "$createdAt" },
             refri_name: { $first: "$refri_name" },
             total_capacity: { $first: "$total_capacity" },
             status: { $first: "$status" },
@@ -58,7 +60,12 @@ class RefrigeratorsService {
             total_capacity: 1,
             status: 1,
             buckets: "$buckets",
+            updatedAt: 1,
+            createdAt: 1,
           },
+        },
+        {
+          $sort: { createdAt: 1 },
         },
       ])
       .exec();
@@ -83,6 +90,21 @@ class RefrigeratorsService {
     const updatedRefrigerator = await refrigerators.findByIdAndUpdate(
       rid,
       payload
+    );
+    if (!updatedRefrigerator)
+      throw new HttpError("Refrigerator not found", HTTP_NOT_FOUND);
+    return updatedRefrigerator;
+  }
+
+  async updateMany(rid, payload) {
+    const updatedRefrigerator = await refrigerators.updateMany(
+      { createdAt: { $exists: false } }, // Filtra los documentos que no tienen createdAt
+      {
+        $set: {
+          createdTimestamp: new Date(),
+          updatedAt: new Date(), // Agrega también el campo updatedAt si no está presente
+        },
+      }
     );
     if (!updatedRefrigerator)
       throw new HttpError("Refrigerator not found", HTTP_NOT_FOUND);

@@ -13,26 +13,25 @@ const BucketModal = ({ setOpenModal, selectedBucket }) => {
 
     useEffect(() => {
         if(selectedBucket.flavor_id){
-            const flavor = flavors.find(flavor => flavor._id === selectedBucket.flavor_id)
-            setSelectedFlavor(flavor)
-            setSelectedCategory(flavor.category_id)
-            setCategoryFlavors(flavors.filter(fl => flavor.category_id === fl.category_id))
-            setAvailability(buckets.filter(bucket => +bucket.flavor_id === +flavor._id).length)
+            setSelectedFlavor(selectedBucket.flavor)
+            setSelectedCategory(selectedBucket.flavor.category[0])
+            setCategoryFlavors(flavors.filter(flavor => flavor.category_id === flavor.category_id))
+            setAvailability(buckets.filter(bucket => bucket.flavor_id === selectedBucket.flavor_id).length)
         }
     },[buckets, flavors])
 
     const changeCategory = (event) => {
-        const selectedFlavors = flavors.filter(flavor => flavor.category_id === +event.target.value)
-        setCategoryFlavors(selectedFlavors)
+        const selectedFlavors = flavors.filter(flavor => flavor.category_id === event.target.value)
+        setCategoryFlavors(selectedFlavor)
         setSelectedFlavor(selectedFlavors[0])
         setSelectedCategory(event.target.value)
         setEnableSave(false)
     }
 
     const changeSelectedFlavor = (event) =>{
-        const newSelectedFlavor = flavors.find(flavor => flavor._id === +event.target.value)
+        const newSelectedFlavor = flavors.find(flavor => flavor._id === event.target.value)
         setSelectedFlavor(newSelectedFlavor)
-        setAvailability(buckets.filter(bucket => +bucket.flavor_id === +newSelectedFlavor._id).length)
+        setAvailability(buckets.filter(bucket => bucket.flavor_id === newSelectedFlavor._id).length)
         setEnableSave(false)
     }
 
@@ -45,11 +44,15 @@ const BucketModal = ({ setOpenModal, selectedBucket }) => {
 
     const saveChanges = () => {
         const bucketsCopy = buckets.map(bucket => {
-            if(+bucket.id === +selectedBucket.id){
-                bucket.flavor_id = +selectedFlavor._id || null
+            if(bucket._id === selectedBucket._id){
+                console.log('si');
+                bucket.flavor_id = selectedFlavor._id || null
             }
             return bucket
         })
+        console.log(selectedFlavor);
+        console.log(buckets[0]);
+        console.log(bucketsCopy[0]);
         setBuckets(bucketsCopy)
         setOpenModal(false)
     }

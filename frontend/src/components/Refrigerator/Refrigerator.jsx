@@ -12,9 +12,15 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
   const [viewMode, setViewMode] = useState(true)
   const [openModal, setOpenModal] = useState(false) 
   const [selectedBucket, setSelectedBucket] = useState({})
-
+  
+  const freeSpaces = ( total_capacity - buckets.filter(bucket => bucket.flavor_id !== null).length )
+  
+  const openBucket = (bucket) => {
+    setSelectedBucket(bucket)
+    setOpenModal(true)
+  }
+  
   // const { flavors, categories, buckets, setBuckets } = useData();
-
   
   // const refriBuckets = buckets.filter(bucket => {
   //   return bucket.refrigerator_id === _id
@@ -38,7 +44,6 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
   
   // const freeSpaces = ( total_capacity - refriBuckets.filter(bucket => bucket.flavor_id !== null).length )
 
-  const freeSpaces = ( total_capacity - buckets.filter(bucket => bucket.flavor_id !== null).length )
 
   // const calculateColor = bucket => {
   //   const flavor = bucket.flavor
@@ -46,11 +51,6 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
   //   const category = bucket.flavor.category
   //   return category.color
   // }
-
-  const openBucket = (bucket) => {
-    setSelectedBucket(bucket)
-    setOpenModal(true)
-  }
 
   // const bucketMap = orderedBuckets.map((bucket, idx) => {
   //   return (
@@ -62,16 +62,16 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
   //     )
   // })
 
-  const bucketMap2 = buckets.filter(buck => buck.side === side).map((bucket, idx) => {
-    let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#dddddd'
-    return (
-      <div onClick={() => openBucket(bucket)} className="bucket" key={bucket.id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + 'aa', border: `4px outset ${color}`}}>
-        <p className="bucket-flavor">
-          { bucket.flavor.name || 'vacío'}
-        </p>
-      </div>
-      )
-  })
+  // const bucketMap2 = buckets.filter(buck => buck.side === side).map((bucket, idx) => {
+  //   let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#e5e5e5'
+  //   return (
+  //     <div onClick={() => openBucket(bucket)} className="bucket" key={bucket._id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + 'aa', border: `4px outset ${color}`}}>
+  //       <p className="bucket-flavor">
+  //         { bucket.flavor.name || 'vacío'}
+  //       </p>
+  //     </div>
+  //     )
+  // })
 
   // const bucketAmounts = () => {
   //   const flavorsArray = []
@@ -150,8 +150,20 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
           </button>
         </div>}
         <div className="buckets-container">
-          {bucketMap2}
+          {/* {bucketMap2} */}
           {/* { viewMode === true ? bucketMap2 : (bucketAmountMap) } */}
+          {
+            buckets.filter(buck => buck.side === side).map((bucket, idx) => {
+              let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#e5e5e5'
+              return (
+                <div onClick={() => openBucket(bucket)} className="bucket" key={bucket._id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + 'aa', border: `4px outset ${color}`}}>
+                  <p className="bucket-flavor">
+                    { bucket.flavor.name || 'vacío'}
+                  </p>
+                </div>
+              )
+            })
+          }
         </div>
       </div>
       <div className="under-container">

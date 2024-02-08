@@ -37,7 +37,7 @@ class RefrigeratorsController {
     const payload = req.body;
     const { rid } = req.params;
     try {
-      const refrigerators = await refrigeratorsService.updateOne(rid, payload);
+      const refrigerators = await refrigeratorsService.updateMany(rid, payload);
       res.status(HTTP_SUCCESS).send(refrigerators);
     } catch (error) {
       next(error);
