@@ -59,7 +59,7 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
             })
             setBuckets(bucketsCopy)
             setOpenModal(false)
-            const response = await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
+            await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
             const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
             setRefrigerators(refrigeratorsFetch.data)
         } catch (error) {
