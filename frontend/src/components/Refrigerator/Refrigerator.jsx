@@ -3,7 +3,7 @@ import './Refrigerator.css'
 import BucketModal from '../BucketModal/BucketModal'
 import { TbArrowBadgeUpFilled } from "react-icons/tb";
 import { TbArrowBadgeDownFilled } from "react-icons/tb";
-import { BsFillTrashFill } from "react-icons/bs";
+import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 import { useData } from '../../context/DataContext';
 import Modal from '../Modal/Modal';
 
@@ -20,7 +20,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
     setOpenModal(true)
   }
   
-  const { flavors, categories, setBuckets } = useData();
+  const { setBuckets } = useData();
   
   // const refriBuckets = buckets.filter(bucket => {
   //   return bucket.refrigerator_id === _id
@@ -133,10 +133,10 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
         <p className="refri-name">{refri_name} - <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}} onClick={()=>setSide(side === 0 ? 1 : 0 )}>{side === 0 ? 'arriba' : 'abajo'}</span></p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
         <button className="delete-refri" onClick={() => console.log(buckets)}>
-          <BsFillTrashFill />
+          <BsFillPencilFill />
         </button>
       </div>
-      <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#ccc'}}>
+      <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#ccc', boxShadow: side === 1 && 'inset 0 -1px 3px 0 #00000044'}}>
        { viewMode && <div className="side-selector-container">
           <button className="side-up" onClick={()=>setSide(0)}>
             <div className="arrow-container arrow-up" style={{color: side===0 ? '#ccc' : '#ba0016'}}>

@@ -16,7 +16,7 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
         if(selectedBucket.flavor_id){
             setSelectedFlavor(selectedBucket.flavor)
             setSelectedCategory(selectedBucket.flavor.category[0])
-            setCategoryFlavors(flavors.filter(flavor => flavor.category_id === flavor.category_id))
+            setCategoryFlavors(flavors)
             setAvailability(buckets.filter(bucket => bucket.flavor_id === selectedBucket.flavor_id).length)
         }
     },[buckets, flavors])
@@ -50,19 +50,21 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
             ...currentBucket,
             flavor_id: selectedFlavor._id
         }
-        const response = await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
         const bucketsCopy = buckets.map(bucket => {
             if(bucket._id === selectedBucket._id){
                 bucket.flavor_id = selectedFlavor._id || null
             }
             return bucket
         })
-
-        const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
-
-        setRefrigerators(refrigeratorsFetch.data)
         setBuckets(bucketsCopy)
+        
+        
         setOpenModal(false)
+        const response = await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
+        console.log(response);
+        const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
+        console.log(refrigeratorsFetch);
+        setRefrigerators(refrigeratorsFetch.data)
     }
 
     return (

@@ -7,21 +7,23 @@ import RefrigeratorContainer from '../RefrigeratorContainer/RefrigeratorContaine
 
 // Context
 import { useData } from '../../context/DataContext.js';
+import FlavorOfTheDay from '../FlavorOfTheDay/FlavorOfTheDay.jsx';
 
 const Main = () => {
-  const { refrigerators, buckets } = useData()
+  const { refrigerators, buckets, loadingBuckets, loadingCategories, loadingFlavors, loadingRefrigerators } = useData()
 
   return (
     
     <div className='main-container'>
-    { refrigerators.length > 1 ?
-      <div className="main-inner-container">
-        {/* <SpaceGrid /> */}
-        <RefrigeratorContainer refrigerators={refrigerators} buckets={buckets} /> 
-      </div>
-      :
-      <p>Loading...</p>
-    }
+      { (!loadingBuckets && !loadingCategories && !loadingFlavors && !loadingRefrigerators) ?
+        <div className="main-inner-container">
+          <FlavorOfTheDay />
+          <SpaceGrid />
+          <RefrigeratorContainer refrigerators={refrigerators} buckets={buckets} /> 
+        </div>
+        :
+        <p>Loading...</p>
+      }
     </div>
   )
 }

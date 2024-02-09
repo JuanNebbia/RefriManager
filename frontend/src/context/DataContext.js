@@ -9,6 +9,10 @@ export const DataProvider = ({ children }) => {
   const [flavors, setFlavors] = useState([]);
   const [refrigerators, setRefrigerators] = useState([]);
   const [refriAmount, setRefriAmount] = useState(0);
+  const [loadingBuckets, setLoadingBuckets] = useState(true);
+  const [loadingCategories, setLoadingCategories] = useState(true);
+  const [loadingFlavors, setLoadingFlavors] = useState(true);
+  const [loadingRefrigerators, setLoadingRefrigerators] = useState(true);
 
   const fetchBuckets = async () => {
     try {
@@ -16,6 +20,7 @@ export const DataProvider = ({ children }) => {
         "https://refri-manager-backend.vercel.app/api/buckets"
       );
       setBuckets(response.data);
+      setLoadingBuckets(false);
     } catch (error) {
       console.error("Error fetching buckets data:", error);
     }
@@ -27,6 +32,7 @@ export const DataProvider = ({ children }) => {
         "https://refri-manager-backend.vercel.app/api/categories"
       );
       setCategories(response.data);
+      setLoadingCategories(false);
     } catch (error) {
       console.error("Error fetching categories data:", error);
     }
@@ -38,6 +44,7 @@ export const DataProvider = ({ children }) => {
         "https://refri-manager-backend.vercel.app/api/flavors"
       );
       setFlavors(response.data);
+      setLoadingFlavors(false);
     } catch (error) {
       console.error("Error fetching flavors data:", error);
     }
@@ -50,6 +57,7 @@ export const DataProvider = ({ children }) => {
       );
       setRefrigerators(response.data);
       setRefriAmount(response.data.length);
+      setLoadingRefrigerators(false);
     } catch (error) {
       console.error("Error fetching refrigerators data:", error);
     }
@@ -75,6 +83,10 @@ export const DataProvider = ({ children }) => {
         setRefriAmount,
         buckets,
         setBuckets,
+        loadingBuckets,
+        loadingCategories,
+        loadingFlavors,
+        loadingRefrigerators,
       }}
     >
       {children}

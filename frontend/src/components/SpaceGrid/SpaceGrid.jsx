@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './SpaceGrid.css'
 import { useData } from '../../context/DataContext';
+import Modal from '../Modal/Modal';
+import RefriModal from '../RefriModal/RefriModal';
 
 const SpaceGrid = () => {
-    const { refrigerators, buckets } = useData();
+    const { refrigerators, buckets, refriAmount, setRefriAmount, setRefrigerators } = useData()
+    const [openModal, setOpenModal] = useState(false) 
 
     const calculateRefriEmptySpaces = (refri) => {
-        const bucketsOnRefri = buckets.filter(bucket => bucket.refrigerator_id === refri._id)
-        return refri.total_capacity - bucketsOnRefri.filter(bucket => bucket.flavor_id !== null).length   
+        return refri.total_capacity - refri.buckets.filter(bucket => bucket.flavor_id !== null).length   
     }
 
     const calculateTotalEmptySpaces = () => {
@@ -27,13 +29,22 @@ const SpaceGrid = () => {
     })
 
     return (
-    <div className='spacegrid-container'>
-        <div className="total-box">
-            <p className='total-spaces-number'>{calculateTotalEmptySpaces()}</p>
-            <p className='total-spaces-tag'>Espacios Disponibles</p>
-        </div>
-        <div className='refris-container'>{refris}</div>
-    </div>
+        <>
+            {
+            openModal &&
+            <Modal openModal={openModal} setOpenModal={setOpenModal}  content={<RefriModal refriAmount={refriAmount} setRefriAmount={setRefriAmount} setOpenModal={setOpenModal}/>} />
+            }
+            <div className='spacegrid-container'>
+                <div className="total-box">
+                    <p className='total-spaces-number'>{calculateTotalEmptySpaces()}</p>
+                    <p className='total-spaces-tag'>Espacios Disponibles</p>
+                </div>
+                <div className='refris-container'>
+                    {refris} 
+                    <button className='add-refri-btn' onClick={() => setOpenModal(true)}>+</button>
+                    </div>
+            </div>
+        </>
     )
 }
 

@@ -20,6 +20,7 @@
     font-size: 0.9rem;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: 0 1px 2px 0 #0000003a;
 }
 
 .view-mode-selector{
@@ -36,6 +37,7 @@
     font-weight: 500;
     font-size: 0.8rem;
     border-radius: 0.3rem;
+    box-shadow: 0 1px 2px 0 #0000003a;
 }
 
 .refri{
@@ -43,7 +45,8 @@
     min-height: 15rem;
     border-radius: 0.3rem;
     display: flex;
-    border: 1px solid #aaa;
+    /* border: 1px solid #aaa; */
+    box-shadow: 0 1px 2px 0 #00000044;
 }
 
 
@@ -63,13 +66,20 @@
     
 }
 
+.side-up:active{
+    box-shadow: inset 1px -1px 5px 0 #00000033;
+}
+
+.side-down:active{
+    box-shadow: inset -1px 1px 5px 0 #00000033;
+}
+
 .arrow-container{
     margin: auto 2rem;
     padding: 0.5rem;
     border-radius: 50%;
     font-size: 3rem;
     color: #555;
-
 }
 
 .buckets-container{
@@ -98,6 +108,7 @@
 
 .bucket:hover{
     transform: scale(1.04);
+    box-shadow: -1px 1px 3px 0 #00000055;
 }
 
 .bucket-flavor{
@@ -136,6 +147,7 @@
     color: #ba0016;
     border-radius: 0.4rem;
     border: none;
+    box-shadow: 0 1px 2px 0 #0000003a;
 }
 
 .refri-count{

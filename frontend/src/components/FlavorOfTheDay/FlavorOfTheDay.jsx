@@ -24,16 +24,19 @@ const FlavorOfTheDay = () => {
 
 
     return (
-        <div className="flavoroftheday-container">
-            <h6 className='flavoroftheday-title'>Sabor del día</h6>
-            <hr />
-            <hr />
-            <hr />
-            <p> &#x2022; &#x2022; &#x2022; <span className='flavoroftheday'>{calculateFlavor()}</span> &#x2022; &#x2022; &#x2022;</p>
-            <hr />
-            <hr />
-            <hr />  
-        </div>
+        <>
+
+            <div className="flavoroftheday-container">
+                <h6 className='flavoroftheday-title'>Sabor del día</h6>
+                <hr />
+                <hr />
+                <hr />
+                <p> &#x2022; &#x2022; &#x2022; <span className='flavoroftheday'>{calculateFlavor()}</span> &#x2022; &#x2022; &#x2022;</p>
+                <hr />
+                <hr />
+                <hr />  
+            </div>
+        </>
     )
 }
 
