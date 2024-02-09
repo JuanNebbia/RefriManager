@@ -96,21 +96,6 @@ class RefrigeratorsService {
     return updatedRefrigerator;
   }
 
-  async updateMany(rid, payload) {
-    const updatedRefrigerator = await refrigerators.updateMany(
-      { createdAt: { $exists: false } }, // Filtra los documentos que no tienen createdAt
-      {
-        $set: {
-          createdTimestamp: new Date(),
-          updatedAt: new Date(), // Agrega también el campo updatedAt si no está presente
-        },
-      }
-    );
-    if (!updatedRefrigerator)
-      throw new HttpError("Refrigerator not found", HTTP_NOT_FOUND);
-    return updatedRefrigerator;
-  }
-
   async deleteOne(rid) {
     const refrigerator = await refrigerators.deleteOne({ _id: rid });
     if (!refrigerator.deletedCount)

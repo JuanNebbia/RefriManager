@@ -25,7 +25,6 @@ const FlavorOfTheDay = () => {
 
     return (
         <>
-
             <div className="flavoroftheday-container">
                 <h6 className='flavoroftheday-title'>Sabor del día</h6>
                 <hr />

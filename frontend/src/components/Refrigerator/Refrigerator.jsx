@@ -6,18 +6,20 @@ import { TbArrowBadgeDownFilled } from "react-icons/tb";
 import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 import { useData } from '../../context/DataContext';
 import Modal from '../Modal/Modal';
+import EditModal from '../EditModal/EditModal';
 
 const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrigerators, setRefrigerators, refriAmount, setRefriAmount }) => {
   const [side, setSide] = useState(0)
   const [viewMode, setViewMode] = useState(true)
-  const [openModal, setOpenModal] = useState(false) 
+  const [openBucketModal, setOpenBucketModal] = useState(false) 
+  const [openEditModal, setOpenEditModal] = useState(false) 
   const [selectedBucket, setSelectedBucket] = useState({})
   
   const freeSpaces = ( total_capacity - buckets.filter(bucket => bucket.flavor_id !== null).length )
   
   const openBucket = (bucket) => {
     setSelectedBucket(bucket)
-    setOpenModal(true)
+    setOpenBucketModal(true)
   }
   
   const { setBuckets } = useData();
@@ -126,13 +128,17 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
   return (
     <div className='refri-container' id={`refri-${_id}`}>
       {
-        openModal &&
-        <Modal openModal={openModal} setOpenModal={setOpenModal}  content={<BucketModal selectedBucket={selectedBucket} setOpenModal={setOpenModal} setBuckets={setBuckets}/>} />
+        openBucketModal &&
+        <Modal openModal={openBucketModal} setOpenModal={setOpenBucketModal}  content={<BucketModal selectedBucket={selectedBucket} setOpenModal={setOpenBucketModal} setBuckets={setBuckets}/>} />
+      }
+      {
+        openEditModal &&
+        <Modal openModal={openEditModal} setOpenModal={setOpenEditModal}  content={<EditModal selectedRefrigerator={{_id, refri_name, total_capacity}} setOpenModal={setOpenEditModal} />} />
       }
       <div className="refri-name-container">
         <p className="refri-name">{refri_name} - <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}} onClick={()=>setSide(side === 0 ? 1 : 0 )}>{side === 0 ? 'arriba' : 'abajo'}</span></p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
-        <button className="delete-refri" onClick={() => console.log(buckets)}>
+        <button className="delete-refri" onClick={() => setOpenEditModal(true)}>
           <BsFillPencilFill />
         </button>
       </div>

@@ -78,11 +78,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ba0016;
+    background-color: #ba0016ee;
     color: #fff;
     cursor: pointer;
     height: 70px;
     width: 70px;
     margin: auto;
     border: none;
+}
+
+.add-refri-btn:hover{
+    background-color: #ba0016ff;
 }

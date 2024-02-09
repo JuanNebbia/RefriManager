@@ -41,7 +41,7 @@ const SpaceGrid = () => {
                 </div>
                 <div className='refris-container'>
                     {refris} 
-                    <button className='add-refri-btn' onClick={() => setOpenModal(true)}>+</button>
+                    <button className='add-refri-btn' style={{gridRow: Math.ceil(refrigerators.length % 2)+1}} onClick={() => setOpenModal(true)}>+</button>
                     </div>
             </div>
         </>

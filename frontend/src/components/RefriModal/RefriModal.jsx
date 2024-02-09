@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useData } from '../../context/DataContext';
+import axios from 'axios';
 
 const RefriModal = ({refriAmount, setRefriAmount, setOpenModal}) => {
 
@@ -16,32 +17,60 @@ const RefriModal = ({refriAmount, setRefriAmount, setOpenModal}) => {
         setRefriName(event.target.value)
     }
 
-    const addRefri = () => {
-        const refrigeratorsCopy = refrigerators
+    // const addRefri = () => {
+    //     const refrigeratorsCopy = refrigerators
+    //     const newRefrigerator = {
+    //       _id: ('new-refri' + refriAmount + 1),
+    //       total_capacity: selectedAmount,
+    //       refri_name: refriName || `Heladera ${refriAmount + 1}`,
+    //       status: "active"
+    //     }
+    //     refrigeratorsCopy.push(newRefrigerator)
+    //     setRefrigerators(refrigeratorsCopy)
+
+    //     const bucketsCopy = buckets
+    //     for(let i = 0; i < newRefrigerator.total_capacity; i++){
+    //       const newBucket = {
+    //         id: buckets.length + 1,
+    //         refrigerator_id: newRefrigerator._id,
+    //         flavor_id: null,
+    //         position: (i + 1 <= newRefrigerator.total_capacity / 2 ) ? (i + 1) : ((i + 1) - (newRefrigerator.total_capacity / 2)),
+    //         side: (i + 1 <= newRefrigerator.total_capacity / 2) ? 0 : 1
+    //       }
+    //       bucketsCopy.push(newBucket)
+    //       setBuckets(bucketsCopy)
+    //     }
+    //     setRefriAmount(refriAmount + 1)
+    //     setOpenModal(false)
+    // }
+
+    const addRefri = async() => {
+      try {
         const newRefrigerator = {
-          _id: ('new-refri' + refriAmount + 1),
-          total_capacity: selectedAmount,
           refri_name: refriName || `Heladera ${refriAmount + 1}`,
+          total_capacity: selectedAmount,
           status: "active"
         }
-        refrigeratorsCopy.push(newRefrigerator)
-        setRefrigerators(refrigeratorsCopy)
-
-        const bucketsCopy = buckets
+        const url = process.env.REACT_APP_BACKEND_URL
+        const newRefrigeratorFetch = await axios.post(url + '/refrigerators', newRefrigerator)
         for(let i = 0; i < newRefrigerator.total_capacity; i++){
           const newBucket = {
-            id: buckets.length + 1,
-            refrigerator_id: newRefrigerator._id,
+            refrigerator_id: newRefrigeratorFetch.data._id,
             flavor_id: null,
             position: (i + 1 <= newRefrigerator.total_capacity / 2 ) ? (i + 1) : ((i + 1) - (newRefrigerator.total_capacity / 2)),
             side: (i + 1 <= newRefrigerator.total_capacity / 2) ? 0 : 1
           }
-          bucketsCopy.push(newBucket)
-          setBuckets(bucketsCopy)
+          await axios.post(url + '/buckets', newBucket)
         }
-        setRefriAmount(refriAmount + 1)
         setOpenModal(false)
+        const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
+        setRefrigerators(refrigeratorsFetch.data)
+        
+      } catch (error) {
+        console.log(error);
+      }
     }
+
 
   return (
     <div className='refrimodal-container'>

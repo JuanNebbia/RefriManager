@@ -44,27 +44,27 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
     }
 
     const saveChanges = async () => {
-        const url = process.env.REACT_APP_BACKEND_URL
-        const currentBucket = buckets.find(bucket => bucket._id === selectedBucket._id)
-        const newBucket = {
-            ...currentBucket,
-            flavor_id: selectedFlavor._id
-        }
-        const bucketsCopy = buckets.map(bucket => {
-            if(bucket._id === selectedBucket._id){
-                bucket.flavor_id = selectedFlavor._id || null
+        try {
+            const url = process.env.REACT_APP_BACKEND_URL
+            const currentBucket = buckets.find(bucket => bucket._id === selectedBucket._id)
+            const newBucket = {
+                ...currentBucket,
+                flavor_id: selectedFlavor._id
             }
-            return bucket
-        })
-        setBuckets(bucketsCopy)
-        
-        
-        setOpenModal(false)
-        const response = await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
-        console.log(response);
-        const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
-        console.log(refrigeratorsFetch);
-        setRefrigerators(refrigeratorsFetch.data)
+            const bucketsCopy = buckets.map(bucket => {
+                if(bucket._id === selectedBucket._id){
+                    bucket.flavor_id = selectedFlavor._id || null
+                }
+                return bucket
+            })
+            setBuckets(bucketsCopy)
+            setOpenModal(false)
+            const response = await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
+            const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
+            setRefrigerators(refrigeratorsFetch.data)
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
