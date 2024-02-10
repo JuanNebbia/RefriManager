@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './EditModal.css'
 import { useData } from '../../context/DataContext';
 import axios from 'axios';
@@ -8,10 +8,7 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
     const [enableSave, setEnableSave] = useState(true)
     const [refriName, setRefriName] = useState(selectedRefrigerator.refri_name)
     const [selectedAmount, setSelectedAmount] = useState(selectedRefrigerator.total_capacity)
-    const { flavors, categories, buckets, refrigerators, setRefrigerators } = useData();
-
-    useEffect(() => {
-    },[])
+    const { setRefrigerators } = useData();
 
     const handleAmountChange = (event) => {
         setSelectedAmount(+event.target.value)
@@ -32,17 +29,27 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
             }
             const url = process.env.REACT_APP_BACKEND_URL
             await axios.put(`${url}/refrigerators/${selectedRefrigerator._id}`, updatedRefrigerator)
-            if(selectedAmount > selectedRefrigerator.total_capacity){
-                const amount = selectedAmount - selectedRefrigerator.total_capacity
+            const amount = selectedAmount - selectedRefrigerator.total_capacity
+            if(amount > 0){
                 for(let i = 0; i < amount; i++){
+                    let startPosition = Math.floor(selectedRefrigerator.total_capacity / 2) + 1
                     const newBucket = {
                         refrigerator_id: selectedRefrigerator._id,
                         flavor_id: null,
-                        position: (selectedRefrigerator.total_capacity / 2) + (i%2) + i, 
+                        position: startPosition + Math.floor(i / 2), 
                         side: i % 2
                     }
-                    console.log(newBucket);
-                    // await axios.post(`${url}/buckets`)
+                    await axios.post(`${url}/buckets`, newBucket)
+                }
+            }
+            if(amount < 0){
+                const sortedBuckets = selectedRefrigerator.buckets.toSorted((a, b) => b.position - a.position);
+                for (let i = 0; i < (amount * -1); i++) {
+                    if (i < sortedBuckets.length) {
+                        await axios.delete(`${url}/buckets/${sortedBuckets[i]._id}`)
+                    } else {
+                        break;
+                    }
                 }
             }
             setOpenModal(false)

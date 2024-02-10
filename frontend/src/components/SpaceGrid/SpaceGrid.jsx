@@ -8,6 +8,14 @@ const SpaceGrid = () => {
     const { refrigerators, buckets, refriAmount, setRefriAmount, setRefrigerators } = useData()
     const [openModal, setOpenModal] = useState(false) 
 
+    const handleAddRefrigeratorClick = () => {
+        if(refrigerators.length === 10){
+            window.alert('Límite de heladeras alcanzado')
+        }else{
+            setOpenModal(true)
+        }
+    }
+
     const calculateRefriEmptySpaces = (refri) => {
         return refri.total_capacity - refri.buckets.filter(bucket => bucket.flavor_id !== null).length   
     }
@@ -41,7 +49,7 @@ const SpaceGrid = () => {
                 </div>
                 <div className='refris-container'>
                     {refris} 
-                    <button className='add-refri-btn' style={{gridRow: Math.ceil(refrigerators.length % 2)+1}} onClick={() => setOpenModal(true)}>+</button>
+                    <button className='add-refri-btn' style={{gridRow: Math.ceil(refrigerators.length % 2)+1}} onClick={handleAddRefrigeratorClick}>+</button>
                     </div>
             </div>
         </>

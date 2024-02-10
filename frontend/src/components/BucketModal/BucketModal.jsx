@@ -25,7 +25,8 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
         const selectedFlavors = flavors.filter(flavor => flavor.category_id === event.target.value)
         setCategoryFlavors(selectedFlavors)
         setSelectedFlavor(selectedFlavors[0])
-        setSelectedCategory(event.target.value)
+        const newSelectedCategory = categories.find(category => category._id === event.target.value)
+        setSelectedCategory(newSelectedCategory)
         setEnableSave(false)
     }
 
@@ -58,6 +59,23 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
                 return bucket
             })
             setBuckets(bucketsCopy)
+            const currentRefrigerator = refrigerators.find(refrigerator => refrigerator._id === currentBucket.refrigerator_id)
+            const currentRefrigeratorBuckets = currentRefrigerator.buckets.map(bucket => {
+                if(bucket._id === selectedBucket._id){ 
+                    bucket.flavor_id = selectedFlavor._id || null
+                    bucket.flavor = selectedFlavor
+                    bucket.flavor.category = Object.keys(selectedCategory).length > 0 ? [selectedCategory] : []
+                }
+                return bucket
+            })
+            currentRefrigerator.buckets = currentRefrigeratorBuckets
+            const refrigeratorsCopy = refrigerators.map(refrigerator => {
+                if(refrigerator._id === currentRefrigerator._id){
+                    return currentRefrigerator
+                }
+                return refrigerator
+            })
+            setRefrigerators(refrigeratorsCopy)
             setOpenModal(false)
             await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
             const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
@@ -72,7 +90,7 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
             <h3 className='modal-title'>{refrigerators.find(refri => refri._id === selectedBucket.refrigerator_id).refri_name} - espacio {selectedBucket.position} - {selectedBucket.side === 0 ? 'arriba' : 'abajo'}</h3>
             <form action="" className='modal-form'>
                 <label htmlFor="category-select" className='select-label'>Categoria</label>
-                <select name="category" id="category-select" onChange={changeCategory} value={selectedCategory}>
+                <select name="category" id="category-select" onChange={changeCategory} value={selectedCategory._id}>
                     <option value="">Todos</option>
                     { categories.map((category, idx) => {
                         return <option value={category._id} key={idx} style={{backgroundColor: category.color}}>{category.category}</option>
