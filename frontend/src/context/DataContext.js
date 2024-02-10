@@ -87,6 +87,7 @@ export const DataProvider = ({ children }) => {
         loadingCategories,
         loadingFlavors,
         loadingRefrigerators,
+        setLoadingRefrigerators,
       }}
     >
       {children}

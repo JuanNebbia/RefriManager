@@ -3,7 +3,7 @@ import './Refrigerator.css'
 import BucketModal from '../BucketModal/BucketModal'
 import { TbArrowBadgeUpFilled } from "react-icons/tb";
 import { TbArrowBadgeDownFilled } from "react-icons/tb";
-import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
+import { BsFillPencilFill } from "react-icons/bs";
 import { useData } from '../../context/DataContext';
 import Modal from '../Modal/Modal';
 import EditModal from '../EditModal/EditModal';
@@ -145,12 +145,12 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
       <div className="refri" style={{backgroundColor: side === 0 ? '#fff' : '#ccc', boxShadow: side === 1 && 'inset 0 -1px 3px 0 #00000044'}}>
        { viewMode && <div className="side-selector-container">
           <button className="side-up" onClick={()=>setSide(0)}>
-            <div className="arrow-container arrow-up" style={{color: side===0 ? '#ccc' : '#ba0016'}}>
+            <div className="arrow-container arrow-up" style={{color: side===0 ? '#ccc' : '#ba0016ee'}}>
               <TbArrowBadgeUpFilled />
             </div>
           </button>
           <button className="side-down" onClick={()=>setSide(1)}>
-            <div className="arrow-container" style={{color: side===1 ? '#999' : '#ba0016'}}> 
+            <div className="arrow-container" style={{color: side===1 ? '#999' : '#ba0016ee'}}> 
               <TbArrowBadgeDownFilled />
             </div>
           </button>
@@ -160,7 +160,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
             buckets.filter(buck => buck.side === side).map((bucket, idx) => {
               let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#e5e5e5'
               return (
-                <div onClick={() => openBucket(bucket)} className="bucket" key={bucket._id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + 'aa', border: `4px outset ${color}`}}>
+                <div onClick={() => openBucket(bucket)} className="bucket" key={bucket._id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + '55', border: `4px outset ${color}`}}>
                   <p className="bucket-flavor">
                     { bucket.flavor.name || 'vacío'}
                   </p>

@@ -1,0 +1,27 @@
+.input-label{
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.edit-modal-warn{
+    color: #ba0016;
+    /* text-align: left; */
+    width: 70%;
+    margin: auto;
+}
+
+.delete-bucket{
+    background-color: #e88;
+}
+
+.save-bucket{
+    background-color: #8e8;
+}
+
+.save-bucket:disabled{
+    background-color: #beb;
+    color: #666;
+    cursor:auto;
+}

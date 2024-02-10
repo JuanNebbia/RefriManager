@@ -107,13 +107,13 @@
     justify-content: center;
     padding: 0.8rem;
     cursor: pointer;
-    transition: all 0.08s;
+    /* transition: all 0.08s; */
 }
 
 .bucket:hover{
     /* transform: scale(1.02);
     box-shadow: -1px 1px 3px 0 #00000055; */
-    backdrop-filter: brightness(0.9) blur(1.5rem);
+    backdrop-filter: brightness(0.9);
 }
 
 .bucket-flavor{
@@ -157,5 +157,4 @@
 
 .refri-count{
     margin: 0.3rem 0.3rem auto auto;
-    text-decoration: underline;
 }

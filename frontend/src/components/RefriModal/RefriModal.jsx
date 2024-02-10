@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const RefriModal = ({refriAmount, setRefriAmount, setOpenModal}) => {
 
-    const {  buckets, setBuckets, refrigerators, setRefrigerators} = useData();
+    const { setRefrigerators, setLoadingRefrigerators} = useData();
     const [selectedAmount, setSelectedAmount] = useState(8)
     const [refriName, setRefriName] = useState()
     const [enableSave, setEnableSave] = useState(true)
@@ -52,6 +52,8 @@ const RefriModal = ({refriAmount, setRefriAmount, setOpenModal}) => {
           status: "active"
         }
         const url = process.env.REACT_APP_BACKEND_URL
+        setOpenModal(false)
+        setLoadingRefrigerators(true)
         const newRefrigeratorFetch = await axios.post(url + '/refrigerators', newRefrigerator)
         for(let i = 0; i < newRefrigerator.total_capacity; i++){
           const newBucket = {
@@ -62,9 +64,9 @@ const RefriModal = ({refriAmount, setRefriAmount, setOpenModal}) => {
           }
           await axios.post(url + '/buckets', newBucket)
         }
-        setOpenModal(false)
         const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
         setRefrigerators(refrigeratorsFetch.data)
+        setLoadingRefrigerators(false)
         
       } catch (error) {
         console.log(error);
