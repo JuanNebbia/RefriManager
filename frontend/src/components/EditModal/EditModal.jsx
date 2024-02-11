@@ -8,7 +8,7 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
     const [enableSave, setEnableSave] = useState(true)
     const [refriName, setRefriName] = useState(selectedRefrigerator.refri_name)
     const [selectedAmount, setSelectedAmount] = useState(selectedRefrigerator.total_capacity)
-    const { setRefrigerators, setLoadingRefrigerators } = useData();
+    const { setRefrigerators, setLoadingRefrigerators, refriAmount, setRefriAmount } = useData();
 
     const handleAmountChange = (event) => {
         setSelectedAmount(+event.target.value)
@@ -64,15 +64,12 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
     const deleteRefrigerator = async() => {
         const url = process.env.REACT_APP_BACKEND_URL
         if(window.confirm('Estás por eliminar una heladera y todo su contenido. ¿Continuar?')){
-            await axios.delete(`${url}/refrigerators/${selectedRefrigerator._id}`)
-            selectedRefrigerator.buckets.forEach(async(bucket) => {
-                await axios.delete(`${url}/buckets/${bucket._id}`)
-            });
             setOpenModal(false)
             setLoadingRefrigerators(true)
-            const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
-            setRefrigerators(refrigeratorsFetch.data)
+            const deletedRefrigeratorFetch = await axios.delete(`${url}/refrigerators/${selectedRefrigerator._id}`)
+            setRefrigerators(deletedRefrigeratorFetch.data)
             setLoadingRefrigerators(false)
+            setRefriAmount(refriAmount - 1)
         }
     }
 

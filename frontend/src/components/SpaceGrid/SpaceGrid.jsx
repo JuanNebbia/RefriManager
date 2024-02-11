@@ -5,7 +5,7 @@ import Modal from '../Modal/Modal';
 import RefriModal from '../RefriModal/RefriModal';
 
 const SpaceGrid = () => {
-    const { refrigerators, buckets, refriAmount, setRefriAmount, setRefrigerators } = useData()
+    const { refrigerators, buckets, refriAmount, setRefriAmount } = useData()
     const [openModal, setOpenModal] = useState(false) 
 
     const handleAddRefrigeratorClick = () => {

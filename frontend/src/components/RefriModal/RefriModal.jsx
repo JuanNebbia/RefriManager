@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const RefriModal = ({refriAmount, setRefriAmount, setOpenModal}) => {
 
-    const { setRefrigerators, setLoadingRefrigerators} = useData();
+    const { setRefrigerators, setLoadingRefrigerators, setBuckets} = useData();
     const [selectedAmount, setSelectedAmount] = useState(8)
     const [refriName, setRefriName] = useState()
     const [enableSave, setEnableSave] = useState(true)
@@ -17,33 +17,6 @@ const RefriModal = ({refriAmount, setRefriAmount, setOpenModal}) => {
         setRefriName(event.target.value)
     }
 
-    // const addRefri = () => {
-    //     const refrigeratorsCopy = refrigerators
-    //     const newRefrigerator = {
-    //       _id: ('new-refri' + refriAmount + 1),
-    //       total_capacity: selectedAmount,
-    //       refri_name: refriName || `Heladera ${refriAmount + 1}`,
-    //       status: "active"
-    //     }
-    //     refrigeratorsCopy.push(newRefrigerator)
-    //     setRefrigerators(refrigeratorsCopy)
-
-    //     const bucketsCopy = buckets
-    //     for(let i = 0; i < newRefrigerator.total_capacity; i++){
-    //       const newBucket = {
-    //         id: buckets.length + 1,
-    //         refrigerator_id: newRefrigerator._id,
-    //         flavor_id: null,
-    //         position: (i + 1 <= newRefrigerator.total_capacity / 2 ) ? (i + 1) : ((i + 1) - (newRefrigerator.total_capacity / 2)),
-    //         side: (i + 1 <= newRefrigerator.total_capacity / 2) ? 0 : 1
-    //       }
-    //       bucketsCopy.push(newBucket)
-    //       setBuckets(bucketsCopy)
-    //     }
-    //     setRefriAmount(refriAmount + 1)
-    //     setOpenModal(false)
-    // }
-
     const addRefri = async() => {
       try {
         const newRefrigerator = {
@@ -55,17 +28,10 @@ const RefriModal = ({refriAmount, setRefriAmount, setOpenModal}) => {
         setOpenModal(false)
         setLoadingRefrigerators(true)
         const newRefrigeratorFetch = await axios.post(url + '/refrigerators', newRefrigerator)
-        for(let i = 0; i < newRefrigerator.total_capacity; i++){
-          const newBucket = {
-            refrigerator_id: newRefrigeratorFetch.data._id,
-            flavor_id: null,
-            position: (i + 1 <= newRefrigerator.total_capacity / 2 ) ? (i + 1) : ((i + 1) - (newRefrigerator.total_capacity / 2)),
-            side: (i + 1 <= newRefrigerator.total_capacity / 2) ? 0 : 1
-          }
-          await axios.post(url + '/buckets', newBucket)
-        }
-        const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
-        setRefrigerators(refrigeratorsFetch.data)
+        setRefriAmount(refriAmount + 1)
+        setRefrigerators(newRefrigeratorFetch.data)
+        const bucketsFetch = await axios.get(`${url}/buckets`)
+        setBuckets(bucketsFetch.data)
         setLoadingRefrigerators(false)
         
       } catch (error) {
