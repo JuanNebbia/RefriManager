@@ -8,10 +8,16 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
     const [enableSave, setEnableSave] = useState(true)
     const [refriName, setRefriName] = useState(selectedRefrigerator.refri_name)
     const [selectedAmount, setSelectedAmount] = useState(selectedRefrigerator.total_capacity)
+    const [hideWarning, setHideWarning] = useState(true)
     const { setRefrigerators, setLoadingRefrigerators, refriAmount, setRefriAmount } = useData();
 
     const handleAmountChange = (event) => {
         setSelectedAmount(+event.target.value)
+        if(+event.target.value < selectedRefrigerator.total_capacity){
+            setHideWarning(false)
+        }else(
+            setHideWarning(true)
+        )
         setEnableSave(false)
     }
 
@@ -81,7 +87,7 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
                 <input type="text" id='edit-refri-name-input' defaultValue={selectedRefrigerator.refri_name}  onChange={handleNameChange}/>
                 <label htmlFor="edit-refri-capacity-input" className='input-label'>Capacidad (baldes totales)</label>
                 <input type="number" id='edit-refri-capacity-input' defaultValue={selectedRefrigerator.total_capacity} min={6} max={32} step={2} onChange={handleAmountChange} /> 
-                <small className='edit-modal-warn'>Advertencia: reducir la capacidad del refrigerador eliminará los baldes sobrantes</small>   
+                <small className='edit-modal-warn' hidden={hideWarning}>Advertencia: reducir la capacidad del refrigerador eliminará los baldes sobrantes</small>   
             </form>
             <div className="modal-btn-container">
                 <button className="save-bucket" disabled={enableSave} onClick={saveChanges}>Guardar</button>

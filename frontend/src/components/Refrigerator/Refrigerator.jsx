@@ -20,7 +20,9 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
   useEffect(()=> {
     const flavorCounts = {};
     buckets.forEach(bucket => {
-      flavorCounts[bucket.flavor._id] = (flavorCounts[bucket.flavor._id] || 0) + 1;
+      if(bucket.flavor_id){
+        flavorCounts[bucket.flavor._id] = (flavorCounts[bucket.flavor._id] || 0) + 1;
+      }
     });
     const flavorsArray = Object.keys(flavorCounts).map(flavor => ({
       flavor: flavor,
@@ -31,11 +33,8 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
       return flavor
     })
     flavorObjects.sort((a, b) => {
-      if (!Object.keys(a.flavor).length || !Object.keys(b.flavor).length) {
-        return 0;
-      }
-      if (a.flavor.category_id !== b.flavor.category_id) {
-        return a.flavor.category_id.localeCompare(b.flavor.category_id);
+      if (a.flavor.category_id._id !== b.flavor.category_id._id) {
+        return a.flavor.category_id._id.localeCompare(b.flavor.category_id._id);
       } else {
         return a.flavor.name.localeCompare(b.flavor.name);
       }
@@ -95,8 +94,8 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
                   </div>
                 )
               }) :
-                refriFlavors.map(flavor => {
-                  return <div className="flavor">{flavor.flavor.name || 'vacío'} : {flavor.count}</div>
+                refriFlavors.map((flavor, idx) => {
+                  return <div className="flavor-count" key={idx} style={{ backgroundColor: flavor.flavor.category_id.color + 'bb', gridRow:Math.ceil((idx+1) % 4), gridColumn: Math.ceil((idx+1) / 4)}}>{flavor.flavor.name}: {flavor.count}</div>
                 })
           }
         </div>
