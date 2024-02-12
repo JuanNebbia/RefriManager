@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Refrigerator.css'
 import BucketModal from '../BucketModal/BucketModal'
 import { TbArrowBadgeUpFilled } from "react-icons/tb";
@@ -14,15 +14,43 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
   const [openBucketModal, setOpenBucketModal] = useState(false) 
   const [openEditModal, setOpenEditModal] = useState(false) 
   const [selectedBucket, setSelectedBucket] = useState({})
+  const [refriFlavors, setRefriFlavors] = useState([])
+  const { setBuckets, flavors } = useData();
   
+  useEffect(()=> {
+    const flavorCounts = {};
+    buckets.forEach(bucket => {
+      flavorCounts[bucket.flavor._id] = (flavorCounts[bucket.flavor._id] || 0) + 1;
+    });
+    const flavorsArray = Object.keys(flavorCounts).map(flavor => ({
+      flavor: flavor,
+      count: flavorCounts[flavor]
+    }));
+    const flavorObjects = flavorsArray.map(flavor => {
+      flavor.flavor = flavors.find(fla => flavor.flavor === fla._id) || {}
+      return flavor
+    })
+    flavorObjects.sort((a, b) => {
+      if (!Object.keys(a.flavor).length || !Object.keys(b.flavor).length) {
+        return 0;
+      }
+      if (a.flavor.category_id !== b.flavor.category_id) {
+        return a.flavor.category_id.localeCompare(b.flavor.category_id);
+      } else {
+        return a.flavor.name.localeCompare(b.flavor.name);
+      }
+    });
+    setRefriFlavors(flavorObjects);
+  },[])
+
   const freeSpaces = ( total_capacity - buckets.filter(bucket => bucket.flavor_id !== null).length )
-  
+
   const openBucket = (bucket) => {
     setSelectedBucket(bucket)
     setOpenBucketModal(true)
   }
   
-  const { setBuckets } = useData();
+
 
   return (
     <div className='refri-container' id={`refri-${_id}`}>
@@ -56,16 +84,20 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
         </div>}
         <div className="buckets-container">
           {
-            buckets.filter(buck => buck.side === side).map((bucket, idx) => {
-              let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#e5e5e5'
-              return (
-                <div onClick={() => openBucket(bucket)} className="bucket" key={bucket._id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + '55', border: `4px outset ${color}`}}>
-                  <p className="bucket-flavor">
-                    { bucket.flavor.name || 'vacío'}
-                  </p>
-                </div>
-              )
-            })
+            viewMode ? 
+              buckets.filter(buck => buck.side === side).map((bucket, idx) => {
+                let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#e5e5e5'
+                return (
+                  <div onClick={() => openBucket(bucket)} className="bucket" key={bucket._id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + '55', border: `4px outset ${color}`}}>
+                    <p className="bucket-flavor">
+                      { bucket.flavor.name || 'vacío'}
+                    </p>
+                  </div>
+                )
+              }) :
+                refriFlavors.map(flavor => {
+                  return <div className="flavor">{flavor.flavor.name || 'vacío'} : {flavor.count}</div>
+                })
           }
         </div>
       </div>
