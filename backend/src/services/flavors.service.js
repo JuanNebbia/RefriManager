@@ -7,7 +7,7 @@ import {
 
 class FlavorsService {
   async getAll() {
-    const allFlavors = await flavors.find({});
+    const allFlavors = await flavors.find({}).populate("category_id");
     return allFlavors;
   }
 
