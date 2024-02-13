@@ -62,7 +62,14 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
         <Modal openModal={openEditModal} setOpenModal={setOpenEditModal}  content={<EditModal selectedRefrigerator={{_id, refri_name, buckets, total_capacity}} setOpenModal={setOpenEditModal} />} />
       }
       <div className="refri-name-container">
-        <p className="refri-name">{refri_name} - <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}} onClick={()=>setSide(side === 0 ? 1 : 0 )}>{side === 0 ? 'arriba' : 'abajo'}</span></p>
+        <p className="refri-name">{refri_name} 
+          { viewMode &&
+            <>
+            <span> - </span>
+              <span className='side-title' style={{backgroundColor: side === 0 ? '#fff': "#ccc"}} onClick={()=>setSide(side === 0 ? 1 : 0 )}>{side === 0 ? 'arriba' : 'abajo'}</span>
+            </>
+          }
+        </p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
         <button className="edit-refri" onClick={() => setOpenEditModal(true)}>
           <BsFillPencilFill />
@@ -95,7 +102,11 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
                 )
               }) :
                 refriFlavors.map((flavor, idx) => {
-                  return <div className="flavor-count" key={idx} style={{ backgroundColor: flavor.flavor.category_id.color + 'bb', gridRow:Math.ceil((idx+1) % 4), gridColumn: Math.ceil((idx+1) / 4)}}>{flavor.flavor.name}: {flavor.count}</div>
+                  return (
+                    <div className="flavor-count" key={idx} style={{ backgroundColor: flavor.flavor.category_id.color + 'bb', gridRow:Math.ceil((idx+1) % 4), gridColumn: Math.ceil((idx+1) / 4)}}>{flavor.flavor.name} 
+                      <p className='flavor-count-number'>{flavor.count}</p>
+                    </div>
+                  )
                 })
           }
         </div>

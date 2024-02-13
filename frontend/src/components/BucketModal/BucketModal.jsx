@@ -22,12 +22,26 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
     },[buckets, flavors])
 
     const changeCategory = (event) => {
-        const selectedFlavors = flavors.filter(flavor => flavor.category_id === event.target.value)
-        setCategoryFlavors(selectedFlavors)
-        setSelectedFlavor(selectedFlavors[0])
-        const newSelectedCategory = categories.find(category => category._id === event.target.value)
-        setSelectedCategory(newSelectedCategory)
-        setEnableSave(false)
+        try {
+            let selectedFlavors, newSelectedCategory
+            if(event.target.value){
+                selectedFlavors = flavors.filter(flavor => flavor.category_id._id === event.target.value)
+                newSelectedCategory = categories.find(category => category._id === event.target.value)
+            }else{
+                selectedFlavors = flavors.sort((a, b) => {
+                    if(a.name > b.name) return 1
+                    if(a.name < b.name) return -1
+                    return 0
+                })
+                newSelectedCategory = {}
+            }
+            setCategoryFlavors(selectedFlavors)
+            setSelectedFlavor(selectedFlavors[0])
+            setSelectedCategory(newSelectedCategory)
+            setEnableSave(false)
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const changeSelectedFlavor = (event) =>{
