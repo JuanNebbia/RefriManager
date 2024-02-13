@@ -5,10 +5,14 @@ import './Login.css'
 const Login = () => {
     const [username, setUsername] = useState()
     const [pass, setPass] = useState()
+    const [hidePass, setHidePass] = useState(true)
 
     const { login } = useAuth()
 
     const handleFormChange = (event) => {
+        if(event.target.name === "show-pass"){
+            setHidePass(!event.target.checked)
+        }
         if(event.target.name === 'username'){
             setUsername(event.target.value)
         }
@@ -30,8 +34,11 @@ const Login = () => {
                 <label htmlFor="user-login"> Email</label>
                 <input type="text" id='user-login' name='username' />
                 <label htmlFor="pass-login"> Contraseña</label>
-                <input type="pass" id='pass-login' name='pass' />
-
+                <input type={hidePass ? "password": "text"} id='pass-login' name='pass' />
+                <div className="show-pass-container">
+                    <input type="checkbox" name='show-pass' />
+                    <label htmlFor="pass-login"> Mostrar contraseña</label>
+                </div>
                 <button onClick={handleLogin}>Ingresar</button>
             </form>
         </div>

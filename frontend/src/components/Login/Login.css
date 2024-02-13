@@ -38,6 +38,16 @@
     padding: 0.2rem 0.5rem;
 }
 
+.show-pass-container{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.show-pass-container input{
+    margin: 0;
+}
+
 .login-form button{
     border: none;
     padding: 0.6rem;
