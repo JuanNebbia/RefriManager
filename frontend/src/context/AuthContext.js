@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    console.log(cookies);
+    setUser(true);
     if (cookies.sessionId) {
       setUser(true);
     }
@@ -24,7 +24,11 @@ export const AuthProvider = ({ children }) => {
     try {
       const loginResponse = await axiosInstance.post(
         `${url}/auth/login`,
-        payload
+        payload,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        }
       );
       setUser(true);
       console.log(loginResponse.data);
