@@ -35,11 +35,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    const url = process.env.REACT_APP_BACKEND_URL;
-    const logoutResponse = await axiosInstance.post(`${url}/auth/logout`);
     document.cookie =
       "sessionId=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-    console.log(logoutResponse.data);
     setUser(false);
   };
 
