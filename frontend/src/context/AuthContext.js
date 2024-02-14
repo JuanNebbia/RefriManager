@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 });
 
 export const AuthProvider = ({ children }) => {
-  const [cookies] = useCookies([process.env.REACT_APP_SESSION_COOKIE]);
+  const [cookies] = useCookies(["sessionId"]);
   const [user, setUser] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         payload
       );
       if (loginResponse.data.success) {
-        document.cookie = "sessionId=valorDeLaSesion; path=/";
+        document.cookie = `sessionId=${process.env.REACT_APP_SESSION_COOKIE}; path=/`;
         setUser(true);
       }
     } catch (error) {
