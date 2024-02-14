@@ -19,7 +19,7 @@ const Header = () => {
       </ul>
       {
         user && 
-          <button onClick={logout}>Out</button>
+          <button className='logout-btn' onClick={logout}>Salir</button>
       }
     </div>
   )
