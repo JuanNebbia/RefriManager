@@ -9,11 +9,11 @@ const axiosInstance = axios.create({
 });
 
 export const AuthProvider = ({ children }) => {
-  const [cookies] = useCookies(["sessionId"]);
+  const [cookies] = useCookies([process.env.REACT_APP_SESSION_COOKIE]);
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    setUser(true);
+    console.log(cookies);
     if (cookies.sessionId) {
       setUser(true);
     }

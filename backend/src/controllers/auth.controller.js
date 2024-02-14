@@ -1,4 +1,8 @@
-import { APP_PASSWORD, APP_USERNAME } from "../configurations/env.config.js";
+import {
+  APP_PASSWORD,
+  APP_USERNAME,
+  COOKIE_VALUE,
+} from "../configurations/env.config.js";
 import HttpError from "../utils/HttpError.util.js";
 import { HTTP_SUCCESS, HTTP_UNAUTHORIZED } from "../utils/constants.util.js";
 
@@ -7,9 +11,9 @@ class AuthController {
     const { username, pass } = req.body;
     try {
       if (username === APP_USERNAME && pass === APP_PASSWORD) {
-        res.cookie("sessionId", "valorDeLaSesion", {
-          httpOnly: true,
-          secure: true,
+        res.cookie("sessionId", COOKIE_VALUE, {
+          httpOnly: false,
+          secure: false,
         });
         const response = {
           success: true,
