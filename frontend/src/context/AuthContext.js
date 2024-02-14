@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    console.log(cookies);
     if (cookies.sessionId) {
       setUser(true);
     }

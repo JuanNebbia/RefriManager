@@ -13,7 +13,7 @@ class AuthController {
       if (username === APP_USERNAME && pass === APP_PASSWORD) {
         res.cookie("sessionId", COOKIE_VALUE, {
           httpOnly: false,
-          secure: false,
+          secure: true,
         });
         const response = {
           success: true,
