@@ -23,14 +23,12 @@ export const AuthProvider = ({ children }) => {
     try {
       const loginResponse = await axiosInstance.post(
         `${url}/auth/login`,
-        payload,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "application/json" },
-        }
+        payload
       );
-      setUser(true);
-      console.log(loginResponse.data);
+      if (loginResponse.data.success) {
+        document.cookie = "sessionId=valorDeLaSesion; path=/";
+        setUser(true);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -39,6 +37,8 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     const url = process.env.REACT_APP_BACKEND_URL;
     const logoutResponse = await axiosInstance.post(`${url}/auth/logout`);
+    document.cookie =
+      "sessionId=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     console.log(logoutResponse.data);
     setUser(false);
   };
