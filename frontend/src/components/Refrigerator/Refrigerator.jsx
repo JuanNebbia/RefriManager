@@ -95,7 +95,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
           buckets.filter(buck => buck.side === side).map((bucket, idx) => {
             let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#e5e5e5'
             return (
-              <div onClick={() => openBucket(bucket)} className="bucket" key={bucket._id} style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + '55', border: `4px outset ${color}`}}>
+              <div onClick={() => openBucket(bucket)} className="bucket" key={bucket._id} style={{gridRow: Math.ceil((bucket.position - 1) % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + '55', border: `4px outset ${color}`}}>
                 <p className="bucket-flavor">
                   { bucket.flavor.name || 'vacío'}
                 </p>
