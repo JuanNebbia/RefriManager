@@ -7,7 +7,7 @@ const Login = () => {
     const [pass, setPass] = useState()
     const [hidePass, setHidePass] = useState(true)
 
-    const { login } = useAuth()
+    const { login, logError, setLogError } = useAuth()
 
     const handleFormChange = (event) => {
         if(event.target.name === "show-pass"){
@@ -34,11 +34,14 @@ const Login = () => {
                 <label htmlFor="user-login"> Email</label>
                 <input type="text" id='user-login' name='username' />
                 <label htmlFor="pass-login"> Contraseña</label>
-                <input type={hidePass ? "password": "text"} id='pass-login' name='pass' />
+                <input type={hidePass ? "password": "text"} id='pass-login' name='pass' autoComplete='new-passwor' />
                 <div className="show-pass-container">
                     <input type="checkbox" name='show-pass' />
                     <label htmlFor="pass-login"> Mostrar contraseña</label>
                 </div>
+                { logError &&
+                    <p className='login-error'>Usuario o contraseña incorrecto</p>
+                }
                 <button onClick={handleLogin}>Ingresar</button>
             </form>
         </div>

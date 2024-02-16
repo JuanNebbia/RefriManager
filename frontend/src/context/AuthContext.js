@@ -9,8 +9,9 @@ const axiosInstance = axios.create({
 });
 
 export const AuthProvider = ({ children }) => {
-  const [cookies] = useCookies(["sessionId"]);
+  const [cookies, setCookies] = useCookies(["sessionId"]);
   const [user, setUser] = useState(false);
+  const [logError, setLogError] = useState(false);
 
   useEffect(() => {
     if (cookies.sessionId) {
@@ -26,10 +27,16 @@ export const AuthProvider = ({ children }) => {
         payload
       );
       if (loginResponse.data.success) {
-        document.cookie = `sessionId=${process.env.REACT_APP_SESSION_COOKIE}; path=/`;
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 30);
+        setCookies("sessionId", process.env.REACT_APP_SESSION_COOKIE, {
+          expires: expirationDate,
+          path: "/",
+        });
         setUser(true);
       }
     } catch (error) {
+      setLogError(true);
       console.log(error);
     }
   };
@@ -41,7 +48,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, logError, setLogError }}
+    >
       {children}
     </AuthContext.Provider>
   );
