@@ -14,7 +14,7 @@ class OrdersService {
   }
 
   async getById(oid) {
-    const order = await orders.findById(oid);
+    const order = await orders.findById(oid).populate("items.flavor_id");
     if (!order) throw new HttpError("Order not found", HTTP_NOT_FOUND);
     return order;
   }
