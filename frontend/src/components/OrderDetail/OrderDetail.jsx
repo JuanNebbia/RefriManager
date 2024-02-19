@@ -38,7 +38,7 @@ const OrderDetail = () => {
                     {order.items.map((item, idx) => {
                         return (
                             <tr key={idx}>
-                                <td>{item.flavor_id}</td>
+                                <td>{item.flavor_id.name}</td>
                                 <td>{item.amount}</td>
                             </tr>
                         )
