@@ -1,0 +1,51 @@
+.new-order-container{
+    background-color: #eaeaea;
+    min-height: calc(100vh - 4.5rem);
+    padding: 2rem 10%;
+}
+
+.new-order-table{
+    background-color: #fff;
+    border-radius: 7px;
+    font-size: 14px;
+    box-shadow: 0 1px 2px 0 #00000044;
+    margin: auto;
+}
+
+.new-order-table>thead>tr>th{
+    padding: 0.5rem;
+    color: #000;
+    background-color: #fff;
+    border-radius: 7px;
+    font-size: 1rem;
+}
+
+.new-order-table tbody{
+    text-align: left;
+}
+
+.new-order-table>tbody>tr>td{
+    padding: 8px 4px
+}
+
+.item-new-order-row{
+    background-color: #ddd;
+}
+
+.saved-buckets{
+    text-align: center;
+}
+
+.new-order-input{
+    width: fit-content;
+}
+
+.send-order-btn{
+    cursor: not-allowed;
+    margin-left: 2rem;
+}
+
+.new-order-total-row{
+    font-size: 1rem;
+    font-weight: 600;
+}
