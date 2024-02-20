@@ -6,12 +6,20 @@ import { Link } from 'react-router-dom'
 
 const Orders = () => {
   const [orders, setOrders] = useState([])
+  const [loadingOrders, setLoadingOrders] = useState(true)
 
   useEffect(() => {
+    setLoadingOrders(true)
     const fetchOrders = async() => {
       const url = process.env.REACT_APP_BACKEND_URL
       const ordersResponse = await axios.get(`${url}/orders`)
+      ordersResponse.data.sort((a, b) => {
+        if(a.date < b.date) return 1
+        if(a.date > b.date) return -1
+        else return 0
+      })
       setOrders(ordersResponse.data)
+      setLoadingOrders(false)
     }
     try {
       fetchOrders()
@@ -22,7 +30,7 @@ const Orders = () => {
 
   return (
     <>
-    { !orders.length ? <Loader /> :
+    { loadingOrders ? <Loader /> :
     <div className='orders-container'>
       <div className="orders-table-container">
         <table className="orders-table">
@@ -34,8 +42,8 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {
-              orders.map(order => {
+            {orders.length ?
+              (orders.map(order => {
                 return (
                   <tr className='item-order-row' key={order._id}>
                     <td>{new Date(order.date).toLocaleString()}</td>
@@ -45,12 +53,15 @@ const Orders = () => {
                     </td>
                   </tr>
                 )
-              })
+              })):
+              <tr className='item-order-row'>
+                <td colSpan={3}>No hay pedidos guardados</td>
+              </tr>
             }
           </tbody>
         </table>
       </div>
-      <button className="new-order-btn"><Link to={'/pedidos/nuevo'}>Nuevo pedido</Link></button>
+      <button className="red-button"><Link to={'/pedidos/nuevo'}>Nuevo pedido</Link></button>
     </div>
 }
     </>
