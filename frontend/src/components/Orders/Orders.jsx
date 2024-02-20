@@ -41,7 +41,7 @@ const Orders = () => {
                     <td>{new Date(order.date).toLocaleString()}</td>
                     <td>{order.total_amount}</td>
                     <td>
-                      <button className='see-order-btn'><Link to={`/pedidos/${order._id}`}>Ver</Link></button>
+                      <button className='see-order-btn'><Link to={`/pedidos/${order._id}`}>Ver detalle</Link></button>
                     </td>
                   </tr>
                 )
@@ -50,7 +50,7 @@ const Orders = () => {
           </tbody>
         </table>
       </div>
-      <button className="new-order-btn">Nuevo pedido</button>
+      <button className="new-order-btn"><Link to={'/pedidos/nuevo'}>Nuevo pedido</Link></button>
     </div>
 }
     </>
