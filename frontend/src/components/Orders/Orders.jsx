@@ -32,13 +32,14 @@ const Orders = () => {
     <>
     { loadingOrders ? <Loader /> :
     <div className='orders-container'>
+      <h2>Pedidos</h2>
       <div className="orders-table-container">
         <table className="orders-table">
           <thead>
             <tr>
-              <th>Fecha</th>
-              <th>Cantidad de baldes</th>
-              <th></th>
+              <th className='orders-date-header'>Fecha</th>
+              <th className='orders-amount-header'>Cantidad de baldes</th>
+              <th id='orders-actions-header'></th>
             </tr>
           </thead>
           <tbody>
@@ -48,8 +49,8 @@ const Orders = () => {
                   <tr className='item-order-row' key={order._id}>
                     <td>{new Date(order.date).toLocaleString()}</td>
                     <td>{order.total_amount}</td>
-                    <td>
-                      <button className='see-order-btn'><Link to={`/pedidos/${order._id}`}>Ver detalle</Link></button>
+                    <td id='see-order-cell'>
+                      <button className='white-button see-order-btn'><Link to={`/pedidos/${order._id}`}>Ver detalle</Link></button>
                     </td>
                   </tr>
                 )
@@ -61,7 +62,7 @@ const Orders = () => {
           </tbody>
         </table>
       </div>
-      <button className="red-button"><Link to={'/pedidos/nuevo'}>Nuevo pedido</Link></button>
+      <button className="red-button new-order-btn"><Link to={'/pedidos/nuevo'}>Nuevo pedido</Link></button>
     </div>
 }
     </>

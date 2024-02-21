@@ -73,9 +73,9 @@ const NewOrder = () => {
         <table className='new-order-table'>
           <thead>
             <tr>
-              <th>Sabor</th>
-              <th>Cantidad</th>
-              <th>Guardados</th>
+              <th className='new-order-flavor-header'>Sabor</th>
+              <th className='new-order-amount-header'>Cantidad</th>
+              <th className='new-order-saved-header'>Guardados</th>
             </tr>
           </thead>
           <tbody>
@@ -83,14 +83,44 @@ const NewOrder = () => {
               return(
                 <tr key={flavor._id} className='item-new-order-row'>
                   <td>{flavor.name}</td>
-                  <td><input type="number" onChange={(event)=>handleOrderChange(event, flavor._id)} min={0} className='new-order-input' /></td>
+                  {/* <td><input type="number" onChange={(event)=>handleOrderChange(event, flavor._id)} min={0} className='new-order-input' /></td> */}
+                  <td id='new-order-input-cell'>
+                    <select type="select" onChange={(event)=>handleOrderChange(event, flavor._id)} className='new-order-input' >
+                      <option aria-label="Please select"></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                      <option value="25">25</option>
+                    </select>
+                  </td>
                   <td className='saved-buckets'>{flavor.count}</td>
                 </tr>
               )
             })}
-            <tr className='new-order-total-row'>
-              <td colSpan={2}>Total de baldes</td>
-              <td>{totalOrder}</td>
+            <tr>
+              <td id='new-order-total'>Total de baldes</td>
+              <td id='new-order-total-amount' colSpan={2}>{totalOrder}</td>
             </tr>
           </tbody>
         </table>

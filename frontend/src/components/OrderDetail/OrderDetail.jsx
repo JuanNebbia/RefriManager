@@ -15,7 +15,7 @@ const OrderDetail = () => {
             ordersResponse.data.items.sort((a, b) => {
                 if(a.amount < b.amount) return 1
                 if(a.amount > b.amount) return -1
-                if(a.amount === b.amount) return 0
+                else return 0
             })
             setOrder(ordersResponse.data)
           }
@@ -34,22 +34,22 @@ const OrderDetail = () => {
             <table className="order-table">
                 <thead>
                     <tr>
-                        <th>Sabor</th>
-                        <th>Cantidad</th>
+                        <th className='order-detail-flavor-header'>Sabor</th>
+                        <th className='order-detail-amount-header'>Cantidad</th>
                     </tr>
                 </thead>
                 <tbody>
                     {order.items.map((item, idx) => {
                         return (
-                            <tr key={idx} className='item-order-row'>
+                            <tr key={idx} className='item-order-detail-row'>
                                 <td className='order-flavor-cell'>{item.flavor_id.name}</td>
                                 <td>{item.amount}</td>
                             </tr>
                         )
                     })}
                     <tr className='total-row'>
-                        <td>Total</td>
-                        <td>{order.total_amount}</td>
+                        <td className='order-detail-total'>Total</td>
+                        <td className='order-detail-total-number'>{order.total_amount}</td>
                     </tr>
                 </tbody>
             </table>
