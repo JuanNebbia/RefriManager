@@ -49,7 +49,8 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
                 }
             }
             if(amount < 0){
-                const sortedBuckets = selectedRefrigerator.buckets.toSorted((a, b) => b.position - a.position);
+                const selectedRefrigeratorCopy = selectedRefrigerator
+                const sortedBuckets = selectedRefrigeratorCopy.buckets.sort((a, b) => b.position - a.position);
                 for (let i = 0; i < (amount * -1); i++) {
                     if (i < sortedBuckets.length) {
                         await axios.delete(`${url}/buckets/${sortedBuckets[i]._id}`)

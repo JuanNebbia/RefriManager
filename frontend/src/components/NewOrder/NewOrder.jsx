@@ -14,20 +14,16 @@ const NewOrder = () => {
   const { flavors, loadingFlavors, buckets, loadingBuckets } = useData()
 
   useEffect(() => {
-    setSortedFlavors(flavors.toSorted((a, b) => {
-      if(a.name > b.name) {
-        return 1
-      }
-      if(a.name < b.name) {
-        return -1
-      }
-      else {
-        return 0
-      }
+    const flavorsCopy = flavors
+    flavorsCopy.sort((a, b) => {
+      if(a.name > b.name) return 1
+      if(a.name < b.name) return -1
+      else return 0
     }).map(flavor => {
       flavor.count = buckets.filter(bucket => bucket.flavor_id === flavor._id).length
       return flavor
-    }))
+    })
+    setSortedFlavors(flavorsCopy)
   },[flavors, buckets])
    
   const handleOrderChange = (event, flavor_id) => {
