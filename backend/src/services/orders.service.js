@@ -9,12 +9,18 @@ import {
 
 class OrdersService {
   async getAll() {
-    const allOrders = await orders.find({}).populate("items.flavor_id");
+    const allOrders = await orders
+      .find({})
+      .populate("items.flavor_id")
+      .populate("supplies.supply_id");
     return allOrders;
   }
 
   async getById(oid) {
-    const order = await orders.findById(oid).populate("items.flavor_id");
+    const order = await orders
+      .findById(oid)
+      .populate("items.flavor_id")
+      .populate("supplies.supply_id");
     if (!order) throw new HttpError("Order not found", HTTP_NOT_FOUND);
     return order;
   }
