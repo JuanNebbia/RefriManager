@@ -4,39 +4,35 @@
     padding: 2rem 10%;
 }
 
-.order-table{
+.order-table, .supplies-detail-table{
     background-color: #dedcdc;
     border-radius: 7px;
     font-size: 14px;
     box-shadow: 0 1px 2px 0 #00000044;
-    margin: 3rem auto;
+    margin: 1rem auto;
     width: 100%;
 }
 
-.order-table>thead{
-    background-color: #fff;
-}
-
-.order-table>thead>tr>th{
+.order-table>thead>tr>th, .supplies-detail-table>thead>tr>th{
     padding: 0.5rem;
     color: #000;
     background-color: #fff;
     font-size: 1rem;
 }
 
-.order-table>tbody>tr>td{
+.order-table>tbody>tr>td, .supplies-detail-table>tbody>tr>td{
     padding: 6px 8px
 }
 
-.order-detail-flavor-header{   
+.order-detail-flavor-header, .supplies-detail-item-header{   
     border-top-left-radius: 7px;
 }
 
-.order-detail-amount-header{   
+.order-detail-amount-header, .supplies-detail-amount-header{   
     border-top-right-radius: 7px;
 }
 
-.item-order-detail-row{
+.item-order-detail-row, .item-supplies-detail-row{
     background-color: #f4f4f4;
 }
 
@@ -47,7 +43,7 @@
     background-color: #fff;
 }
 
-.order-flavor-cell{
+.order-flavor-cell, .supplies-detail-item-cell{
     text-align: left;
 }
 
@@ -57,4 +53,9 @@
 
 .order-detail-total-number{
     border-bottom-right-radius: 7px;
+}
+
+.order-detail-subtitle{
+    margin-top: 2rem;
+    text-align: left;
 }

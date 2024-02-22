@@ -48,7 +48,7 @@ const Orders = () => {
                 return (
                   <tr className='item-order-row' key={order._id}>
                     <td>{new Date(order.date).toLocaleString()}</td>
-                    <td>{order.total_amount}</td>
+                    <td>{order.total_amount} <small>{order.supplies?.length ? '(+insumos)' : ''}</small></td>
                     <td id='see-order-cell'>
                       <button className='white-button see-order-btn'><Link to={`/pedidos/${order._id}`}>Ver detalle</Link></button>
                     </td>

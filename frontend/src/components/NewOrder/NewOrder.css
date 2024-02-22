@@ -4,7 +4,7 @@
     padding: 2rem 10%;
 }
 
-.new-order-table{
+.new-order-table, .supplies-table{
     background-color: #dedcdc;
     border-radius: 7px;
     font-size: 14px;
@@ -13,35 +13,39 @@
     width: 100%;
 }
 
-.new-order-table>thead{
+.supplies-table{
+    margin-top: 3rem;
+}
+
+.new-order-table>thead, .supplies-table>thead{
     background-color: #fff;
 }
 
-.new-order-table>thead>tr>th{
+.new-order-table>thead>tr>th, .supplies-table>thead>tr>th{
     padding: 0.5rem;
     color: #000;
     background-color: #fff;
     font-size: 1rem;
 }
 
-.new-order-flavor-header{   
+.new-order-flavor-header, .supplies-item-header{   
     border-top-left-radius: 7px;
 }
 
-.new-order-saved-header{   
+.new-order-saved-header, .supplies-amount-header{   
     border-top-right-radius: 7px;
 }
 
-.new-order-table tbody{
+.new-order-table tbody, .supplies-table tbody{
     text-align: left;
 }
 
-.new-order-table>tbody>tr>td{
+.new-order-table>tbody>tr>td, .supplies-table>tbody>tr>td{
     padding: 6px 8px;
     font-size: 0.8rem;
 }
 
-.item-new-order-row{
+.item-new-order-row, .item-supplies-row{
     background-color: #f0f0f0;
 }
 
@@ -50,13 +54,13 @@
     width: 5rem;
 }
 
-#new-order-input-cell{
+#new-order-input-cell, #supplies-input-cell{
     padding: 0;
     background-color: #ffffff;
     height: 2rem;
 }
 
-.new-order-input{
+.new-order-input, .supplies-input{
     width: 100%;
     height: 100%;
     border: none;

@@ -31,6 +31,7 @@ const OrderDetail = () => {
         <div className='order-container'>
             <h2>Detalle del pedido</h2>
             <p>Fecha: {new Date(order.date).toLocaleString()}</p>
+            <h3 className='order-detail-subtitle'>Helados</h3>
             <table className="order-table">
                 <thead>
                     <tr>
@@ -51,6 +52,26 @@ const OrderDetail = () => {
                         <td className='order-detail-total'>Total</td>
                         <td className='order-detail-total-number'>{order.total_amount}</td>
                     </tr>
+                </tbody>
+            </table>
+            
+            <h3 className='order-detail-subtitle'>Insumos</h3>
+            <table className="supplies-detail-table">
+                <thead>
+                    <tr>
+                        <th className='supplies-detail-item-header'>Item</th>
+                        <th className='supplies-detail-amount-header'>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {order.supplies.map((item, idx) => {
+                        return (
+                            <tr key={idx} className='item-supplies-detail-row'>
+                                <td className='supplies-detail-item-cell'>{item.supply_id.name}</td>
+                                <td>{item.amount}</td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>
