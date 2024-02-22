@@ -23,6 +23,23 @@ const orderSchema = mongoose.Schema(
     total_amount: {
       type: Number,
     },
+    supplies: [
+      {
+        supply_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "supplies",
+          required: true,
+        },
+        amount: {
+          type: Number,
+          required: true,
+          default: 0,
+        },
+      },
+    ],
+    notes: {
+      type: String,
+    },
   },
   {
     timestamps: true,
