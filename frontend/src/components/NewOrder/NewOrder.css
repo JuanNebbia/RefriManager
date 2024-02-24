@@ -13,10 +13,6 @@
     width: 100%;
 }
 
-.supplies-table{
-    margin-top: 3rem;
-}
-
 .new-order-table>thead, .supplies-table>thead{
     background-color: #fff;
 }

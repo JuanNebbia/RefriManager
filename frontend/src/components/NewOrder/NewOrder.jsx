@@ -103,6 +103,7 @@ const NewOrder = () => {
     <div className='new-order-container'>
       <h2>Nuevo pedido</h2>
       <form action="" className="new-order-form">
+        <h3 className='order-detail-subtitle'>Helados</h3>
         <table className='new-order-table'>
           <thead>
             <tr>
@@ -157,6 +158,7 @@ const NewOrder = () => {
             </tr>
           </tbody>
         </table>
+        <h3 className='order-detail-subtitle'>Insumos</h3>
         <table className='supplies-table'>
           <thead>
             <tr>

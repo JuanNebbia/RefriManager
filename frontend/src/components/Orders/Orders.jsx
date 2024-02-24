@@ -39,6 +39,7 @@ const Orders = () => {
             <tr>
               <th className='orders-date-header'>Fecha</th>
               <th className='orders-amount-header'>Cantidad de baldes</th>
+              <th className="orders-supplies-header">Insumos</th>
               <th id='orders-actions-header'></th>
             </tr>
           </thead>
@@ -48,7 +49,8 @@ const Orders = () => {
                 return (
                   <tr className='item-order-row' key={order._id}>
                     <td>{new Date(order.date).toLocaleString()}</td>
-                    <td>{order.total_amount} <small>{order.supplies?.length ? '(+insumos)' : ''}</small></td>
+                    <td>{order.total_amount}</td>
+                    <td>{order.supplies?.length ? 'Sí' : 'No'}</td>
                     <td id='see-order-cell'>
                       <button className='white-button see-order-btn'><Link to={`/pedidos/${order._id}`}>Ver detalle</Link></button>
                     </td>

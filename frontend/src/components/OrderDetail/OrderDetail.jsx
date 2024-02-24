@@ -31,6 +31,8 @@ const OrderDetail = () => {
         <div className='order-container'>
             <h2>Detalle del pedido</h2>
             <p>Fecha: {new Date(order.date).toLocaleString()}</p>
+            {order.items.length > 0 &&
+            <>
             <h3 className='order-detail-subtitle'>Helados</h3>
             <table className="order-table">
                 <thead>
@@ -54,8 +56,12 @@ const OrderDetail = () => {
                     </tr>
                 </tbody>
             </table>
+            </>
+            }
             
-            <h3 className='order-detail-subtitle'>Insumos</h3>
+           { order.supplies.length > 0 &&
+           <>
+           <h3 className='order-detail-subtitle'>Insumos</h3>
             <table className="supplies-detail-table">
                 <thead>
                     <tr>
@@ -74,6 +80,8 @@ const OrderDetail = () => {
                     })}
                 </tbody>
             </table>
+            </>
+            }
         </div>
     }
     </>
