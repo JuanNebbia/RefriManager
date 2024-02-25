@@ -208,7 +208,7 @@ const NewOrder = () => {
           </tbody>
         </table>
         <button className="save-order-btn red-button" onClick={saveOrder}>Guardar Pedido</button>
-        <button className="send-order-btn red-button" onClick={(event)=>event.preventDefault()}>Enviar Pedido</button>
+        <button className="send-order-btn red-button" disabled onClick={(event)=>event.preventDefault()}>Enviar Pedido</button>
       </form>
     </div>
     }

@@ -24,6 +24,7 @@ const Flavors = () => {
     <>
       { (loadingBuckets || loadingFlavors || LoadingCategories ) ? <Loader /> :
         <div className='flavors-container'>
+          <h2>Sabores</h2>
           <div className="falvors-table-container">
             <table className='flavors-table'>
               <thead>
