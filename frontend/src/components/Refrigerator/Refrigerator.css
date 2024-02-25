@@ -48,7 +48,6 @@
     min-height: 15rem;
     border-radius: 0.3rem;
     display: flex;
-    /* border: 1px solid #aaa; */
     box-shadow: 0 1px 2px 0 #00000044;
 }
 
@@ -64,8 +63,8 @@
     height: 50%;
     align-content: center;
     border: none;
-    background-color: transparent;
     cursor: pointer;
+    background-color: transparent;
     
 }
 
@@ -78,7 +77,7 @@
 }
 
 .arrow-container{
-    margin: auto 2rem;
+    margin: auto 1rem;
     padding: 0.5rem;
     border-radius: 50%;
     font-size: 3rem;
@@ -87,13 +86,14 @@
 
 .buckets-container{
     width: 100%;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem 1.5rem 0;
     display: grid;
     grid-template-rows: repeat(2, auto);
     grid-auto-columns: minmax(100px, auto);
     align-content: space-between;
     justify-content: space-evenly;
     gap: 1rem;
+    overflow-x:scroll;
 }
 
 .bucket{
@@ -106,12 +106,9 @@
     justify-content: center;
     padding: 0.8rem;
     cursor: pointer;
-    /* transition: all 0.08s; */
 }
 
 .bucket:hover{
-    /* transform: scale(1.02);
-    box-shadow: -1px 1px 3px 0 #00000055; */
     backdrop-filter: brightness(0.9);
 }
 
@@ -172,4 +169,114 @@
 
 .refri-count{
     margin: 0.3rem 0.3rem auto auto;
+}
+
+@media screen and (max-width: 1199px) {
+    .buckets-container{
+        padding: 1.5rem 1rem 1.5rem 0;
+        justify-content: space-evenly;
+        gap: 0.8rem;
+    }
+    .bucket{
+        height: 70px;
+        width: 70px;
+    }
+
+    
+    .bucket-flavor{
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .bucket-amount{
+        padding: 0 0.5rem;
+    }
+
+    .bucket-flavor-name {
+        font-size: 0.9rem;
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+    .refri{
+        min-height: 12rem;
+    }
+    
+    .arrow-container{
+        margin: auto 1rem;
+        padding: 4px;
+        font-size: 2.5rem;
+    }
+
+    .buckets-container{
+        padding: 1rem 1rem 1rem 0;
+        justify-content: space-evenly;
+        gap: 6px;
+    }
+
+    .bucket{
+        height: 60px;
+        width: 60px;
+    }
+
+    
+    .bucket-flavor{
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .bucket-amount{
+        padding: 0 0.5rem;
+        width: 10rem;
+    }
+
+    .bucket-flavor-name {
+        font-size: 0.9rem;
+    }
+
+    .bucket-flavor-amount {
+        font-weight: 800;
+    }
+}
+
+@media screen and (max-width: 763px) {
+    .refri{
+        min-height: 12rem;
+    }
+
+    .arrow-container{
+        margin: auto 8px;
+        padding: 2px;
+        font-size: 2rem;
+    }
+
+    .buckets-container{
+        padding: 1rem 1rem 1rem 0;
+        justify-content: space-evenly;
+        gap: 4px;
+    }
+
+    .bucket{
+        height: 60px;
+        width: 60px;
+    }
+
+    .bucket-flavor{
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .bucket-amount{
+        padding: 0 0.5rem;
+        width: 10rem;
+    }
+
+    .bucket-flavor-name {
+        font-size: 0.9rem;
+    }
+
+    .bucket-flavor-amount {
+        font-weight: 800;
+    }
 }

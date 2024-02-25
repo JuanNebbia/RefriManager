@@ -3,3 +3,15 @@
     min-height: calc(100vh - 4.5rem);
     padding: 2rem 10%;
 }
+
+@media screen and (max-width: 991px) {
+    .main-container{
+        padding: 2rem 5%;
+    }
+}
+
+@media screen and (max-width: 763px) {
+    .main-container{
+        padding: 2rem 3%;
+    }
+}
