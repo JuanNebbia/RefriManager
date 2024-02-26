@@ -93,7 +93,6 @@
     align-content: space-between;
     justify-content: space-evenly;
     gap: 1rem;
-    overflow-x:scroll;
 }
 
 .bucket{
@@ -213,6 +212,7 @@
         padding: 1rem 1rem 1rem 0;
         justify-content: space-evenly;
         gap: 6px;
+        overflow-x:scroll;
     }
 
     .bucket{
@@ -240,7 +240,7 @@
     }
 }
 
-@media screen and (max-width: 763px) {
+@media screen and (max-width: 767px) {
     .refri{
         min-height: 12rem;
     }
@@ -255,11 +255,56 @@
         padding: 1rem 1rem 1rem 0;
         justify-content: space-evenly;
         gap: 4px;
+        overflow-x:scroll;
     }
 
     .bucket{
         height: 60px;
         width: 60px;
+    }
+
+    .bucket-flavor{
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .bucket-amount{
+        padding: 0 0.5rem;
+        width: 10rem;
+    }
+
+    .bucket-flavor-name {
+        font-size: 0.9rem;
+    }
+
+    .bucket-flavor-amount {
+        font-weight: 800;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .refri{
+        min-height: 12rem;
+    }
+
+    .arrow-container{
+        margin: auto 0;
+        padding: 2px;
+        font-size: 1.5rem;
+    }
+
+    .buckets-container{
+        padding: 1rem;
+        justify-content: space-evenly;
+        gap: 2px;
+        overflow-x:scroll;
+        grid-template-columns: repeat(6, 80px);
+    }
+
+    .bucket{
+        height: 45px;
+        width: 45px;
+        margin: 0;
     }
 
     .bucket-flavor{

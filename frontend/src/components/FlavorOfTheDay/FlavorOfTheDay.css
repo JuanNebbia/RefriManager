@@ -48,3 +48,17 @@
 .flavoroftheday-container hr:nth-child(2) {
     margin-top: 0.5rem;
 }
+
+@media screen and (max-width: 767px) {
+    .flavoroftheday-container hr {
+        width: 100%;
+    }
+    
+    .flavoroftheday-container hr:nth-child(3), .flavoroftheday-container hr:nth-child(7) {
+        width: 75%;
+    }
+    
+    .flavoroftheday-container hr:nth-child(2), .flavoroftheday-container hr:nth-child(8) {
+        width: 50%;
+    }
+}
