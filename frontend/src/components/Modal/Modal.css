@@ -61,3 +61,40 @@
     cursor: pointer;
     margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 767px) {
+    
+    .modal-inner{
+        margin: 0 auto;
+        padding: 1.5rem;
+        width: 90%;
+        max-width: 35rem;
+        max-height: 80vh; 
+        overflow-y: auto;
+    }
+    
+    .close-modal-btn{
+        font-size: 1.3rem;
+    }
+    
+    .modal-title{
+        font-size: 1.3rem;
+    }
+    
+    .modal-form{
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        margin-bottom: 0;
+    }
+    
+    
+    .modal-form select, .modal-form input{
+        border-radius: 0.5rem;
+        border: 2px solid #999;
+        font-size: 1.1rem;
+        padding: 7px;
+        cursor: pointer;
+        margin-bottom: 1rem;
+    }
+}
