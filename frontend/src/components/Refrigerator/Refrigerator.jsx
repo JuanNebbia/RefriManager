@@ -90,26 +90,28 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
           </button>
         </div>
       }
-      <div className="buckets-container">
-        { viewMode ? 
-          buckets.filter(buck => buck.side === side).map((bucket, idx) => {
-            let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#e5e5e5'
-            return (
-              <div onClick={() => openBucket(bucket)} className="bucket" key={bucket._id} style={{gridRow: Math.ceil((bucket.position - 1) % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + '55', border: `4px outset ${color}`}}>
-                <p className="bucket-flavor">
-                  { bucket.flavor.name || 'vacío'}
-                </p>
-              </div>
-            )
-          }) :
-          refriFlavors.map((flavor, idx) => {
-            return (
-              <div className="flavor-count" key={idx} style={{ backgroundColor: flavor.flavor.category_id.color + 'bb', gridRow:Math.ceil((idx+1) % 4), gridColumn: Math.ceil((idx+1) / 4)}}>{flavor.flavor.name} 
-                <p className='flavor-count-number'>{flavor.count}</p>
-              </div>
-            )
-          })
-        }
+      <div className="buckets-outer-container">
+        <div className="buckets-container">
+          { viewMode ? 
+            buckets.filter(buck => buck.side === side).map((bucket, idx) => {
+              let color = bucket.flavor.category.length === 1 ? bucket.flavor.category[0].color : '#e5e5e5'
+              return (
+                <div onClick={() => openBucket(bucket)} className="bucket" key={bucket._id} style={{gridRow: Math.ceil((bucket.position - 1) % 2) + 1, gridColumn: Math.ceil((bucket.position ) / 2), backgroundColor: color + '55', border: `4px outset ${color}`}}>
+                  <p className="bucket-flavor">
+                    { bucket.flavor.name || 'vacío'}
+                  </p>
+                </div>
+              )
+            }) :
+            refriFlavors.map((flavor, idx) => {
+              return (
+                <div className="flavor-count" key={idx} style={{ backgroundColor: flavor.flavor.category_id.color + 'bb', gridRow:Math.ceil((idx+1) % 4), gridColumn: Math.ceil((idx+1) / 4)}}>{flavor.flavor.name} 
+                  <p className='flavor-count-number'>{flavor.count}</p>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
     </div>
       <div className="under-container">

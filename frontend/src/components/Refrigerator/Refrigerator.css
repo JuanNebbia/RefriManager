@@ -84,6 +84,12 @@
     color: #555;
 }
 
+.buckets-outer-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
 .buckets-container{
     width: 100%;
     padding: 1.5rem 1rem 1.5rem 0;
@@ -93,11 +99,12 @@
     align-content: space-between;
     justify-content: space-evenly;
     gap: 1rem;
+    margin: auto;
 }
 
 .bucket{
-    height: 90px;
-    width: 90px;
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
     vertical-align: middle;
     display: flex;
@@ -172,13 +179,12 @@
 
 @media screen and (max-width: 1199px) {
     .buckets-container{
-        padding: 1.5rem 1rem 1.5rem 0;
-        justify-content: space-evenly;
+        padding: 1.5rem 1rem 1.5rem 0;;
         gap: 0.8rem;
     }
     .bucket{
-        height: 70px;
-        width: 70px;
+        height: 100px;
+        width: 100px;
     }
 
     
@@ -208,16 +214,18 @@
         font-size: 2.5rem;
     }
 
-    .buckets-container{
-        padding: 1rem 1rem 1rem 0;
-        justify-content: space-evenly;
-        gap: 6px;
+    .buckets-outer-container{
         overflow-x:scroll;
     }
 
+    .buckets-container{
+        padding: 1rem 1rem 1rem 0;;
+        gap: 6px;
+    }
+
     .bucket{
-        height: 60px;
-        width: 60px;
+        height: 90px;
+        width: 90px;
     }
 
     
@@ -251,16 +259,18 @@
         font-size: 2rem;
     }
 
-    .buckets-container{
-        padding: 1rem 1rem 1rem 0;
-        justify-content: space-evenly;
-        gap: 4px;
+    .buckets-outer-container{
         overflow-x:scroll;
     }
 
+    .buckets-container{
+        padding: 1rem 1rem 1rem 0;;
+        gap: 4px;
+    }
+
     .bucket{
-        height: 60px;
-        width: 60px;
+        height: 90px;
+        width: 90px;
     }
 
     .bucket-flavor{
@@ -284,27 +294,35 @@
 
 @media screen and (max-width: 575px) {
     .refri{
-        min-height: 12rem;
+        min-height: 0;
+        padding: 1rem;
     }
 
     .arrow-container{
-        margin: auto 0;
-        padding: 2px;
-        font-size: 1.5rem;
+        display: none;
+    }
+
+    .side-down, .side-up{
+        display: none;
+    }
+
+    .buckets-outer-container{
+        overflow-x:scroll;
+        width: 100%;
     }
 
     .buckets-container{
-        padding: 1rem;
-        justify-content: space-evenly;
         gap: 2px;
-        overflow-x:scroll;
-        grid-template-columns: repeat(6, 80px);
+        grid-auto-columns: minmax(80px, auto);
+        justify-content: space-between;
     }
 
     .bucket{
-        height: 45px;
-        width: 45px;
+        height: 80px;
+        width: 80px;
         margin: 0;
+        border-radius: 0;
+        padding: 0.5rem;
     }
 
     .bucket-flavor{

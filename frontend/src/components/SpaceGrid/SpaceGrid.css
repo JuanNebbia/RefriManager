@@ -94,3 +94,47 @@
 .add-refri-btn:hover{
     background-color: #ba0016ff;
 }
+
+@media screen and (max-width: 767px) {
+    .spacegrid-container{
+        display: flex;
+        padding: 0;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    
+    .total-box{
+        height: 150px;
+        width: 150px;
+        min-width: 150px;
+        display: flex;
+        margin: auto;
+    }
+
+    .total-spaces-tag{
+        margin-top: auto;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+
+    }
+    
+    .total-spaces-number{
+        font-size: 4rem;
+        margin: auto;
+        margin-top: 1rem;
+    }
+
+    .refris-container{
+        height: 200px;
+        margin: 0;
+        width: 100%;
+        display: grid;
+        grid-auto-rows: minmax(100px, auto);
+        grid-template-columns: repeat(3, auto);
+        align-content: space-between;
+        justify-content: space-evenly;
+        gap: 8px;
+        overflow-x: scroll;
+    
+    }
+}
