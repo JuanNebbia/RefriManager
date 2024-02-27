@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './SpaceGrid.css'
 import { useData } from '../../context/DataContext';
 import Modal from '../Modal/Modal';
@@ -7,6 +7,12 @@ import RefriModal from '../RefriModal/RefriModal';
 const SpaceGrid = () => {
     const { refrigerators, buckets, refriAmount, setRefriAmount } = useData()
     const [openModal, setOpenModal] = useState(false) 
+    const [windowWidth, setWindowWidth] = useState()
+
+
+    useEffect(()=>{
+        setWindowWidth(window.innerWidth);
+    })
 
     const handleAddRefrigeratorClick = () => {
         if(refrigerators.length === 10){
@@ -29,7 +35,7 @@ const SpaceGrid = () => {
 
     const refris = refrigerators.map((refri, idx) => {
         return (
-            <a href={`#refri-${refri._id}`} key={idx} className='refri-box' style={{gridRow: Math.ceil(idx % 2) + 1, gridColumn: Math.ceil((idx + 1) / 2)}}>
+            <a href={`#refri-${refri._id}`} key={idx} className='refri-box' style={{gridRow: windowWidth > 767 ? (Math.ceil(idx % 2) + 1) : Math.ceil((idx + 1) / 3), gridColumn: windowWidth > 767 ? Math.ceil((idx + 1) / 2) : (Math.ceil(idx % 3) + 1)}}>
                 <p className='refri-spaces-number'>{calculateRefriEmptySpaces(refri) } <span className="slash-total">/{refri.total_capacity}</span></p>
                 <p className='refri-spaces-tag'>{refri.refri_name}</p>
             </a>
@@ -49,7 +55,7 @@ const SpaceGrid = () => {
                 </div>
                 <div className='refris-container'>
                     {refris} 
-                    <button className='add-refri-btn' style={{gridRow: Math.ceil(refrigerators.length % 2)+1}} onClick={handleAddRefrigeratorClick}>+</button>
+                    <button className='add-refri-btn' style={{gridRow: windowWidth > 767 ? Math.ceil(refrigerators.length % 2)+1 :  Math.ceil((refrigerators.length + 1) / 3)}} onClick={handleAddRefrigeratorClick}>+</button>
                     </div>
             </div>
         </>

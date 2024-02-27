@@ -104,37 +104,63 @@
     }
     
     .total-box{
-        height: 150px;
-        width: 150px;
-        min-width: 150px;
+        height: 125px;
+        width: 125px;
+        min-width: 125px;
         display: flex;
         margin: auto;
     }
 
     .total-spaces-tag{
         margin-top: auto;
-        padding: 0.5rem;
-        font-size: 0.9rem;
+        padding: 0.4rem;
+        font-size: 0.8rem;
 
     }
     
     .total-spaces-number{
-        font-size: 4rem;
+        font-size: 3.5rem;
         margin: auto;
         margin-top: 1rem;
     }
 
     .refris-container{
-        height: 200px;
-        margin: 0;
+        height: fit-content;
+        margin: auto;
         width: 100%;
         display: grid;
-        grid-auto-rows: minmax(100px, auto);
+        grid-auto-rows: minmax(80px, auto);
         grid-template-columns: repeat(3, auto);
         align-content: space-between;
         justify-content: space-evenly;
         gap: 8px;
-        overflow-x: scroll;
+    }
+
+    .refri-box, .add-refri-btn{
+        height: 76px;
+        width: 76px;
+    }
+
     
+    .refri-spaces-number{
+        font-size: 2rem;
+        margin: 0.5rem auto 0;
+    }
+
+    .refri-spaces-tag{
+        font-size: 0.8rem;
+        padding: 3px;
+    }
+
+    .slash-total{
+        font-size: 0.8rem;
+    }
+
+    .add-refri-btn{
+        font-size: 3.5rem;
+        height: 65px;
+        width: 65px;
+        margin: auto;
+        border: none;
     }
 }

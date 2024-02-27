@@ -115,6 +115,18 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
       </div>
     </div>
       <div className="under-container">
+      <div className="mobile-side-selector-container">
+          <button className="mobile-side-up" onClick={()=>setSide(0)}>
+            <div className="mobile-arrow-container arrow-up" style={{color: side===0 ? '#9d6162' : '#fff'}}>
+              <TbArrowBadgeUpFilled />
+            </div>
+          </button>
+          <button className="mobile-side-down" onClick={()=>setSide(1)}>
+            <div className="mobile-arrow-container" style={{color: side===1 ? '#9d6162' : '#fff'}}> 
+              <TbArrowBadgeDownFilled />
+            </div>
+          </button>
+        </div>
         <p className="refri-count">{freeSpaces > 0 ? (freeSpaces + (freeSpaces > 1 ? ' lugares libres': ' lugar libre')) : 'Heladera llena'}</p>
       </div>
     </div>
