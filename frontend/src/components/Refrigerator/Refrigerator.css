@@ -139,7 +139,6 @@
 .flavor-count{
     border-radius: 10px;
     text-align: center;
-    /* width: fit-content; */
     padding: 0.5rem 0.8rem;
     box-shadow: 0 1px 2px 0 #0000003a;
     font-size: 0.9rem;
@@ -251,21 +250,30 @@
 @media screen and (max-width: 767px) {
     .refri{
         min-height: 12rem;
+        padding: 1rem;
+    }
+    .side-selector-container{
+        display: none;
     }
 
     .arrow-container{
-        margin: auto 8px;
-        padding: 2px;
-        font-size: 2rem;
+        display: none;
+    }
+
+    .side-down, .side-up{
+        display: none;
     }
 
     .buckets-outer-container{
         overflow-x:scroll;
+        width: 100%;
+        padding: 0;
     }
 
     .buckets-container{
-        padding: 1rem 1rem 1rem 0;;
         gap: 4px;
+        grid-auto-columns: minmax(80px, auto);
+        justify-content: space-between;
     }
 
     .bucket{
@@ -293,6 +301,43 @@
 }
 
 @media screen and (max-width: 575px) {
+
+    .side-title{
+        padding: 0.4rem;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+    
+    .view-mode-selector{
+        right: 0;
+        width: fit-content;
+        margin-left: auto;
+        margin-bottom: 0.4rem;
+        margin-right: 0.5rem;
+        padding: 0.6rem;
+        border: none;
+        background-color: #ba0016ee;
+        color: #f3f3f3;
+        font-weight: 500;
+        font-size: 0.7rem;
+        border-radius: 0.3rem;
+        box-shadow: 0 1px 2px 0 #0000003a;
+    }
+
+    .edit-refri{
+        cursor: pointer;
+        width: fit-content;
+        height: fit-content;
+        padding: 0.4rem 0.5rem;
+        background-color: #fff;
+        font-weight: 1000;
+        font-size: 0.8rem;
+        color: #ba0016;
+        border-radius: 0.4rem;
+        border: none;
+        box-shadow: 0 1px 2px 0 #0000003a;
+    }
+
     .refri{
         min-height: 0;
         padding: 1rem;
@@ -341,5 +386,10 @@
 
     .bucket-flavor-amount {
         font-weight: 800;
+    }
+
+    .refri-count{
+        font-size: 0.8rem;
+        margin: 0.3rem 0.3rem auto auto;
     }
 }

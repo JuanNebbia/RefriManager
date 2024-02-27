@@ -50,6 +50,10 @@
 }
 
 @media screen and (max-width: 767px) {
+    .flavoroftheday-container{
+        margin-top: 2rem;
+    }
+
     .flavoroftheday-container hr {
         width: 100%;
     }
