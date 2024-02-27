@@ -127,13 +127,14 @@
     .refris-container{
         height: fit-content;
         margin: auto;
+        padding: 0 1rem;
         width: 100%;
         display: grid;
         grid-auto-rows: minmax(80px, auto);
         grid-template-columns: repeat(3, auto);
         align-content: space-between;
         justify-content: space-evenly;
-        gap: 8px;
+        row-gap: 16px;
     }
 
     .refri-box, .add-refri-btn{
@@ -148,7 +149,7 @@
     }
 
     .refri-spaces-tag{
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         padding: 3px;
     }
 

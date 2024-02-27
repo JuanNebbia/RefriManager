@@ -40,3 +40,22 @@
 .flavor-count-table{
     text-align: center;
 }
+
+@media screen and (max-width: 763px) {
+    .flavors-container{
+        padding: 4rem 1%;
+    }
+
+    .flavors-table{
+        font-size: 10px;
+    }
+    
+    .flavors-table>thead>tr>th{
+        padding: 0.3rem;
+        font-size: 0.6rem;
+    }
+
+    .flavor-category-table{
+        font-size: 0.7rem;
+    }
+}

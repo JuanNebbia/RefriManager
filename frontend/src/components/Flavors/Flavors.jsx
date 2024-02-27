@@ -29,9 +29,9 @@ const Flavors = () => {
             <table className='flavors-table'>
               <thead>
                 <tr>
-                  <th>Sabor</th>
-                  <th>Descripción</th>
-                  <th>Almacenados</th>
+                  <th className='flavors-table-flavor-header'>Sabor</th>
+                  <th className='flavors-table-description-header'>Descripción</th>
+                  <th className='flavors-table-stored-header'>Cantidad</th>
                 </tr>
               </thead>
               <tbody>

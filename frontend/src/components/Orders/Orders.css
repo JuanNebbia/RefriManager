@@ -50,3 +50,19 @@
 .see-order-btn{
     padding: 0.5rem 1rem;
 }
+
+
+@media screen and (max-width: 763px) {
+    .orders-container{
+        padding: 4rem 1%;
+    }
+
+    .orders-table{
+        font-size: 10px;
+    }
+    
+    .orders-table>thead>tr>th{
+        padding: 0.3rem;
+        font-size: 0.6rem;
+    }
+}
