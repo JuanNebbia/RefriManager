@@ -4,6 +4,8 @@ import mockFlavors from '../mock/flavors.json'
 import mockCategories from '../mock/categories.json'
 import mockBuckets from '../mock/buckets.json'
 import mockRefrigerators from '../mock/refrigerators.json'
+import { useAuth } from "./AuthContext";
+import { useCookies } from "react-cookie";
 
 const DataContext = createContext();
 
@@ -17,6 +19,9 @@ export const DataProvider = ({ children }) => {
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [loadingFlavors, setLoadingFlavors] = useState(true);
   const [loadingRefrigerators, setLoadingRefrigerators] = useState(true);
+  const [cookies, setCookies] = useCookies(["sessionId", "guest"]);
+  
+  const {user, guest} = useAuth()
 
   const url = process.env.REACT_APP_BACKEND_URL;
 
@@ -135,18 +140,19 @@ export const DataProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    if (false){
+    if (cookies.sessionId){
       fetchRefrigerators();
       fetchBuckets();
       fetchCategories();
       fetchFlavors()
-    }else{
+    }
+    if(cookies.guest){
       getMockRefrigerators()
       getMockFlavors()
       getMockBuckets()
       getMockCategories()
     }
-  }, []);
+  }, [user, guest]);
 
   return (
     <DataContext.Provider

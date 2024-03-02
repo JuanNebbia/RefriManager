@@ -7,7 +7,7 @@ const Login = () => {
     const [pass, setPass] = useState()
     const [hidePass, setHidePass] = useState(true)
 
-    const { login, logError, setLogError } = useAuth()
+    const { login, logError, peekABoo } = useAuth()
 
     const handleFormChange = (event) => {
         if(event.target.name === "show-pass"){
@@ -42,7 +42,8 @@ const Login = () => {
                 { logError &&
                     <p className='login-error'>Usuario o contraseña incorrecto</p>
                 }
-                <button onClick={handleLogin}>Ingresar</button>
+                <button onClick={handleLogin} className='admin-login-btn'>Ingresar como administrador</button>
+                <button onClick={peekABoo} className='guest-login-btn'>Entrar como invitado</button>
             </form>
         </div>
     </div>

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   const [section, setSection] = useState()
 
-  const {user, logout} = useAuth()
+  const {user, logout, guest, goodNight} = useAuth()
 
   useEffect(()=> {
     const currentPath = window.location.pathname.substring(1)
@@ -20,20 +20,28 @@ const Header = () => {
   }
 
   return (
-    <div className='header-container'>
-      <div className="logo-container">
-        <a href="/"><img src={logo2} alt="" className="logo-jauja" /></a>
-      </div>
-      <ul className="btn-container">
-        <li className='header__li' style={{borderBottom: section === 'home-section' && '4px solid #ba0016', marginBottom: section === 'home-section' && '-4px'}}><Link onClick={changeSection} to={"/"} className='header__btn' id='home-section'>Heladeras</Link></li>
-        <li className='header__li' style={{borderBottom: section === 'sabores-section' && '4px solid #ba0016', marginBottom: section === 'sabores-section' && '-4px'}}><Link onClick={changeSection} to={"/sabores"} className='header__btn' id='sabores-section'>Sabores</Link></li>
-        <li className='header__li' style={{borderBottom: section === 'pedidos-section' && '4px solid #ba0016', marginBottom: section === 'pedidos-section' && '-4px'}}><Link onClick={changeSection} to={"/pedidos"} className='header__btn' id='pedidos-section'>Pedidos</Link></li>
-      </ul>
-      {
-        user && 
+    <>
+      <div className='header-container'>
+        <div className="logo-container">
+          <a href="/"><img src={logo2} alt="" className="logo-jauja" /></a>
+        </div>
+        <ul className="btn-container">
+          <li className='header__li' style={{borderBottom: section === 'home-section' && '4px solid #ba0016', marginBottom: section === 'home-section' && '-4px'}}><Link onClick={changeSection} to={"/"} className='header__btn' id='home-section'>Heladeras</Link></li>
+          <li className='header__li' style={{borderBottom: section === 'sabores-section' && '4px solid #ba0016', marginBottom: section === 'sabores-section' && '-4px'}}><Link onClick={changeSection} to={"/sabores"} className='header__btn' id='sabores-section'>Sabores</Link></li>
+          <li className='header__li' style={{borderBottom: section === 'pedidos-section' && '4px solid #ba0016', marginBottom: section === 'pedidos-section' && '-4px'}}><Link onClick={changeSection} to={"/pedidos"} className='header__btn' id='pedidos-section'>Pedidos</Link></li>
+        </ul>
+        {
+          (user && !guest) &&
           <button className='logout-btn' onClick={logout}>Salir</button>
+        }
+      </div>
+      { guest &&
+        <div className="go-to-login">
+          <button className="go-to-login-btn" onClick={goodNight}>Salir al login</button>
+        </div>
+
       }
-    </div>
+    </>
   )
 }
 

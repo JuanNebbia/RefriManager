@@ -48,18 +48,31 @@
     margin: 0;
 }
 
-.login-form button{
+.admin-login-btn{
     border: none;
     padding: 0.6rem;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 0.5rem;
     cursor: pointer;
-    width: 70%;
+    width: 100%;
     color: #111;
     background-color: #8e8;
     margin: auto;
     margin-top: 1rem;
+}
+
+.guest-login-btn{
+    border: none;
+    margin-top: 0.6rem;
+    font-weight: 400;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    color: #111;
+    margin: auto;
+    margin-top: 1rem;
+    text-decoration: underline;
 }
 
 .login-error{

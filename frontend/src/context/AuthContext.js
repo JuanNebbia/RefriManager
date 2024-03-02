@@ -9,13 +9,17 @@ const axiosInstance = axios.create({
 });
 
 export const AuthProvider = ({ children }) => {
-  const [cookies, setCookies] = useCookies(["sessionId"]);
+  const [cookies, setCookies] = useCookies(["sessionId", "guest"]);
   const [user, setUser] = useState(false);
+  const [guest, setGuest] = useState(false)
   const [logError, setLogError] = useState(false);
 
   useEffect(() => {
     if (cookies.sessionId) {
       setUser(true);
+    }
+    if (cookies.guest) {
+      setGuest(true)
     }
   }, []);
 
@@ -34,6 +38,7 @@ export const AuthProvider = ({ children }) => {
           path: "/",
         });
         setUser(true);
+        setGuest(true)
       }
     } catch (error) {
       setLogError(true);
@@ -47,9 +52,21 @@ export const AuthProvider = ({ children }) => {
     setUser(false);
   };
 
+  const peekABoo = () => {
+    setCookies("guest", true, {
+      path: "/",
+    });
+  }
+
+  const goodNight = () => {
+    document.cookie =
+      "guest=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    setGuest(false);
+  }
+
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, logError, setLogError }}
+      value={{ user, login, logout, logError, setLogError, guest, setGuest, peekABoo, goodNight }}
     >
       {children}
     </AuthContext.Provider>
