@@ -33,16 +33,16 @@ export const AuthProvider = ({ children }) => {
       if (loginResponse.data.success) {
         const expirationDate = new Date();
         expirationDate.setDate(expirationDate.getDate() + 30);
-        setCookies("sessionId", process.env.REACT_APP_SESSION_COOKIE, {
+        setCookies("sessionId", loginResponse.data.token, {
           expires: expirationDate,
           path: "/",
         });
         setUser(true);
-        setGuest(true)
+        setGuest(false)
       }
     } catch (error) {
       setLogError(true);
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -56,6 +56,7 @@ export const AuthProvider = ({ children }) => {
     setCookies("guest", true, {
       path: "/",
     });
+    setGuest(true)
   }
 
   const goodNight = () => {
@@ -66,7 +67,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, logError, setLogError, guest, setGuest, peekABoo, goodNight }}
+      value={{ user, setUser, login, logout, logError, setLogError, guest, setGuest, peekABoo, goodNight }}
     >
       {children}
     </AuthContext.Provider>

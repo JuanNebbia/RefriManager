@@ -13,7 +13,7 @@ const Header = () => {
     const currentPath = window.location.pathname.substring(1)
     const fullSection = currentPath ? `${currentPath}-section` : 'home-section'
     setSection(fullSection)
-  },[])
+  },[user, guest])
 
   const changeSection = (event) => {
     setSection(event.target.id)
@@ -21,7 +21,8 @@ const Header = () => {
 
   return (
     <>
-      <div className='header-container'>
+    { (user || guest) &&
+      <div className='header-container' hidden>
         <div className="logo-container">
           <a href="/"><img src={logo2} alt="" className="logo-jauja" /></a>
         </div>
@@ -35,9 +36,11 @@ const Header = () => {
           <button className='logout-btn' onClick={logout}>Salir</button>
         }
       </div>
+    }
       { guest &&
-        <div className="go-to-login">
-          <button className="go-to-login-btn" onClick={goodNight}>Salir al login</button>
+        <div className="guest-tag">
+          <p className='guest-info'>Has ingresado al sitio como invitado. Puedes interactuar normalmente, pero la información que observas no es real y los cambios que realices no serán permanentes. Haz click en el siguiente botón para ingresar al sitio si eres administrador.</p>
+          <button className="go-to-login-btn" onClick={goodNight}>Ingresar como administrador</button>
         </div>
 
       }

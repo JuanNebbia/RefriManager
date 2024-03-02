@@ -4,6 +4,8 @@ import mockFlavors from '../mock/flavors.json'
 import mockCategories from '../mock/categories.json'
 import mockBuckets from '../mock/buckets.json'
 import mockRefrigerators from '../mock/refrigerators.json'
+import mockOrders from '../mock/orders.json'
+import mockSupplies from '../mock/supplies.json'
 import { useAuth } from "./AuthContext";
 import { useCookies } from "react-cookie";
 
@@ -14,6 +16,7 @@ export const DataProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [flavors, setFlavors] = useState([]);
   const [refrigerators, setRefrigerators] = useState([]);
+  const [mockOrderList, setMockOrderList] = useState([]);
   const [refriAmount, setRefriAmount] = useState(0);
   const [loadingBuckets, setLoadingBuckets] = useState(true);
   const [loadingCategories, setLoadingCategories] = useState(true);
@@ -21,58 +24,93 @@ export const DataProvider = ({ children }) => {
   const [loadingRefrigerators, setLoadingRefrigerators] = useState(true);
   const [cookies, setCookies] = useCookies(["sessionId", "guest"]);
   
-  const {user, guest} = useAuth()
+  const {user, setUser, guest} = useAuth()
 
   const url = process.env.REACT_APP_BACKEND_URL;
 
+  //Fetch Data
   const fetchBuckets = async () => {
     try {
+      const token = cookies.sessionId
       const response = await axios.get(
-        `${url}/buckets`
+        `${url}/buckets`,{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
       );
       setBuckets(response.data);
       setLoadingBuckets(false);
     } catch (error) {
+      setUser(false)
+      document.cookie =
+      "sessionId=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
       console.error("Error fetching buckets data:", error);
     }
   };
 
   const fetchCategories = async () => {
     try {
+      const token = cookies.sessionId
       const response = await axios.get(
-        `${url}/categories`
+        `${url}/categories`,{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
       );
       setCategories(response.data);
       setLoadingCategories(false);
     } catch (error) {
+      setUser(false)
+      document.cookie =
+      "sessionId=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
       console.error("Error fetching categories data:", error);
     }
   };
 
   const fetchFlavors = async () => {
     try {
+      const token = cookies.sessionId
       const response = await axios.get(
-        `${url}/flavors`
+        `${url}/flavors`,{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
       );
       setFlavors(response.data);
       setLoadingFlavors(false);
     } catch (error) {
+      setUser(false)
+      document.cookie =
+      "sessionId=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
       console.error("Error fetching flavors data:", error);
     }
   };
 
   const fetchRefrigerators = async () => {
     try {
+      const token = cookies.sessionId
       const response = await axios.get(
-        `${url}/refrigerators`
+        `${url}/refrigerators`,{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
       );
       setRefrigerators(response.data);
       setRefriAmount(response.data.length);
       setLoadingRefrigerators(false);
     } catch (error) {
+      setUser(false)
+      document.cookie =
+      "sessionId=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
       console.error("Error fetching refrigerators data:", error);
     }
   };
+
+  //Mock Data
 
   const getMockFlavors = () => {
     const copyMockFlavors = [...mockFlavors]
@@ -139,7 +177,36 @@ export const DataProvider = ({ children }) => {
     setLoadingRefrigerators(false)
   }
 
+  const getmockOrders = () => {
+    const copyMockOrders = [...mockOrders]
+    const copyMockSupplies = [...mockSupplies]
+    const copyMockFlavors = [...mockFlavors]
+    
+    const populatedOrders = copyMockOrders.map(order => {
+      order.items.map(item => {
+        const flavorData = copyMockFlavors.find(flavor => flavor._id === item.flavor_id)
+        if(flavorData){
+          item.flavor_id = flavorData
+        }
+        return item
+      })
+      order.supplies.map(supplyItem => {
+        const supplyData = copyMockSupplies.find(supply => supply._id === supplyItem.supply_id)
+        if(supplyData){
+          supplyItem.supply_id = supplyData
+        }
+        return supplyItem
+      })
+      return order
+    })
+    setMockOrderList(copyMockOrders)
+  }
+
   useEffect(() => {
+    setLoadingBuckets(true)
+    setLoadingRefrigerators(true)
+    setLoadingFlavors(true)
+    setLoadingCategories(true)
     if (cookies.sessionId){
       fetchRefrigerators();
       fetchBuckets();
@@ -151,6 +218,7 @@ export const DataProvider = ({ children }) => {
       getMockFlavors()
       getMockBuckets()
       getMockCategories()
+      getmockOrders()
     }
   }, [user, guest]);
 
@@ -167,6 +235,7 @@ export const DataProvider = ({ children }) => {
         setRefriAmount,
         buckets,
         setBuckets,
+        mockOrderList,
         loadingBuckets,
         loadingCategories,
         loadingFlavors,

@@ -7,15 +7,16 @@ import ordersRoutes from "./orders.routes.js";
 import supplyRoutes from "./supplies.routes.js";
 import authRoutes from "./auth.routes.js";
 import errorMiddleware from "../middlewares/error.middleware.js";
+import verifyToken from "../middlewares/session.middleware.js";
 
 const router = Router();
 
-router.use("/buckets", bucketsRoutes);
-router.use("/categories", categoriesRoutes);
-router.use("/flavors", flavorsRoutes);
-router.use("/refrigerators", refrigeratorsRoutes);
-router.use("/orders", ordersRoutes);
-router.use("/supplies", supplyRoutes);
+router.use("/buckets", verifyToken, bucketsRoutes);
+router.use("/categories", verifyToken, categoriesRoutes);
+router.use("/flavors", verifyToken, flavorsRoutes);
+router.use("/refrigerators", verifyToken, refrigeratorsRoutes);
+router.use("/orders", verifyToken, ordersRoutes);
+router.use("/supplies", verifyToken, supplyRoutes);
 router.use("/auth", authRoutes);
 
 router.use(errorMiddleware);

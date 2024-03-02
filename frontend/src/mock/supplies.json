@@ -1,0 +1,37 @@
+[
+    {
+        "_id": "1",
+        "name": "Cucuruchos",
+        "status": "active"
+    },
+    {
+        "_id": "2",
+        "name": "Potes para helado 1kg",
+        "status": "active"
+    },
+    {
+        "_id": "3",
+        "name": "Potes para helado 1/2kg",
+        "status": "active"
+    },
+    {
+        "_id": "4",
+        "name": "Potes para helado 1/4kg",
+        "status": "active"
+    },
+    {
+        "_id": "5",
+        "name": "Bolsa de papel chica",
+        "status": "active"
+    },
+    {
+        "_id": "6",
+        "name": "Bolsa de papel grande",
+        "status": "active"
+    },
+    {
+        "_id": "7",
+        "name": "Cinta adhesiva",
+        "status": "active"
+    }
+]

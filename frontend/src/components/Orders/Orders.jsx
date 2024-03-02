@@ -3,16 +3,27 @@ import React, { useEffect, useState } from 'react'
 import './Orders.css'
 import Loader from '../Loader/Loader'
 import { Link } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
+import { useAuth } from '../../context/AuthContext'
+import { useData } from '../../context/DataContext'
 
 const Orders = () => {
   const [orders, setOrders] = useState([])
   const [loadingOrders, setLoadingOrders] = useState(true)
+  const [cookies, setCookies] = useCookies(["sessionId", "guest"]);
+  const { mockOrderList } = useData()
+  const {user, guest} = useAuth()
 
   useEffect(() => {
     setLoadingOrders(true)
     const fetchOrders = async() => {
+      const token = cookies.sessionId
       const url = process.env.REACT_APP_BACKEND_URL
-      const ordersResponse = await axios.get(`${url}/orders`)
+      const ordersResponse = await axios.get(`${url}/orders`,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
       ordersResponse.data.sort((a, b) => {
         if(a.date < b.date) return 1
         if(a.date > b.date) return -1
@@ -22,11 +33,16 @@ const Orders = () => {
       setLoadingOrders(false)
     }
     try {
-      fetchOrders()
+      if(user){
+        fetchOrders()
+      }else{
+        setOrders(mockOrderList)
+        setLoadingOrders(false)
+      }
     } catch (error) {
       console.error("Error fetching orders data:", error);
     }
-  }, [])
+  }, [mockOrderList])
 
   return (
     <>

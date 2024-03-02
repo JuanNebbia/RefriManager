@@ -4,6 +4,7 @@ import { useData } from '../../context/DataContext'
 import Loader from '../Loader/Loader'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 
 const NewOrder = () => {
   const [sortedFlavors, setSortedFlavors] = useState([])
@@ -12,6 +13,7 @@ const NewOrder = () => {
   const [totalOrder, setTotalOrder] = useState(0)
   const [supplies, setSupplies] = useState([])
   const navigate = useNavigate()
+  const [cookies, setCookies] = useCookies(["sessionId", "guest"]);
 
   const { flavors, loadingFlavors, buckets, loadingBuckets } = useData()
 
@@ -28,8 +30,13 @@ const NewOrder = () => {
     setSortedFlavors(flavorsCopy)
 
     const fetchSupplies = async()=>{
+      const token = cookies.sessionId
       const url = process.env.REACT_APP_BACKEND_URL
-      const suppliesResponse = await axios.get(`${url}/supplies`)
+      const suppliesResponse = await axios.get(`${url}/supplies`,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
       setSupplies(suppliesResponse.data)
     }
     try {

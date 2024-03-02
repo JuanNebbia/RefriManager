@@ -53,6 +53,27 @@
 
 }
 
+.guest-tag{
+    background-color: #ff9;
+    font-size: 0.9rem;
+    padding: 1rem 20%;
+    font-weight: 600;
+}
+
+.go-to-login-btn{
+    background-color: #99d9f8;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 12px;
+    box-shadow: 0 1px 2px 0 #00000044;
+    cursor: pointer;
+}
+
+.go-to-login-btn:hover{
+    background-color: #a9dffa;
+}
+
 @media screen and (max-width: 767px) {
     .header-container{
         padding: 0 0.5rem;

@@ -31,9 +31,9 @@ const Login = () => {
         <div className="login-inner">
             <h3 className="login-title">Inicio de sesión</h3>
             <form action="" className="login-form" onChange={handleFormChange}>
-                <label htmlFor="user-login"> Email</label>
+                <label htmlFor="user-login">Usuario</label>
                 <input type="text" id='user-login' name='username' />
-                <label htmlFor="pass-login"> Contraseña</label>
+                <label htmlFor="pass-login">Contraseña</label>
                 <input type={hidePass ? "password": "text"} id='pass-login' name='pass' autoComplete='new-passwor' />
                 <div className="show-pass-container">
                     <input type="checkbox" name='show-pass' />
