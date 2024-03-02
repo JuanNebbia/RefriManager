@@ -13,8 +13,6 @@ const Header = () => {
     const currentPath = window.location.pathname.substring(1)
     const fullSection = currentPath ? `${currentPath}-section` : 'home-section'
     setSection(fullSection)
-
-    console.log(currentPath);
   },[])
 
   const changeSection = (event) => {
