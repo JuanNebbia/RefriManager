@@ -1,7 +1,8 @@
 .orders-container{
-    background-color: #f0f0f0;
     min-height: calc(100vh - 4.5rem);
     padding: 2rem 10%;
+    max-width: 90rem;
+    margin: 0 auto;
 }
 
 .orders-table{
@@ -49,6 +50,7 @@
 
 .see-order-btn{
     padding: 0.5rem 1rem;
+    box-shadow: 0 1px 3px 0 #00000055;
 }
 
 

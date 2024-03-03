@@ -39,7 +39,7 @@ const Header = () => {
     }
       { guest &&
         <div className="guest-tag">
-          <p className='guest-info'>Has ingresado al sitio como invitado. Puedes interactuar normalmente, pero la información que observas no es real y los cambios que realices no serán permanentes. Haz click en el siguiente botón para ingresar al sitio si eres administrador.</p>
+          <p className='guest-info'>Has ingresado al sitio como invitado. La interacción con el sitio es limitada, la información que observas no es real y los cambios que realices no serán permanentes. Haz click en el siguiente botón para ingresar al sitio si eres administrador.</p>
           <button className="go-to-login-btn" onClick={goodNight}>Ingresar como administrador</button>
         </div>
 

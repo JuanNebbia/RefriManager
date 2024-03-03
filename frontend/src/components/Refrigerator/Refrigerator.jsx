@@ -59,7 +59,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
       }
       {
         openEditModal &&
-        <Modal openModal={openEditModal} setOpenModal={setOpenEditModal}  content={<EditModal selectedRefrigerator={{_id, refri_name, buckets, total_capacity}} setOpenModal={setOpenEditModal} />} />
+        <Modal openModal={openEditModal} setOpenModal={setOpenEditModal}  content={<EditModal selectedRefrigerator={{_id, refri_name, buckets, total_capacity, status}} setOpenModal={setOpenEditModal} />} />
       }
       <div className="refri-name-container">
         <p className="refri-name">{refri_name} 
@@ -71,7 +71,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
           }
         </p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
-        <button className="edit-refri" onClick={() => setOpenEditModal(true)}>
+        <button className="edit-refri white-button" onClick={() => setOpenEditModal(true)}>
           <BsFillPencilFill />
         </button>
       </div>

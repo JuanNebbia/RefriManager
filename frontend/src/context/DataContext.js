@@ -169,12 +169,20 @@ export const DataProvider = ({ children }) => {
           return bucket
         })
         refrigerator.buckets = bucketsMap
-    
       } 
       return refrigerator
     })
     setRefrigerators(populatedRefrigerators);
+    setRefriAmount(populatedRefrigerators.length);
     setLoadingRefrigerators(false)
+  }
+
+  const updateMockRefrigerator = (refri_name, id) => {
+    const copyMockRefrigerators = [...mockRefrigerators]
+    const refri_idx = copyMockRefrigerators.findIndex(refrigerator => refrigerator._id === id)
+    copyMockRefrigerators[refri_idx].refri_name = refri_name
+    copyMockRefrigerators[refri_idx]._id = id
+    setRefrigerators(copyMockRefrigerators)
   }
 
   const getmockOrders = () => {
@@ -256,6 +264,7 @@ export const DataProvider = ({ children }) => {
         setCategories,
         refrigerators,
         setRefrigerators,
+        updateMockRefrigerator,
         refriAmount,
         setRefriAmount,
         buckets,

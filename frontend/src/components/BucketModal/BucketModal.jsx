@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './BucketModal.css'
 import { useData } from '../../context/DataContext';
 import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
 
 const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
@@ -11,6 +12,7 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
     const [availability, setAvailability] = useState()
     const [enableSave, setEnableSave] = useState(true)
     const { flavors, categories, buckets, refrigerators, setRefrigerators } = useData();
+    const { user } = useAuth()
 
     useEffect(() => {
         if(selectedBucket.flavor_id){
@@ -91,9 +93,11 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
             })
             setRefrigerators(refrigeratorsCopy)
             setOpenModal(false)
-            await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
-            const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
-            setRefrigerators(refrigeratorsFetch.data)
+            if(user){
+                await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
+                const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
+                setRefrigerators(refrigeratorsFetch.data)
+            }
         } catch (error) {
             console.log(error);
         }
