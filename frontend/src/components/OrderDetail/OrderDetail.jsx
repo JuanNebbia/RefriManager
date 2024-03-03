@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './OrderDetail.css'
 import Loader from '../Loader/Loader'
 import { useData } from '../../context/DataContext'
@@ -12,8 +12,9 @@ const OrderDetail = () => {
     const { mockOrderList } = useData()
     const [loadingOrder, setLoadingOrder] = useState(true)
     const {user, guest} = useAuth()
+    const navigate = useNavigate()
 
-    useEffect(()=>{
+    useEffect(()=>{;
         const fetchOrder = async() => {
             const url = process.env.REACT_APP_BACKEND_URL
             const ordersResponse = await axios.get(`${url}/orders/${oid}`)
@@ -35,6 +36,8 @@ const OrderDetail = () => {
                     const copyCurrentOrder = currentOrder;
                     setOrder(copyCurrentOrder)
                     setLoadingOrder(false)
+                }else{
+                    navigate('/pedidos/')
                 }
             }
           } catch (error) {

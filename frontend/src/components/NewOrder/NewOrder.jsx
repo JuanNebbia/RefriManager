@@ -5,6 +5,8 @@ import Loader from '../Loader/Loader'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
+import { useAuth } from '../../context/AuthContext'
+import mockSupplies from '../../mock/supplies.json'
 
 const NewOrder = () => {
   const [sortedFlavors, setSortedFlavors] = useState([])
@@ -14,8 +16,9 @@ const NewOrder = () => {
   const [supplies, setSupplies] = useState([])
   const navigate = useNavigate()
   const [cookies, setCookies] = useCookies(["sessionId", "guest"]);
+  const {user, guest} = useAuth()
 
-  const { flavors, loadingFlavors, buckets, loadingBuckets } = useData()
+  const { flavors, loadingFlavors, buckets, loadingBuckets, mockOrderList, setMockOrderList, addMockOrder } = useData()
 
   useEffect(() => {
     const flavorsCopy = flavors
@@ -40,7 +43,12 @@ const NewOrder = () => {
       setSupplies(suppliesResponse.data)
     }
     try {
-      fetchSupplies()
+      if(user){
+        fetchSupplies()
+    }else{
+        const copyMockSupplies = [...mockSupplies]
+        setSupplies(copyMockSupplies);
+    }
     } catch (error) {
       console.error(error)
     }
@@ -86,19 +94,35 @@ const NewOrder = () => {
   }
 
   const saveOrder = async(event) => {
+    event.preventDefault()
     try {
-      event.preventDefault()
-      if(!order.length && !suppliesOrder.length) return
-      const url = process.env.REACT_APP_BACKEND_URL
-      const payload = {
-        items: order,
-        supplies: suppliesOrder,
-        date: new Date()
+      if(user){
+        if(!order.length && !suppliesOrder.length) return
+        const url = process.env.REACT_APP_BACKEND_URL
+        const payload = {
+          items: order,
+          supplies: suppliesOrder,
+          date: new Date()
+        }
+        const response = await axios.post(`${url}/orders`, payload )
+        if(response.status === 201 || response.status === 200){
+          navigate('/pedidos/'+response.data._id)
+        };
+      }else{
+        let total_amount = 0;
+        for (let i = 0; i < order.length; i++) {
+          total_amount += order[i].amount;
+        }
+        const payload = {
+          _id: `${mockOrderList.length + 1}`,
+          items: order,
+          supplies: suppliesOrder,
+          date: new Date(),
+          total_amount
+        }
+        addMockOrder(payload)
+        navigate('/pedidos/')
       }
-      const response = await axios.post(`${url}/orders`, payload )
-      if(response.status === 201 || response.status === 200){
-        navigate('/pedidos/'+response.data._id)
-      };
     } catch (error) {
       console.error(error);
     }

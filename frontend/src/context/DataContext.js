@@ -202,6 +202,31 @@ export const DataProvider = ({ children }) => {
     setMockOrderList(copyMockOrders)
   }
 
+  const addMockOrder = (payload) => {
+    const copyMockOrderList = [...mockOrderList]
+    const copyMockSupplies = [...mockSupplies]
+    const copyMockFlavors = [...mockFlavors]
+    copyMockOrderList.push(payload)
+    setMockOrderList(copyMockOrderList)
+    copyMockOrderList.map(order => {
+      order.items.map(item => {
+        const flavorData = copyMockFlavors.find(flavor => flavor._id === item.flavor_id)
+        if(flavorData){
+          item.flavor_id = flavorData
+        }
+        return item
+      })
+      order.supplies.map(supplyItem => {
+        const supplyData = copyMockSupplies.find(supply => supply._id === supplyItem.supply_id)
+        if(supplyData){
+          supplyItem.supply_id = supplyData
+        }
+        return supplyItem
+      })
+      return order
+    })
+  }
+
   useEffect(() => {
     setLoadingBuckets(true)
     setLoadingRefrigerators(true)
@@ -236,6 +261,8 @@ export const DataProvider = ({ children }) => {
         buckets,
         setBuckets,
         mockOrderList,
+        setMockOrderList,
+        addMockOrder,
         loadingBuckets,
         loadingCategories,
         loadingFlavors,
