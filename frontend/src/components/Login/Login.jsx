@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import './Login.css'
+import { IoIosIceCream } from "react-icons/io";
 
 const Login = () => {
     const [username, setUsername] = useState()
@@ -28,6 +29,7 @@ const Login = () => {
 
   return (
     <div className='login-container'>
+        <h1 className='main-title'><IoIosIceCream /> Refri Manager <IoIosIceCream /></h1>
         <div className="login-inner">
             <h3 className="login-title">Inicio de sesión</h3>
             <form action="" className="login-form" onChange={handleFormChange}>
@@ -43,7 +45,7 @@ const Login = () => {
                     <p className='login-error'>Usuario o contraseña incorrecto</p>
                 }
                 <button onClick={handleLogin} className='admin-login-btn'>Ingresar como administrador</button>
-                <button onClick={peekABoo} className='guest-login-btn'>Entrar como invitado</button>
+                <button onClick={peekABoo} className='guest-login-btn'>Ingresar como invitado</button>
             </form>
         </div>
     </div>

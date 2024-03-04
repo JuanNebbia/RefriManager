@@ -1,6 +1,6 @@
 This favicon was generated using the following font:
 
-- Font Title: Aclonica
-- Font Author: Copyright (c) 2010 Brian J. Bonislawsky (astigma@astigmatic.com)
-- Font Source: http://fonts.gstatic.com/s/aclonica/v22/K2FyfZJVlfNNSEBXGb7TCI6oBjLz.ttf
-- Font License: Apache License, version 2.0 (http://www.apache.org/licenses/LICENSE-2.0.html))
+- Font Title: Lily Script One
+- Font Author: Copyright (c) 2012-2013, Julia Petretta (www.juliapetretta.com julia.petretta@googlemail.com), with Reserved Font Name 'Lily'
+- Font Source: https://fonts.gstatic.com/s/lilyscriptone/v15/LhW9MV7ZMfIPdMxeBjBvFN8SXLS4gsSjQNsRMg.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

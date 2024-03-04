@@ -1,5 +1,6 @@
 import "./App.css";
 import Flavors from "./components/Flavors/Flavors";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import NewOrder from "./components/NewOrder/NewOrder";
@@ -23,6 +24,7 @@ function App() {
               <Route path="/pedidos/:oid" element={<OrderDetail />} />
               <Route path="/pedidos" element={<Orders />} />
             </Routes>
+            <Footer />
           </DataProvider>
         </AuthProvider>
       </BrowserRouter>

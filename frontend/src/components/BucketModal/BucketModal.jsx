@@ -21,7 +21,7 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
             setCategoryFlavors(flavors)
             setAvailability(buckets.filter(bucket => bucket.flavor_id === selectedBucket.flavor_id).length)
         }
-    },[buckets, flavors])
+    },[buckets, flavors, selectedBucket.flavor, selectedBucket.flavor_id])
 
     const changeCategory = (event) => {
         try {
@@ -111,7 +111,7 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
                 <select name="category" id="category-select" onChange={changeCategory} value={selectedCategory._id}>
                     <option value="">Todos</option>
                     { categories.map((category, idx) => {
-                        return <option value={category._id} key={idx} style={{backgroundColor: category.color}}>{category.category}</option>
+                        return <option value={category._id} key={idx} style={{backgroundColor: category.color + 'aa'}}>{category.category}</option>
                     })}
                 </select>
                 <label htmlFor="flavor-select" className='select-label'>Sabor</label>
