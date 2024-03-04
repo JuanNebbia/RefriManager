@@ -122,13 +122,9 @@
     }
     
     .go-to-login-btn{
-        background-color: #99d9f8;
         font-size: 0.8rem;
         border-radius: 5px;
         padding: 5px 8px;
     }
     
-    .go-to-login-btn:hover{
-        background-color: #a9dffa;
-    }
 }

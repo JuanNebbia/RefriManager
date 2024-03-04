@@ -67,4 +67,8 @@
         padding: 0.3rem;
         font-size: 0.6rem;
     }
+    
+    .orders-table>tbody>tr>td{
+        padding: 8px 10px
+    }
 }

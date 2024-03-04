@@ -51,17 +51,23 @@
 @media screen and (max-width: 767px) {
     .flavoroftheday-container{
         margin-top: 2rem;
+        padding: 0.5rem;
     }
+
+    .flavoroftheday-container p{
+        margin: 0;
+    }
+
     .flavoroftheday-title{
         font-size:0.9rem;
     }
     .flavoroftheday{
-        font-size: 1.6rem;
-        text-wrap: nowrap;
+        font-size: 1.4rem;
     }
 
     .flavoroftheday-container hr {
         width: 100%;
+        margin: 0.7rem auto;
     }
     
     .flavoroftheday-container hr:nth-child(3), .flavoroftheday-container hr:nth-child(7) {
@@ -70,5 +76,9 @@
     
     .flavoroftheday-container hr:nth-child(2), .flavoroftheday-container hr:nth-child(8) {
         width: 50%;
+    }
+
+    .dot-decoration{
+        display: none;
     }
 }
