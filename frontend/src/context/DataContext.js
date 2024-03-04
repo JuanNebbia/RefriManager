@@ -22,7 +22,7 @@ export const DataProvider = ({ children }) => {
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [loadingFlavors, setLoadingFlavors] = useState(true);
   const [loadingRefrigerators, setLoadingRefrigerators] = useState(true);
-  const [cookies, setCookies] = useCookies(["sessionId", "guest"]);
+  const [cookies] = useCookies(["sessionId", "guest"]);
   
   const {user, setUser, guest} = useAuth()
 
@@ -190,7 +190,7 @@ export const DataProvider = ({ children }) => {
     const copyMockSupplies = [...mockSupplies]
     const copyMockFlavors = [...mockFlavors]
     
-    const populatedOrders = copyMockOrders.map(order => {
+    copyMockOrders.map(order => {
       order.items.map(item => {
         const flavorData = copyMockFlavors.find(flavor => flavor._id === item.flavor_id)
         if(flavorData){
@@ -253,7 +253,7 @@ export const DataProvider = ({ children }) => {
       getMockCategories()
       getmockOrders()
     }
-  }, [user, guest]);
+  }, [user, guest, cookies.guest, cookies.sessionId]);
 
   return (
     <DataContext.Provider

@@ -3,6 +3,7 @@ import './BucketModal.css'
 import { useData } from '../../context/DataContext';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
+import { useCookies } from 'react-cookie';
 
 
 const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
@@ -13,6 +14,7 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
     const [enableSave, setEnableSave] = useState(true)
     const { flavors, categories, buckets, refrigerators, setRefrigerators } = useData();
     const { user } = useAuth()
+    const [cookies] = useCookies(["sessionId", "guest"]);
 
     useEffect(() => {
         if(selectedBucket.flavor_id){
@@ -93,9 +95,14 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
             })
             setRefrigerators(refrigeratorsCopy)
             setOpenModal(false)
-            if(user){
-                await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
-                const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
+            if(user){  
+                const token = cookies.sessionId
+                await axios.put(`${url}/buckets/${newBucket._id}`, newBucket,{
+                    headers: {'Authorization': `Bearer ${token}`}
+                })
+                const refrigeratorsFetch = await axios.get(`${url}/refrigerators`,{
+                    headers: {'Authorization': `Bearer ${token}`}
+                });
                 setRefrigerators(refrigeratorsFetch.data)
             }
         } catch (error) {

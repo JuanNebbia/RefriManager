@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     if (cookies.guest) {
       setGuest(true)
     }
-  }, []);
+  }, [cookies.guest, cookies.sessionId]);
 
   const login = async (payload) => {
     const url = process.env.REACT_APP_BACKEND_URL;

@@ -3,6 +3,7 @@ import './EditModal.css'
 import { useData } from '../../context/DataContext';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
+import { useCookies } from 'react-cookie';
 
 
 const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
@@ -12,6 +13,7 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
     const [hideWarning, setHideWarning] = useState(true)
     const { setRefrigerators, setLoadingRefrigerators, updateMockRefrigerator, refriAmount, setRefriAmount } = useData();
     const { user } = useAuth() 
+    const [cookies] = useCookies(["sessionId"]);
 
     const handleAmountChange = (event) => {
         setSelectedAmount(+event.target.value)
@@ -29,15 +31,18 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
     }
 
     const saveChanges = async () => {
-        try {
+        try {   
             const url = process.env.REACT_APP_BACKEND_URL
+            const token = cookies.sessionId
             const updatedRefrigerator = {
                 refri_name: refriName,
                 total_capacity: selectedAmount,
                 status: selectedRefrigerator.status
             }
             if(user){
-                await axios.put(`${url}/refrigerators/${selectedRefrigerator._id}`, updatedRefrigerator)
+                await axios.put(`${url}/refrigerators/${selectedRefrigerator._id}`, updatedRefrigerator,{
+                    headers: {'Authorization': `Bearer ${token}`}}
+                )
                 const amount = selectedAmount - selectedRefrigerator.total_capacity
                 if(amount > 0){
                     for(let i = 0; i < amount; i++){
@@ -48,7 +53,9 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
                             position: startPosition + Math.floor(i / 2), 
                             side: i % 2
                         }
-                        await axios.post(`${url}/buckets`, newBucket)
+                        await axios.post(`${url}/buckets`, newBucket, {
+                            headers: {'Authorization': `Bearer ${token}`}}
+                        )
                     }
                 }
                 if(amount < 0){
@@ -56,14 +63,18 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
                     const sortedBuckets = selectedRefrigeratorCopy.buckets.sort((a, b) => b.position - a.position);
                     for (let i = 0; i < (amount * -1); i++) {
                             if (i < sortedBuckets.length) {
-                                    await axios.delete(`${url}/buckets/${sortedBuckets[i]._id}`)
+                                    await axios.delete(`${url}/buckets/${sortedBuckets[i]._id}`, {
+                                        headers: {'Authorization': `Bearer ${token}`}}
+                                    )
                             } else {
                                 break;
                             }
                     }
                 }
                 setOpenModal(false)
-                const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
+                const refrigeratorsFetch = await axios.get(`${url}/refrigerators`, {
+                    headers: {'Authorization': `Bearer ${token}`}}
+                );
                 setRefrigerators(refrigeratorsFetch.data)
             
             }else{
@@ -77,10 +88,13 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
 
     const deleteRefrigerator = async() => {
         const url = process.env.REACT_APP_BACKEND_URL
-        if(window.confirm('Estás por eliminar una heladera y todo su contenido. ¿Continuar?')){
+        const token = cookies.sessionId
+        if(window.confirm('Estás por eliminar una heladera y todo su contenido. ¿Continuar?') && user){
             setOpenModal(false)
             setLoadingRefrigerators(true)
-            const deletedRefrigeratorFetch = await axios.delete(`${url}/refrigerators/${selectedRefrigerator._id}`)
+            const deletedRefrigeratorFetch = await axios.delete(`${url}/refrigerators/${selectedRefrigerator._id}`, {
+                headers: {'Authorization': `Bearer ${token}`}}
+            )
             setRefrigerators(deletedRefrigeratorFetch.data)
             setLoadingRefrigerators(false)
             setRefriAmount(refriAmount - 1)
@@ -99,7 +113,7 @@ const EditModal = ({ selectedRefrigerator, setOpenModal }) => {
             </form>
             <div className="modal-btn-container">
                 <button className="save-bucket" disabled={enableSave} onClick={saveChanges}>Guardar</button>
-                <button className="delete-bucket" onClick={deleteRefrigerator}>Eliminar Heladera</button>
+                <button className="delete-bucket" onClick={deleteRefrigerator} disabled={!user} style={{cursor: !user && "not-allowed"}}>Eliminar Heladera</button>
             </div>
         </div>
     )

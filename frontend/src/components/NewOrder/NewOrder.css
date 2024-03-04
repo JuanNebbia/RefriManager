@@ -83,6 +83,14 @@
     text-align: center;
 }
 
+.comments-input{
+    display: block;
+    width: 100%;
+    border-radius: 7px;
+    border: 2px solid #dedcdc;
+    padding: 10px 5px;
+}
+
 
 @media screen and (max-width: 763px) {
     .new-order-container{

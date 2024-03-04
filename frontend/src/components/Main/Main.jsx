@@ -14,7 +14,7 @@ import Login from '../Login/Login.jsx';
 
 const Main = () => {
   const { refrigerators, buckets, loadingBuckets, loadingCategories, loadingFlavors, loadingRefrigerators } = useData()
-  const { user, setUser, guest } = useAuth()
+  const { user, guest } = useAuth()
 
   return (
     <>

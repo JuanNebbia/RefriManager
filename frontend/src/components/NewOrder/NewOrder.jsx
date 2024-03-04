@@ -13,6 +13,7 @@ const NewOrder = () => {
   const [sortedFlavors, setSortedFlavors] = useState([])
   const [order, setOrder] = useState([])
   const [suppliesOrder, setSuppliesOrder] = useState([])
+  const [comments, setComments] = useState(null)
   const [totalOrder, setTotalOrder] = useState(0)
   const [supplies, setSupplies] = useState([])
   const navigate = useNavigate()
@@ -94,6 +95,10 @@ const NewOrder = () => {
     setSuppliesOrder(suppliesOrderCopy)
   }
 
+  const handleCommentOrderChange = (event) => {
+    setComments(event.target.value)
+  }
+
   const saveOrder = async(event) => {
     event.preventDefault()
     try {
@@ -103,9 +108,15 @@ const NewOrder = () => {
         const payload = {
           items: order,
           supplies: suppliesOrder,
-          date: new Date()
+          date: new Date(),
+          notes: comments
         }
-        const response = await axios.post(`${url}/orders`, payload )
+        const token = cookies.sessionId
+        const response = await axios.post(`${url}/orders`, payload, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        } )
         if(response.status === 201 || response.status === 200){
           navigate('/pedidos/'+response.data._id)
         };
@@ -119,7 +130,8 @@ const NewOrder = () => {
           items: order,
           supplies: suppliesOrder,
           date: new Date(),
-          total_amount
+          total_amount,
+          notes: comments
         }
         addMockOrder(payload)
         navigate('/pedidos/')
@@ -241,6 +253,10 @@ const NewOrder = () => {
               })}
             </tbody>
           </table>
+          <h3 className='order-detail-subtitle'>Comentarios</h3>
+          <textarea name="" id="" cols="30" rows="10" className="comments-input" onChange={handleCommentOrderChange}>
+
+          </textarea>
           <button className="save-order-btn red-button" onClick={saveOrder}>Guardar Pedido</button>
           <button className="send-order-btn red-button" disabled onClick={(event)=>event.preventDefault()}>Enviar Pedido</button>
         </form>
