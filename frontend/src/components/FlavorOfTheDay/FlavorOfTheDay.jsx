@@ -30,7 +30,7 @@ const FlavorOfTheDay = () => {
                 <hr />
                 <hr />
                 <hr />
-                <p> &#x2022; &#x2022; &#x2022; <span className='flavoroftheday'>{calculateFlavor()}</span> &#x2022; &#x2022; &#x2022;</p>
+                <p> <span className='dot-decoration'>&#x2022;</span> <span className='dot-decoration'>&#x2022;</span> <span className='dot-decoration'>&#x2022;</span> <span className='flavoroftheday'>{calculateFlavor()}</span> <span className='dot-decoration'>&#x2022;</span> <span className='dot-decoration'>&#x2022;</span> <span className='dot-decoration'>&#x2022;</span></p>
                 <hr />
                 <hr />
                 <hr />  

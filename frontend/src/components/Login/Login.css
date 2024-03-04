@@ -84,6 +84,7 @@
     margin: auto;
     margin-top: 1rem;
     text-decoration: underline;
+    background-color: #fff;
 }
 
 .login-error{
@@ -92,7 +93,10 @@
 }
 
 @media screen and (max-width: 767px) {
+    .login-container{
+        padding: 2rem 2%;
+    }
     .main-title{
-        font-size: 3rem;
+        font-size: 2rem;
     }
 }
