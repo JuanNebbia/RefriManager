@@ -14,12 +14,12 @@ import Login from '../Login/Login.jsx';
 
 const Main = () => {
   const { refrigerators, buckets, loadingBuckets, loadingCategories, loadingFlavors, loadingRefrigerators } = useData()
-  const { user, setUser } = useAuth()
+  const { user, guest } = useAuth()
 
   return (
     <>
       {
-        user ?
+        (user || guest) ?
           <div className='main-container'>
           { 
             (!loadingBuckets && !loadingCategories && !loadingFlavors && !loadingRefrigerators) ?

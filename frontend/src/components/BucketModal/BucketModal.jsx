@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './BucketModal.css'
 import { useData } from '../../context/DataContext';
 import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
+import { useCookies } from 'react-cookie';
 
 
 const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
@@ -11,6 +13,8 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
     const [availability, setAvailability] = useState()
     const [enableSave, setEnableSave] = useState(true)
     const { flavors, categories, buckets, refrigerators, setRefrigerators } = useData();
+    const { user } = useAuth()
+    const [cookies] = useCookies(["sessionId", "guest"]);
 
     useEffect(() => {
         if(selectedBucket.flavor_id){
@@ -19,7 +23,7 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
             setCategoryFlavors(flavors)
             setAvailability(buckets.filter(bucket => bucket.flavor_id === selectedBucket.flavor_id).length)
         }
-    },[buckets, flavors])
+    },[buckets, flavors, selectedBucket.flavor, selectedBucket.flavor_id])
 
     const changeCategory = (event) => {
         try {
@@ -91,9 +95,16 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
             })
             setRefrigerators(refrigeratorsCopy)
             setOpenModal(false)
-            await axios.put(`${url}/buckets/${newBucket._id}`, newBucket)
-            const refrigeratorsFetch = await axios.get(`${url}/refrigerators`);
-            setRefrigerators(refrigeratorsFetch.data)
+            if(user){  
+                const token = cookies.sessionId
+                await axios.put(`${url}/buckets/${newBucket._id}`, newBucket,{
+                    headers: {'Authorization': `Bearer ${token}`}
+                })
+                const refrigeratorsFetch = await axios.get(`${url}/refrigerators`,{
+                    headers: {'Authorization': `Bearer ${token}`}
+                });
+                setRefrigerators(refrigeratorsFetch.data)
+            }
         } catch (error) {
             console.log(error);
         }
@@ -107,7 +118,7 @@ const BucketModal = ({ setOpenModal, selectedBucket, setBuckets }) => {
                 <select name="category" id="category-select" onChange={changeCategory} value={selectedCategory._id}>
                     <option value="">Todos</option>
                     { categories.map((category, idx) => {
-                        return <option value={category._id} key={idx} style={{backgroundColor: category.color}}>{category.category}</option>
+                        return <option value={category._id} key={idx} style={{backgroundColor: category.color + 'aa'}}>{category.category}</option>
                     })}
                 </select>
                 <label htmlFor="flavor-select" className='select-label'>Sabor</label>

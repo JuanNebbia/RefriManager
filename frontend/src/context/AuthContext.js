@@ -9,15 +9,19 @@ const axiosInstance = axios.create({
 });
 
 export const AuthProvider = ({ children }) => {
-  const [cookies, setCookies] = useCookies(["sessionId"]);
+  const [cookies, setCookies] = useCookies(["sessionId", "guest"]);
   const [user, setUser] = useState(false);
+  const [guest, setGuest] = useState(false)
   const [logError, setLogError] = useState(false);
 
   useEffect(() => {
     if (cookies.sessionId) {
       setUser(true);
     }
-  }, []);
+    if (cookies.guest) {
+      setGuest(true)
+    }
+  }, [cookies.guest, cookies.sessionId]);
 
   const login = async (payload) => {
     const url = process.env.REACT_APP_BACKEND_URL;
@@ -29,15 +33,16 @@ export const AuthProvider = ({ children }) => {
       if (loginResponse.data.success) {
         const expirationDate = new Date();
         expirationDate.setDate(expirationDate.getDate() + 30);
-        setCookies("sessionId", process.env.REACT_APP_SESSION_COOKIE, {
+        setCookies("sessionId", loginResponse.data.token, {
           expires: expirationDate,
           path: "/",
         });
         setUser(true);
+        setGuest(false)
       }
     } catch (error) {
       setLogError(true);
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -47,9 +52,22 @@ export const AuthProvider = ({ children }) => {
     setUser(false);
   };
 
+  const peekABoo = () => {
+    setCookies("guest", true, {
+      path: "/",
+    });
+    setGuest(true)
+  }
+
+  const goodNight = () => {
+    document.cookie =
+      "guest=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    setGuest(false);
+  }
+
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, logError, setLogError }}
+      value={{ user, setUser, login, logout, logError, setLogError, guest, setGuest, peekABoo, goodNight }}
     >
       {children}
     </AuthContext.Provider>

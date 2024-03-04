@@ -8,7 +8,7 @@ import { useData } from '../../context/DataContext';
 import Modal from '../Modal/Modal';
 import EditModal from '../EditModal/EditModal';
 
-const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrigerators, setRefrigerators, refriAmount, setRefriAmount }) => {
+const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status }) => {
   const [side, setSide] = useState(0)
   const [viewMode, setViewMode] = useState(true)
   const [openBucketModal, setOpenBucketModal] = useState(false) 
@@ -40,7 +40,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
       }
     });
     setRefriFlavors(flavorObjects);
-  },[])
+  },[buckets, flavors])
 
   const freeSpaces = ( total_capacity - buckets.filter(bucket => bucket.flavor_id !== null).length )
 
@@ -59,7 +59,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
       }
       {
         openEditModal &&
-        <Modal openModal={openEditModal} setOpenModal={setOpenEditModal}  content={<EditModal selectedRefrigerator={{_id, refri_name, buckets, total_capacity}} setOpenModal={setOpenEditModal} />} />
+        <Modal openModal={openEditModal} setOpenModal={setOpenEditModal}  content={<EditModal selectedRefrigerator={{_id, refri_name, buckets, total_capacity, status}} setOpenModal={setOpenEditModal} />} />
       }
       <div className="refri-name-container">
         <p className="refri-name">{refri_name} 
@@ -71,7 +71,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
           }
         </p>
         <button className="view-mode-selector" onClick={() => setViewMode(!viewMode)}>{viewMode ? 'Ver cantidades' : 'Ver posiciones'}</button>
-        <button className="edit-refri" onClick={() => setOpenEditModal(true)}>
+        <button className="edit-refri white-button" onClick={() => setOpenEditModal(true)}>
           <BsFillPencilFill />
         </button>
       </div>
@@ -105,7 +105,7 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
             }) :
             refriFlavors.map((flavor, idx) => {
               return (
-                <div className="flavor-count" key={idx} style={{ backgroundColor: flavor.flavor.category_id.color + 'bb', gridRow:Math.ceil((idx+1) % 4), gridColumn: Math.ceil((idx+1) / 4)}}>{flavor.flavor.name} 
+                <div className="flavor-count" key={idx} style={{ backgroundColor: flavor.flavor.category_id.color + 'bb', gridRow:  Math.ceil((idx % 4 )+ 1), gridColumn: Math.ceil((idx+1) / 4)}}>{flavor.flavor.name} 
                   <p className='flavor-count-number'>{flavor.count}</p>
                 </div>
               )
@@ -115,18 +115,20 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status, refrig
       </div>
     </div>
       <div className="under-container">
-      <div className="mobile-side-selector-container">
-          <button className="mobile-side-up" onClick={()=>setSide(0)}>
-            <div className="mobile-arrow-container arrow-up" style={{color: side===0 ? '#9d6162' : '#fff'}}>
-              <TbArrowBadgeUpFilled />
-            </div>
-          </button>
-          <button className="mobile-side-down" onClick={()=>setSide(1)}>
-            <div className="mobile-arrow-container" style={{color: side===1 ? '#9d6162' : '#fff'}}> 
-              <TbArrowBadgeDownFilled />
-            </div>
-          </button>
-        </div>
+        { viewMode && 
+          <div className="mobile-side-selector-container">
+            <button className="mobile-side-up" onClick={()=>setSide(0)}>
+              <div className="mobile-arrow-container arrow-up" style={{color: side===0 ? '#9d6162' : '#fff'}}>
+                <TbArrowBadgeUpFilled />
+              </div>
+            </button>
+            <button className="mobile-side-down" onClick={()=>setSide(1)}>
+              <div className="mobile-arrow-container" style={{color: side===1 ? '#9d6162' : '#fff'}}> 
+                <TbArrowBadgeDownFilled />
+              </div>
+            </button>
+          </div>
+        }
         <p className="refri-count">{freeSpaces > 0 ? (freeSpaces + (freeSpaces > 1 ? ' lugares libres': ' lugar libre')) : 'Heladera llena'}</p>
       </div>
     </div>

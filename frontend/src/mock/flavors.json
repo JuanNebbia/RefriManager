@@ -1,714 +1,714 @@
 [
     {
-        "_id": 1,
+        "_id": "1",
         "code": 7109,
         "name": "CassiChoco",
         "description": "Helado de chocolate dulce con salsa de Cassis de la Comarca Andina del Paralelo 42",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 2,
+        "_id": "2",
         "code": 7110,
         "name": "Choco brownies",
         "description": "Mousse de chocolate con brownies caseritos.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 3,
+        "_id": "3",
         "code": 4926,
         "name": "Chocolate",
         "description": "¿Qué podemos decir que no se haya dicho del chocolate?.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 4,
+        "_id": "4",
         "code": 7111,
         "name": "Chocolate andino",
         "description": "Una mezcla de helado de chocolate con helado de dulce de leche, y nueces.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 5,
+        "_id": "5",
         "code": 7112,
         "name": "Chocolate árabe",
         "description": "Con crocante de almendras, nueces, praliné de maní y pasas de uva al rhum.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 6,
+        "_id": "6",
         "code": 7113,
         "name": "Chocolate blanco",
         "description": "Con pedacitos de chocolate blanco, como para que quede claro.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 7,
+        "_id": "7",
         "code": 4925,
         "name": "Chocolate Blanco con Frambuesas",
         "description": "Un helado hecho a pedido del público. Con pedacitos de chocolate blanco y dulces frambuesas.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 8,
+        "_id": "8",
         "code": 7114,
         "name": "Chocolate chips",
         "description": "Con granizado de chocolate.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 9,
+        "_id": "9",
         "code": 4927,
         "name": "Chocolate con almendras",
         "description": "Con almendras tostadas que le agregamos al momento de servirlo (para que no se humedezcan)",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 10,
+        "_id": "10",
         "code": 7115,
         "name": "Chocolate con naranjitas",
         "description": "Chocolate amargo con naranjitas caramelizadas.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 11,
+        "_id": "11",
         "code": 7116,
         "name": "Chocolate Persa",
         "description": "Helado de chocolate dulce con pistachos..........",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 12,
+        "_id": "12",
         "code": 4924,
         "name": "Chocolate profundo",
         "description": "Mousse de chocolate amargo, intenso, fuerte. Para fanáticos.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 13,
+        "_id": "13",
         "code": 7117,
         "name": "Kosachoff",
         "description": "Mágica combinación de Chocolate y Sambayón. En homenaje al reconocido maestro heladero Conde Vassily Kosachoff, formado en las mejores escuelas de heladería de Italia y el mundo.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 14,
+        "_id": "14",
         "code": 7118,
         "name": "Mousse de chocolate",
         "description": "Cremosa, suave y dulce...",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 15,
+        "_id": "15",
         "code": 4923,
         "name": "Profundo y Contradictorio",
         "description": "Chocolate profundo, dulce de leche, merengues. Guau.",
-        "category_id": 1,
+        "category_id": "1",
         "status": "active"
     },
     {
-        "_id": 16,
+        "_id": "16",
         "code": 7119,
         "name": "Doble dulce de leche",
         "description": "Para almas golosas. Con dulce de leche.",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 17,
+        "_id": "17",
         "code": 4919,
         "name": "Dulce de leche",
         "description": "Un clásico sobre el que no hace falta añadir más nada.",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 18,
+        "_id": "18",
         "code": 7120,
         "name": "Dulce de leche con brownies",
         "description": "Precisamente eso. Los brownies los hacemos nosotros también.",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 19,
+        "_id": "19",
         "code": 7121,
         "name": "Dulce de leche con ciruelas al rhum",
         "description": "Un viejo clásico que a veces vuelve.",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 20,
+        "_id": "20",
         "code": 4921,
         "name": "Dulce de Leche con Frambuesa",
         "description": "Dulce de leche con Frambuesas de la Comarca",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 21,
+        "_id": "21",
         "code": 7122,
         "name": "Dulce de leche con moras",
         "description": "Le ponemos un toque patagónico al clásico argentino.",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 22,
+        "_id": "22",
         "code": 7123,
         "name": "Dulce de leche con nueces",
         "description": "Con pedacitos de nueces de El Bolsón y la Comarca Andina del Paralelo 42.",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 23,
+        "_id": "23",
         "code": 4920,
         "name": "Dulce de leche granizado",
         "description": "Otro infaltable.",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 24,
+        "_id": "24",
         "code": 4922,
         "name": "Merengueche",
         "description": "Helado de dulce de leche con merengues caseros.",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 25,
+        "_id": "25",
         "code": 7124,
         "name": "Mousse de dulce de leche",
         "description": "Super requete cremoso.",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 26,
+        "_id": "26",
         "code": 7125,
         "name": "Mousse del Piltri",
         "description": "Mousse de dulce de leche con almendras caramelizadas. Un homenaje al cerro Piltriquitrón...",
-        "category_id": 2,
+        "category_id": "2",
         "status": "active"
     },
     {
-        "_id": 27,
+        "_id": "27",
         "code": 7126,
         "name": "Ananá",
         "description": "Anana, nada más. ¿Tá?",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 28,
+        "_id": "28",
         "code": 4930,
         "name": "Arándano",
         "description": "Se cultiva en la Patagonia y en la provincia de Buenos Aires, Santa Fé y Entre Ríos. El helado lo hacemos con la fruta local.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 29,
+        "_id": "29",
         "code": 4930,
         "name": "Boysenberry",
         "description": "Fruta parecida a la frambuesa, más grande y oscura. Actualmente muy difícil de conseguir ya que su cultivo es complicado y se ha reemplazado por la mora híbrida. Tal como su nombre delata, es exótica.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 30,
+        "_id": "30",
         "code": 7127,
         "name": "Cassis",
         "description": "Fruta levemente ácida, de la familia de las grosellas. A pesar de eso la invitan a las reuniones y suelen pasarla bien.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 31,
+        "_id": "31",
         "code": 4933,
         "name": "Frambuesa Natural",
         "description": "Elaborado con frutos de la Comarca Andina del Paralelo 42.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 32,
+        "_id": "32",
         "code": 4931,
         "name": "Frutilla Natural",
         "description": "Elaborado con frutos de la Comarca Andina del Paralelo 42.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 33,
+        "_id": "33",
         "code": 7128,
         "name": "Frutos del bosque",
         "description": "Mezcla de frutas finas. ¡Sin crema!",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 34,
+        "_id": "34",
         "code": 4929,
         "name": "Limón",
         "description": "Limón! Y nada más que limón.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 35,
+        "_id": "35",
         "code": 4928,
         "name": "Limonada de Frambuesa",
         "description": "Refrescante limonada con un poco de frambuesa",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 36,
+        "_id": "36",
         "code": 7129,
         "name": "Limongibre",
         "description": "Limonada con almíbar de jengibre. Refrescante y picantito.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 37,
+        "_id": "37",
         "code": 7130,
         "name": "Limsau",
         "description": "Maceración de flores de sauco con limón. Es un refresco de origen inglés que hacía nuestro tío Elwin.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 38,
+        "_id": "38",
         "code": 7131,
         "name": "Mosqueta",
         "description": "Elaborado con pulpa de rosa mosqueta.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     }, 
     {
-        "_id": 39,
+        "_id": "39",
         "code": 7132,
         "name": "Naranja",
         "description": "Helado de Jugo de Naranjas recién exprimidas.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 40,
+        "_id": "40",
         "code": 7133,
         "name": "Pomelo",
         "description": "A veces rosado, a veces no. Pero siempre Pomelo.",
-        "category_id": 3,
+        "category_id": "3",
         "status": "active"
     },
     {
-        "_id": 41,
+        "_id": "41",
         "code": 7134,
         "name": "Amerisqueta",
         "description": "Helado de Crema Americana con Dulce de Mosqueta",
-        "category_id": 4,
+        "category_id": "4",
         "status": "active"
     },
     {
-        "_id": 42,
+        "_id": "42",
         "code": 7135,
         "name": "Banana",
         "description": "Clásico infaltable.",
-        "category_id": 4,
+        "category_id": "4",
         "status": "active"
     },
     {
-        "_id": 43,
+        "_id": "43",
         "code": 7136,
         "name": "Calafate con leche de oveja",
         "description": "Elaborado, sí, con leche de oveja. No lo tenemos disponible todo el año ya que dependemos de los momentos de ordeñe del tambo de leche de oveja. El color del helado es más oscuro (contrariamente a lo que ocurre cuando una fruta se mezcla con leche). ",
-        "category_id": 4,
+        "category_id": "4",
         "status": "active"
     },
     {
-        "_id": 44,
+        "_id": "44",
         "code": 7137,
         "name": "Cereza a la panna",
         "description": "Crema de cerezas al maraschino aunque sin alcohol.",
-        "category_id": 4,
+        "category_id": "4",
         "status": "active"
     },
     {
-        "_id": 45,
+        "_id": "45",
         "code": 7138,
         "name": "Coco",
         "description": "Solo coco, loco.",
-        "category_id": 4,
+        "category_id": "4",
         "status": "active"
     },
     {
-        "_id": 46,
+        "_id": "46",
         "code": 4934,
         "name": "Frambuesa a la crema",
         "description": "Crema con la pulpa y pedacitos de la fruta.",
-        "category_id": 4,
+        "category_id": "4",
         "status": "active"
     },
     {
-        "_id": 47,
+        "_id": "47",
         "code": 4932,
         "name": "Frutilla a la crema",
         "description": "Crema con la pulpa y pedacitos de la fruta.",
-        "category_id": 4,
+        "category_id": "4",
         "status": "active"
     },
     {
-        "_id": 48,
+        "_id": "48",
         "code": 4913,
         "name": "Lemon pie",
         "description": "Es una mousse de limón.",
-        "category_id": 4,
+        "category_id": "4",
         "status": "active"
     },
     {
-        "_id": 49,
+        "_id": "49",
         "code": 4935,
         "name": "Mousse de frutos del bosque",
         "description": "Casi un postre en sí mismo.",
-        "category_id": 4,
+        "category_id": "4",
         "status": "active"
     },
     {
-        "_id": 50,
+        "_id": "50",
         "code": 7139,
         "name": "Mousse de guindas",
         "description": "Helado a la crema elaborado con una salsa de guindas casera (tipo amarena) y frutas enteras. Generalmente lo hacemos en otoño.",
-        "category_id": 4,
+        "category_id": "4",
         "status": "active"
     },
     {
-        "_id": 51,
+        "_id": "51",
         "code": 7142,
         "name": "Anarangibre",
         "description": "Una ligera mousse de ananá y naranja... y pedacitos de jengibre caramelizado.",
-        "category_id": 5,
+        "category_id": "5",
         "status": "active"
     },
     {
-        "_id": 52,
+        "_id": "52",
         "code": 4914,
         "name": "Banana split",
         "description": "Helado de banana con granizado de chocolate y dulce de leche repostero.",
-        "category_id": 5,
+        "category_id": "5",
         "status": "active"
     },
     {
-        "_id": 53,
+        "_id": "53",
         "code": 7143,
         "name": "Pepilla",
         "description": "Helado de -sobre todo- frutilla con un toque de -sí- Pepino. Refrescante y riquísimo.",
-        "category_id": 5,
+        "category_id": "5",
         "status": "active"
     },
     {
-        "_id": 54,
+        "_id": "54",
         "code": 7144,
         "name": "Sauco de la pasión",
         "description": "Crema de maracuyá sembrada con salsa de sauco... el trópico y la patagonia en un solo helado.",
-        "category_id": 5,
+        "category_id": "5",
         "status": "active"
     },
     {
-        "_id": 55,
+        "_id": "55",
         "code": 7145,
         "name": "Yoghurt de frutilla",
         "description": "Hecho helado, claro.",
-        "category_id": 5,
+        "category_id": "5",
         "status": "active"
     },
     {
-        "_id": 56,
+        "_id": "56",
         "code": 7154,
         "name": "Cardamomo",
         "description": "Lo hacemos al natural (sin crema). Es una especia de origen asiático. Se usa para cocinar. Los árabes lo beben con el café. Y dicen -dicen- que es afrodisíaco.",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 57,
+        "_id": "57",
         "code": 7155,
         "name": "Cerveza",
         "description": "Helado de cerveza artesanal de la comarca andina del paralelo 42. Sólo para valientes iniciados.",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 58,
+        "_id": "58",
         "code": 7156,
         "name": "CocoTano", 
         "description": "Una locura de Coco, galletitas bañadas en chocolate y dulce de leche.",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 59,
+        "_id": "59",
         "code": 7157,
         "name": "Crema de otoño",
         "description": "Crema americana con membrillos (de nuestra casa, sí) caramelizados...",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 60,
+        "_id": "60",
         "code": 7159,
         "name": "Frambuesa con leche de oveja",
         "description": "Agarre una oveja. Ordéñela. Coseche frambuesas. Mezclar y hacer helado. Listo.",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 61,
+        "_id": "61",
         "code": 7158,
         "name": "Mascarroqueta",
         "description": "Base de mascarpone con dulce de mosqueta y queso azul",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 62,
+        "_id": "62",
         "code": 7160,
         "name": "Membrillo",
         "description": "Lo hacemos -algunos otoños- con los membrillos de nuestra casa.",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 63,
+        "_id": "63",
         "code": 7161,
         "name": "Merengada de Avellanas",
         "description": "Crema chantilly con dacquoise de almendras y pedacitos de avellanas",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 64,
+        "_id": "64",
         "code": 7162,
         "name": "Naranja con Lúpulo Victoria",
         "description": "En la época de cosecha de lúpulo, elaboramos este helado especial, hecho con jugo de naranja (sin agua agregada) y lúpulo Victoria. Los cerveceros lo aman, pero no es un sabor fácil.",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 65,
+        "_id": "65",
         "code": 7163,
         "name": "Passion IPA",
         "description": "Mousse de maracuyá con lúpulo Victoria cosechado en la Comarca. Edición super limitada post cosecha de lúpulo.",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 66,
+        "_id": "66",
         "code": 7164,
         "name": "Quinotos al Whisky",
         "description": "Un clásico de la heladería, elaborado con quinotos de verdad (no de lata) al whisky.",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 67,
+        "_id": "67",
         "code": 7165,
         "name": "Super Chantilly con Frutillas",
         "description": "El doble de crema que una crema americana y frutillas de la Comarca Andina del Paralelo 42.",
-        "category_id": 6,
+        "category_id": "6",
         "status": "active"
     },
 {
-        "_id": 68,
+        "_id": "68",
         "code": 7166,
         "name": "Almendrado",
         "description": "Crema de almendras. Ídem crema rusa pero con almendras. Las almendras se agregan en el momento de servirlo. Por favor ayúdenos a no olvidarlo reclamándolas :)",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 69,
+        "_id": "69",
         "code": 4917,
         "name": "Americana",
         "description": "No sabemos por qué, pero así se llama al helado de crema chantilly.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 70,
+        "_id": "70",
         "code": 7167,
         "name": "Café Chocoso",
         "description": "Crema de café; con salsa de chocolate.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 71,
+        "_id": "71",
         "code": 7168,
         "name": "Canela",
         "description": "Helado a la crema... de canela.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 72,
+        "_id": "72",
         "code": 4912,
         "name": "Crema de maní",
         "description": "Su nombre lo dice todo. Con pasta de maní.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 73,
+        "_id": "73",
         "code": 4916,
         "name": "Crema italiana",
         "description": "Crema americana con galletitas bañadas en chocolate y dulce de leche repostero.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 74,
+        "_id": "74",
         "code": 7169,
         "name": "Granizado",
         "description": "Crema con pedacitos de chocolate.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 75,
+        "_id": "75",
         "code": 4936,
         "name": "Jaufajor",
         "description": "Helado de alfajor Jauja, con pedacitos de alfajor y -ya que estamos- dulce de leche.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 76,
+        "_id": "76",
         "code": 7170,
         "name": "Mascarpone con frambuesas",
         "description": "Tenés que probarlo.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 77,
+        "_id": "77",
         "code": 7171,
         "name": "Mate cocido con tres de azúcar",
         "description": "Helado de mate cocido con leche y... azúcar.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 78,
+        "_id": "78",
         "code": 4915,
         "name": "Peperina Granizada",
         "description": "Versión vernácula (libre de saborizantes y colorantes) de la Menta Granizada. Elaborado con hojas de menta y de peperina.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 79,
+        "_id": "79",
         "code": 7172,
         "name": "Pistacho",
         "description": "Elaborado con pistacho argentino. No es verde fosforescente... porque no tiene colorante. No tiene un sabor fuertísimo... porque no tiene saborizante. Eso sí, tiene pistachos de verdad.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 80,
+        "_id": "80",
         "code": 7173,
         "name": "Ristretto",
         "description": "Es un café corto muy concentrado. Recomendamos acompañarlo con crema para suavizar el gusto. Te tiene que gustar el café fuerte... sino, ni lo intentes.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 81,
+        "_id": "81",
         "code": 7174,
         "name": "Sambaleche",
         "description": "50% sambayón - 50% dulce de leche. Un clásico de la primera hora de Jauja",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 82,
+        "_id": "82",
         "code": 7175,
         "name": "Selva negra",
         "description": "Crema americana, guindas, granizado de chocolate y bizcochuelo borracho.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 83,
+        "_id": "83",
         "code": 4918,
         "name": "Super sambayón",
         "description": "Crema, huevos (90 por balde), azúcar, leche y marsala (vino joven muy dulce). No lleva oporto.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 84,
+        "_id": "84",
         "code": 4911,
         "name": "Tiramisu",
         "description": "Helado de queso mascarpone con pionono, cacao y café.",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 85,
+        "_id": "85",
         "code": 7176,
         "name": "Vainilla",
         "description": "Otro clásico. Elaborado con varas de vainilla de verdad. No es tan amarilla porque NO tiene colorante (¡ni una gota!)",
-        "category_id": 7,
+        "category_id": "7",
         "status": "active"
     },
 {
-        "_id": 86,
+        "_id": "86",
         "code": 7177,
         "name": "Americana sin azúcar",
         "description": "Crema Americana sin azúcar (apto diabéticos)",
-        "category_id": 8,
+        "category_id": "8",
         "status": "active"
     },
 {
-        "_id": 87,
+        "_id": "87",
         "code": 7178,
         "name": "Chocolate sin azúcar",
         "description": "Chocolate dulce (pero sin azúcar, claro) (apto diabéticos)",
-        "category_id": 8,
+        "category_id": "8",
         "status": "active"
     },
 {
-        "_id": 88,
+        "_id": "88",
         "code": 7179,
         "name": "Frambuesa al natural sin azúcar",
         "description": "Frambuesa al natural sin azúcar. Apto diabéticos.",
-        "category_id": 8,
+        "category_id": "8",
         "status": "active"
     },
 {
-        "_id": 89,
+        "_id": "89",
         "code": 7180,
         "name": "Frutilla al Natural sin Azúcar",
         "description": "Frutillas de la Comarca Andina... sin lácteos ni azúcar.",
-        "category_id": 8,
+        "category_id": "8",
         "status": "active"
     }
 ]

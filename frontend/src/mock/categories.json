@@ -1,41 +1,41 @@
 [
     {
-        "_id": 1,
+        "_id": "1",
         "category": "Chocolates",
         "color":  "#6c4622"
     },
     {
-        "_id": 2,
+        "_id": "2",
         "category": "Dulces de Leche",
         "color":  "#D56600"
     },
     {
-        "_id": 3,
+        "_id": "3",
         "category": "Frutas al natural",
         "color":  "#FF6666"
     },
     {
-        "_id": 4,
+        "_id": "4",
         "category": "Frutas con crema",
         "color":  "#dd6699"
     },
     {
-        "_id": 5,
+        "_id": "5",
         "category": "Frutas con invitados especiales",
         "color":  "#4ffe7e"
     },
     {
-        "_id": 6,
+        "_id": "6",
         "category": "Helados de estación o de capricho",
         "color":  "#5566ff"
     },
     {
-        "_id": 7,
+        "_id": "7",
         "category": "Las cremas",
         "color":  "#ffeb44"
     },
     {
-        "_id": 8,
+        "_id": "8",
         "category": "Sin azúcar",
         "color":  "#aabbff"
     }

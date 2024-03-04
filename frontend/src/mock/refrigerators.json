@@ -1,20 +1,20 @@
 [
     {
-        "_id": 1,
+        "_id": "1",
         "total_capacity": 24,
         "refri_name": "Heladera 1",
         "status": "active"
     },
     {
-        "_id": 2,
+        "_id": "2",
         "total_capacity": 24,
         "refri_name": "Heladera 2",
         "status": "active"
     },
     {
-        "_id": 3,
+        "_id": "3",
         "total_capacity": 16,
-        "refri_name": "Heladera 3",
+        "refri_name": "Stock",
         "status": "active"
     }
 ]

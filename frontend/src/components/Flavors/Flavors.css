@@ -2,6 +2,8 @@
     background-color: #eaeaea;
     min-height: calc(100vh - 4.5rem);
     padding: 2rem 10%;
+    max-width: 90rem;
+    margin: 0 auto;
 }
 
 .flavors-table{

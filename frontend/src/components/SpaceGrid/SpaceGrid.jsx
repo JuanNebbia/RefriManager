@@ -12,7 +12,7 @@ const SpaceGrid = () => {
 
     useEffect(()=>{
         setWindowWidth(window.innerWidth);
-    })
+    }, [])
 
     const handleAddRefrigeratorClick = () => {
         if(refrigerators.length === 10){

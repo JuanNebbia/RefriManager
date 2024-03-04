@@ -249,6 +249,18 @@
     .bucket-flavor-amount {
         font-weight: 800;
     }
+
+    .flavor-count{
+        padding: 0.3rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .flavor-count-number{
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: center;
+        margin: 0;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -325,6 +337,15 @@
 
     .bucket-flavor-amount {
         font-weight: 800;
+    }
+
+    .flavor-count{
+        padding: 3px 5px;
+        font-size: 0.7rem;
+    }
+    
+    .flavor-count-number{
+        font-size: 0.8rem;
     }
 }
 

@@ -6,6 +6,7 @@
 .App {
   font-family: 'Inter', sans-serif;
   text-align: center;
+  background-color: #eaeaea;
 }
 
 html{
@@ -50,7 +51,7 @@ html{
 }
 
 .white-button:hover{
-  background-color: #f8f8f8;
+  background-color: #e8e8e8;
 }
 
 .white-button a {

@@ -1,7 +1,8 @@
 .order-container{
-    background-color: #f0f0f0;
     min-height: calc(100vh - 4.5rem);
     padding: 2rem 10%;
+    max-width: 80rem;
+    margin: 0 auto;
 }
 
 .order-table, .supplies-detail-table{
@@ -58,4 +59,9 @@
 .order-detail-subtitle{
     margin-top: 2rem;
     text-align: left;
+}
+
+.order-detail-comments{
+    text-align: left;
+    margin-bottom: 5rem;
 }
