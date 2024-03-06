@@ -65,3 +65,24 @@
     text-align: left;
     margin-bottom: 5rem;
 }
+
+@media screen and (max-width: 763px) {
+    .order-container{
+        padding: 4rem 3%;
+    }
+
+    .order-table>thead>tr>th, .supplies-table>thead>tr>th{
+        padding: 0.5rem;
+        color: #000;
+        background-color: #fff;
+        font-size: 0.9rem;
+    }
+
+    #order-total-amount, #order-total{
+        font-size: 1rem;
+    }
+
+    .order-table, .supplies-detail-table{
+        font-size: 12px;
+    }
+}

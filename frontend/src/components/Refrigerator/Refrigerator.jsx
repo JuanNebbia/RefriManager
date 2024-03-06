@@ -117,13 +117,13 @@ const Refrigerator = ({ _id, total_capacity, refri_name, buckets, status }) => {
       <div className="under-container">
         { viewMode && 
           <div className="mobile-side-selector-container">
-            <button className="mobile-side-up" onClick={()=>setSide(0)}>
-              <div className="mobile-arrow-container arrow-up" style={{color: side===0 ? '#9d6162' : '#fff'}}>
+            <button className="mobile-side-up white-button" onClick={()=>setSide(0)}>
+              <div className="mobile-arrow-container arrow-up" style={{color: side===0 ? '#9a7777' : '#ba0016' }}>
                 <TbArrowBadgeUpFilled />
               </div>
             </button>
-            <button className="mobile-side-down" onClick={()=>setSide(1)}>
-              <div className="mobile-arrow-container" style={{color: side===1 ? '#9d6162' : '#fff'}}> 
+            <button className="mobile-side-down white-button" onClick={()=>setSide(1)}>
+              <div className="mobile-arrow-container" style={{color: side===1 ? '#9a7777' : '#ba0016' }}> 
                 <TbArrowBadgeDownFilled />
               </div>
             </button>
